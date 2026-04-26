@@ -67,15 +67,19 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center pt-20">
-        <Image
-          src={heroImage?.imageUrl || "https://picsum.photos/seed/cyber1/1920/1080"}
-          alt="Cyberpunk background"
-          fill
-          className="object-cover opacity-30 grayscale contrast-125"
-          priority
-          data-ai-hint="cyberpunk city"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background"></div>
+        {heroImage && (
+          <Image
+            src={heroImage.imageUrl}
+            alt="Cyberpunk background"
+            fill
+            className="object-cover opacity-20 grayscale contrast-150 brightness-50"
+            unoptimized
+            priority
+            data-ai-hint="hacker data"
+          />
+        )}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/60 to-background"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.4)_100%)]"></div>
         
         <div className="container relative z-10 px-6 max-w-6xl">
           <div className="space-y-6">

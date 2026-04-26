@@ -2,9 +2,9 @@
   "placeholderImages": [
     {
       "id": "hero-bg",
-      "description": "Cyberpunk city night view with neon lights",
-      "imageUrl": "https://picsum.photos/seed/cyber1/1920/1080",
-      "imageHint": "cyberpunk city"
+      "description": "Animated high-tech data flow",
+      "imageUrl": "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExY2I1MjI0enF6N2wydWN3cGNpc2xpMGh4dThxeHl6bDB4YzVwaWJpbCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/EaEWuES5SDSpcnOlRt/giphy.gif",
+      "imageHint": "hacker data"
     },
     {
       "id": "project-1",
