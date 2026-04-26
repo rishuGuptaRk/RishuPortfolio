@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useState, useEffect } from "react"
@@ -88,6 +89,7 @@ export default function Home() {
             fill
             className="object-cover opacity-60 grayscale brightness-[0.7] scale-105"
             priority
+            unoptimized
             data-ai-hint="cyber network"
           />
         )}
