@@ -12,6 +12,7 @@ export default {
       fontFamily: {
         body: ['Inter', 'sans-serif'],
         headline: ['Orbitron', 'sans-serif'],
+        hacked: ['Hacked', 'sans-serif'],
         code: ['Space Mono', 'monospace'],
       },
       colors: {

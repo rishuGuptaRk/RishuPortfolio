@@ -7,12 +7,22 @@ interface GlitchTextProps {
   text: string
   className?: string
   as?: "h1" | "h2" | "h3" | "p" | "span"
+  variant?: "hacked" | "orbitron"
 }
 
-export const GlitchText = ({ text, className, as: Component = "span" }: GlitchTextProps) => {
+export const GlitchText = ({ 
+  text, 
+  className, 
+  as: Component = "span",
+  variant = "hacked"
+}: GlitchTextProps) => {
   return (
     <Component 
-      className={cn("glitch-text font-headline uppercase tracking-wider", className)} 
+      className={cn(
+        "glitch-text uppercase tracking-wider", 
+        variant === "hacked" ? "font-hacked" : "font-headline",
+        className
+      )} 
       data-text={text}
     >
       {text}

@@ -30,7 +30,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'media*.giphy.com',
+        hostname: '**.giphy.com',
         port: '',
         pathname: '/**',
       },
