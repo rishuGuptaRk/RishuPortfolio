@@ -2,33 +2,39 @@
   "placeholderImages": [
     {
       "id": "hero-bg",
-      "description": "Animated high-tech data flow",
-      "imageUrl": "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExY2I1MjI0enF6N2wydWN3cGNpc2xpMGh4dThxeHl6bDB4YzVwaWJpbCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/EaEWuES5SDSpcnOlRt/giphy.gif",
-      "imageHint": "hacker data"
+      "description": "Watch Dogs 2 style data flow",
+      "imageUrl": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExY2I1MjI0enF6N2wydWN3cGNpc2xpMGh4dThxeHl6bDB4YzVwaWJpbCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/EaEWuES5SDSpcnOlRt/giphy.gif",
+      "imageHint": "hacker network"
+    },
+    {
+      "id": "logo-anim",
+      "description": "Glitchy bar animation",
+      "imageUrl": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHN6Z3Z6Z3Z6Z3Z6Z3Z6Z3Z6Z3Z6Z3Z6Z3Z6Z3Z6Z3Z6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/v0oxuonlK0p6o/giphy.gif",
+      "imageHint": "glitch bars"
     },
     {
       "id": "project-1",
-      "description": "Digital network security visualization",
-      "imageUrl": "https://picsum.photos/seed/hack1/800/600",
-      "imageHint": "network security"
+      "description": "Network intrusion visualization",
+      "imageUrl": "https://picsum.photos/seed/cyber1/800/600",
+      "imageHint": "cyber security"
     },
     {
       "id": "project-2",
-      "description": "IoT device control interface",
-      "imageUrl": "https://picsum.photos/seed/hack2/800/600",
-      "imageHint": "iot interface"
+      "description": "Smart city bypass",
+      "imageUrl": "https://picsum.photos/seed/cyber2/800/600",
+      "imageHint": "smart city"
     },
     {
       "id": "project-3",
-      "description": "Encrypted communication platform",
-      "imageUrl": "https://picsum.photos/seed/hack3/800/600",
-      "imageHint": "encrypted code"
+      "description": "P2P Hub interface",
+      "imageUrl": "https://picsum.photos/seed/cyber3/800/600",
+      "imageHint": "mesh network"
     },
     {
       "id": "about-me",
-      "description": "Silhouette of a hacker in front of multiple monitors",
-      "imageUrl": "https://picsum.photos/seed/hacker-profile/600/800",
-      "imageHint": "hacker silhouette"
+      "description": "Cyberpunk operative silhouette",
+      "imageUrl": "https://picsum.photos/seed/hacker-portrait/600/800",
+      "imageHint": "cyberpunk portrait"
     }
   ]
 }
