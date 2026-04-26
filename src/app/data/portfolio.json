@@ -1,0 +1,49 @@
+{
+  "profile": {
+    "name": "Marcus Holloway",
+    "handle": "Retr0",
+    "role": "Full-Stack Security Developer",
+    "bio": "Expert in breaking systems to build better ones. Specializing in high-availability cloud infrastructure and IoT security protocols. DedSec operative.",
+    "location": "San Francisco, CA",
+    "email": "retr0@dedsec.io",
+    "socials": [
+      { "platform": "GitHub", "url": "https://github.com", "icon": "Github" },
+      { "platform": "Twitter", "url": "https://twitter.com", "icon": "Twitter" },
+      { "platform": "Discord", "url": "https://discord.com", "icon": "MessageSquare" }
+    ]
+  },
+  "skills": [
+    { "name": "Node.js", "level": 95, "category": "Backend" },
+    { "name": "React & Next.js", "level": 90, "category": "Frontend" },
+    { "name": "Python Security Tools", "level": 85, "category": "Security" },
+    { "name": "PostgreSQL", "level": 80, "category": "Database" },
+    { "name": "Docker & Kubernetes", "level": 75, "category": "DevOps" },
+    { "name": "IoT Protocols", "level": 70, "category": "hardware" }
+  ],
+  "projects": [
+    {
+      "id": "project-zero-day",
+      "title": "Project Zero-Day",
+      "synopsis": "Automated vulnerability scanner for high-traffic enterprise networks with real-time HUD dashboard.",
+      "description": "Built a distributed scanning engine capable of profiling 10k nodes per second. Includes a WebSocket-based real-time dashboard visualization.",
+      "tech": ["Go", "React", "Redis", "Nmap Engine"],
+      "image": "project-1"
+    },
+    {
+      "id": "ctos-bypass",
+      "title": "ctOS Bypass",
+      "synopsis": "Mobile-first IoT bridge for seamless control of municipal smart-city devices.",
+      "description": "A cross-platform app using low-energy Bluetooth and Zigbee protocols to interface with public smart infrastructure safely.",
+      "tech": ["React Native", "C++", "MQTT"],
+      "image": "project-2"
+    },
+    {
+      "id": "dedsec-hub",
+      "title": "DedSec Hub",
+      "synopsis": "Decentralized social platform for secure operative communication.",
+      "description": "P2P network utilizing IPFS and Libp2p for censorship-resistant messaging and data sharing.",
+      "tech": ["Node.js", "IPFS", "Solidity"],
+      "image": "project-3"
+    }
+  ]
+}
