@@ -2,44 +2,38 @@
   "placeholderImages": [
     {
       "id": "hero-bg",
-      "description": "Cyberpunk network visualization",
-      "imageUrl": "https://picsum.photos/seed/cyber-bg/1920/1080",
-      "imageHint": "cyberpunk network"
+      "description": "High-tech dithered digital network landscape",
+      "imageUrl": "/r4.gif",
+      "imageHint": "cyber network"
     },
     {
       "id": "dedsec-skull",
-      "description": "Glitch style skull signature",
-      "imageUrl": "https://picsum.photos/seed/cyber-skull/800/800",
+      "description": "High definition dithered skull signature",
+      "imageUrl": "https://picsum.photos/seed/dedsec-skull-hd/800/800",
       "imageHint": "hacker skull"
     },
     {
-      "id": "logo-anim",
-      "description": "Abstract tech bars",
-      "imageUrl": "https://picsum.photos/seed/cyber-bars/400/200",
-      "imageHint": "glitch bars"
-    },
-    {
       "id": "project-1",
-      "description": "Network intrusion visualization",
-      "imageUrl": "https://picsum.photos/seed/cyber1/800/600",
+      "description": "Network security intrusion module",
+      "imageUrl": "https://picsum.photos/seed/sec-module-1/800/600",
       "imageHint": "network security"
     },
     {
       "id": "project-2",
-      "description": "Smart city bypass",
-      "imageUrl": "https://picsum.photos/seed/cyber2/800/600",
+      "description": "Smart city infrastructure bridge",
+      "imageUrl": "https://picsum.photos/seed/smart-city-bridge/800/600",
       "imageHint": "smart city"
     },
     {
       "id": "project-3",
-      "description": "P2P Hub interface",
-      "imageUrl": "https://picsum.photos/seed/cyber3/800/600",
+      "description": "Decentralized mesh node interface",
+      "imageUrl": "https://picsum.photos/seed/mesh-node-hub/800/600",
       "imageHint": "mesh network"
     },
     {
       "id": "about-me",
-      "description": "Cyberpunk operative silhouette",
-      "imageUrl": "https://picsum.photos/seed/hacker-portrait/600/800",
+      "description": "DEDSEC operative tactical silhouette",
+      "imageUrl": "https://picsum.photos/seed/operative-retr0/600/800",
       "imageHint": "cyberpunk portrait"
     }
   ]

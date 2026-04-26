@@ -14,12 +14,6 @@
       "imageHint": "hacker skull"
     },
     {
-      "id": "logo-anim",
-      "description": "Abstract glitching digital bars",
-      "imageUrl": "https://picsum.photos/seed/glitch-bars-anim/400/200",
-      "imageHint": "glitch bars"
-    },
-    {
       "id": "project-1",
       "description": "Network security intrusion module",
       "imageUrl": "https://picsum.photos/seed/sec-module-1/800/600",
