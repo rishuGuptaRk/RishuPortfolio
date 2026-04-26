@@ -82,7 +82,7 @@ export default function Home() {
             src={heroImage.imageUrl}
             alt="DedSec Wallpaper"
             fill
-            className="object-cover opacity-40 grayscale brightness-[0.6] scale-110"
+            className="object-cover opacity-60 grayscale brightness-[0.7] scale-105"
             priority
             data-ai-hint="hacker network"
           />
@@ -195,13 +195,15 @@ export default function Home() {
             <HudContainer title="SUBJECT_DOSSIER" className="flex flex-col">
               <div className="flex flex-col md:flex-row gap-10 mb-10">
                 <div className="relative w-full md:w-56 h-72 shrink-0 border border-primary/20 bg-muted/20 group overflow-hidden">
-                  <Image
-                    src={profileImage?.imageUrl || "https://picsum.photos/seed/hacker-portrait/600/800"}
-                    alt="Operative Profile"
-                    fill
-                    className="object-cover grayscale contrast-125 transition-all duration-700 group-hover:grayscale-0 group-hover:scale-110"
-                    data-ai-hint="cyberpunk portrait"
-                  />
+                  {profileImage?.imageUrl && (
+                    <Image
+                      src={profileImage.imageUrl}
+                      alt="Operative Profile"
+                      fill
+                      className="object-cover grayscale contrast-125 transition-all duration-700 group-hover:grayscale-0 group-hover:scale-110"
+                      data-ai-hint="cyberpunk portrait"
+                    />
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60"></div>
                   <div className="absolute bottom-4 left-4 font-code text-[10px] text-primary bg-background/80 px-2 py-1">
                     SF_NODE_415
