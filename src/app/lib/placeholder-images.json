@@ -3,8 +3,14 @@
     {
       "id": "hero-bg",
       "description": "Watch Dogs 2 style data flow",
-      "imageUrl": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExY2I1MjI0enF6N2wydWN3cGNpc2xpMGh4dThxeHl6bDB4YzVwaWJpbCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/EaEWuES5SDSpcnOlRt/giphy.gif",
-      "imageHint": "hacker network"
+      "imageUrl": "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExY2I1MjI0enF6N2wydWN3cGNpc2xpMGh4dThxeHl6bDB4YzVwaWJpbCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/EaEWuES5SDSpcnOlRt/giphy.gif",
+      "imageHint": "hacker data"
+    },
+    {
+      "id": "dedsec-skull",
+      "description": "HD Glitch Skull Signature",
+      "imageUrl": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ2Y0eHBybmZ4eWZ4eWZ4eWZ4eWZ4eWZ4eWZ4eWZ4eWZ4ZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/LSk5a5R3UUpR6/giphy.gif",
+      "imageHint": "hacker skull"
     },
     {
       "id": "logo-anim",
@@ -16,7 +22,7 @@
       "id": "project-1",
       "description": "Network intrusion visualization",
       "imageUrl": "https://picsum.photos/seed/cyber1/800/600",
-      "imageHint": "cyber security"
+      "imageHint": "network security"
     },
     {
       "id": "project-2",
