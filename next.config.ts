@@ -33,6 +33,10 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'thumbs.gfycat.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'pa1.narvii.com',
       }
     ],
   },
