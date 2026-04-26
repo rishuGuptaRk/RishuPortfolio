@@ -15,8 +15,8 @@ import { ChevronDown, Cpu, Shield, Globe, Terminal, User, Activity } from "lucid
 
 export default function Home() {
   const heroImage = PlaceHolderImages.find(img => img.id === "hero-bg")
-  const profileImage = PlaceHolderImages.find(img => img.id === "about-me")
   const logoAnim = PlaceHolderImages.find(img => img.id === "logo-anim")
+  const profileImage = PlaceHolderImages.find(img => img.id === "about-me")
 
   return (
     <div className="min-h-screen selection:bg-accent selection:text-accent-foreground overflow-x-hidden">
@@ -80,22 +80,22 @@ export default function Home() {
         {heroImage?.imageUrl && (
           <Image
             src={heroImage.imageUrl}
-            alt="Cyberpunk background"
+            alt="DedSec Wallpaper"
             fill
-            className="object-cover opacity-20 grayscale brightness-75 scale-110"
+            className="object-cover opacity-30 grayscale brightness-[0.4] scale-110"
             priority
-            data-ai-hint="cyberpunk network"
+            data-ai-hint="hacker skull"
           />
         )}
         
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.8)_100%)]"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.9)_100%)]"></div>
         
         <div className="container relative z-10 px-6 max-w-6xl mx-auto">
           <div className="flex flex-col lg:flex-row items-center gap-16">
             <div className="flex-1 space-y-8 text-center lg:text-left">
               <div className="flex items-center gap-4 justify-center lg:justify-start">
                  <div className="h-0.5 w-12 bg-primary"></div>
-                 <span className="font-code text-xs text-primary tracking-[0.4em] animate-pulse">UPLINK_STABLE // NO_ID_DETECTED</span>
+                 <span className="font-code text-xs text-primary tracking-[0.4em] animate-pulse">UPLINK_STABLE // {portfolioData.profile.handle.toUpperCase()}</span>
               </div>
               
               <div className="space-y-2">
@@ -105,7 +105,7 @@ export default function Home() {
                     {portfolioData.profile.role}
                   </h2>
                   <div className="hidden md:block h-1 w-1 bg-muted-foreground rounded-full"></div>
-                  <span className="font-code text-muted-foreground text-sm uppercase tracking-widest">{portfolioData.profile.handle} // OPERATIVE</span>
+                  <span className="font-code text-muted-foreground text-sm uppercase tracking-widest">OPERATIVE // DEDSEC_SF</span>
                 </div>
               </div>
 
@@ -127,11 +127,11 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Signature Area (Glitch Bars) */}
+            {/* Signature Area */}
             <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 shrink-0 group flex items-center justify-center">
               <div className="absolute inset-0 border border-primary/20 rounded-full animate-spin-slow opacity-20 group-hover:opacity-40 transition-opacity"></div>
               <div className="absolute inset-4 border border-accent/20 rounded-full animate-reverse-spin opacity-20 group-hover:opacity-40 transition-opacity"></div>
-              {logoAnim?.imageUrl ? (
+              {logoAnim?.imageUrl && (
                 <div className="relative w-48 h-24 md:w-64 md:h-32">
                    <Image 
                     src={logoAnim.imageUrl} 
@@ -141,8 +141,6 @@ export default function Home() {
                     data-ai-hint="glitch bars"
                   />
                 </div>
-              ) : (
-                <div className="text-primary font-hacked text-6xl animate-pulse">DEDSEC</div>
               )}
             </div>
           </div>
@@ -198,7 +196,7 @@ export default function Home() {
               <div className="flex flex-col md:flex-row gap-10 mb-10">
                 <div className="relative w-full md:w-56 h-72 shrink-0 border border-primary/20 bg-muted/20 group overflow-hidden">
                   <Image
-                    src={profileImage?.imageUrl || "https://picsum.photos/seed/hacker-profile/600/800"}
+                    src={profileImage?.imageUrl || "https://picsum.photos/seed/hacker-portrait/600/800"}
                     alt="Operative Profile"
                     fill
                     className="object-cover grayscale contrast-125 transition-all duration-700 group-hover:grayscale-0 group-hover:scale-110"
@@ -210,7 +208,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="space-y-6">
-                  <h4 className="text-3xl font-headline text-primary tracking-tighter">OPERATIVE_BIO</h4>
+                  <h4 className="text-3xl font-headline text-primary tracking-tighter uppercase">Operative_Bio</h4>
                   <div className="space-y-4 text-muted-foreground font-body leading-relaxed text-sm">
                     <p>
                       Active in the Bay Area cyber-scene for 10+ cycles. Transitioned from low-level vulnerability research into full-stack infrastructure engineering.
@@ -264,7 +262,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer HUD Footer */}
+      {/* Footer */}
       <footer className="py-16 border-t border-primary/10 bg-card/40 backdrop-blur-md">
         <div className="container px-6 max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center gap-12">
@@ -274,7 +272,7 @@ export default function Home() {
                 <Shield className="w-6 h-6 text-primary relative z-10" />
               </div>
               <div>
-                <p className="text-sm font-headline text-primary tracking-widest">DEDSEC_SF_GRID</p>
+                <p className="text-sm font-headline text-primary tracking-widest uppercase">DedSec_SF_Grid</p>
                 <p className="text-[10px] font-code text-muted-foreground/60 uppercase tracking-widest">Everything is connected</p>
               </div>
             </div>
