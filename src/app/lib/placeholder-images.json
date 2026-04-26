@@ -1,21 +1,22 @@
+
 {
   "placeholderImages": [
     {
       "id": "hero-bg",
-      "description": "Watch Dogs 2 style data flow",
-      "imageUrl": "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExY2I1MjI0enF6N2wydWN3cGNpc2xpMGh4dThxeHl6bDB4YzVwaWJpbCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/EaEWuES5SDSpcnOlRt/giphy.gif",
-      "imageHint": "hacker data"
+      "description": "Cyberpunk network visualization",
+      "imageUrl": "https://picsum.photos/seed/cyber-bg/1920/1080",
+      "imageHint": "cyberpunk network"
     },
     {
       "id": "dedsec-skull",
-      "description": "HD Glitch Skull Signature",
-      "imageUrl": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ2Y0eHBybmZ4eWZ4eWZ4eWZ4eWZ4eWZ4eWZ4eWZ4eWZ4ZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/LSk5a5R3UUpR6/giphy.gif",
+      "description": "Glitch style skull signature",
+      "imageUrl": "https://picsum.photos/seed/cyber-skull/800/800",
       "imageHint": "hacker skull"
     },
     {
       "id": "logo-anim",
-      "description": "Glitchy bar animation",
-      "imageUrl": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHN6Z3Z6Z3Z6Z3Z6Z3Z6Z3Z6Z3Z6Z3Z6Z3Z6Z3Z6Z3Z6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/v0oxuonlK0p6o/giphy.gif",
+      "description": "Abstract tech bars",
+      "imageUrl": "https://picsum.photos/seed/cyber-bars/400/200",
       "imageHint": "glitch bars"
     },
     {

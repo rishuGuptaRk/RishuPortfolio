@@ -1,3 +1,4 @@
+
 "use client"
 
 import React from "react"
@@ -83,13 +84,11 @@ export default function Home() {
             alt="Cyberpunk background"
             fill
             className="object-cover opacity-20 grayscale brightness-75 scale-110"
-            unoptimized
             priority
-            data-ai-hint="hacker network"
+            data-ai-hint="cyberpunk network"
           />
         )}
         
-        {/* Animated Background Elements */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.8)_100%)]"></div>
         
         <div className="container relative z-10 px-6 max-w-6xl mx-auto">
@@ -129,32 +128,32 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Skull Signature Area */}
+            {/* Signature Area */}
             {dedsecSkull?.imageUrl && (
               <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 shrink-0 group">
                 <div className="absolute inset-0 border border-primary/20 rounded-full animate-spin-slow opacity-20 group-hover:opacity-40 transition-opacity"></div>
                 <div className="absolute inset-4 border border-accent/20 rounded-full animate-reverse-spin opacity-20 group-hover:opacity-40 transition-opacity"></div>
                 <Image 
                   src={dedsecSkull.imageUrl} 
-                  alt="DedSec Skull" 
+                  alt="Hacker Signature" 
                   fill 
-                  className="object-contain p-8 drop-shadow-[0_0_30px_rgba(139,77,242,0.3)] animate-flicker" 
-                  unoptimized
+                  className="object-contain p-8 drop-shadow-[0_0_30px_rgba(139,77,242,0.3)] animate-flicker grayscale contrast-125"
+                  data-ai-hint="hacker skull"
                 />
               </div>
             )}
           </div>
         </div>
 
-        {/* Decorative GIF overlay */}
+        {/* Decorative HUD overlay */}
         {logoAnim?.imageUrl && (
           <div className="absolute bottom-12 right-12 w-32 h-20 opacity-30 grayscale contrast-150 hidden xl:block">
             <Image 
               src={logoAnim.imageUrl} 
-              alt="Glitch Animation" 
+              alt="HUD Animation" 
               fill 
               className="object-contain" 
-              unoptimized
+              data-ai-hint="glitch bars"
             />
           </div>
         )}
