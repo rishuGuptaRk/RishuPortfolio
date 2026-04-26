@@ -11,7 +11,7 @@ import { SkillMatrix } from "@/components/skill-matrix"
 import { ContactModule } from "@/components/contact-module"
 import { AiSynopsisTool } from "@/components/ai-synopsis-tool"
 import { PlaceHolderImages } from "@/lib/placeholder-images"
-import { ChevronDown, Cpu, Shield, Globe, Terminal, User, Activity } from "lucide-react"
+import { ChevronDown, Cpu, Globe, Terminal, User, Activity, Shield } from "lucide-react"
 
 export default function Home() {
   const heroImage = PlaceHolderImages.find(img => img.id === "hero-bg")
@@ -82,13 +82,13 @@ export default function Home() {
             src={heroImage.imageUrl}
             alt="DedSec Wallpaper"
             fill
-            className="object-cover opacity-30 grayscale brightness-[0.4] scale-110"
+            className="object-cover opacity-40 grayscale brightness-[0.6] scale-110"
             priority
-            data-ai-hint="hacker skull"
+            data-ai-hint="hacker network"
           />
         )}
         
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.9)_100%)]"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.8)_100%)]"></div>
         
         <div className="container relative z-10 px-6 max-w-6xl mx-auto">
           <div className="flex flex-col lg:flex-row items-center gap-16">
