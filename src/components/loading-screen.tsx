@@ -39,14 +39,14 @@ export const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
 
   return (
     <div className="fixed inset-0 z-[200] bg-black flex flex-col items-center justify-center p-6 select-none overflow-hidden font-code">
-      {/* Centered GIF container - No glow to ensure perfect blending with black background */}
+      {/* Centered GIF container - mix-blend-screen ensures any non-pure-black background in the GIF is keyed out */}
       <div className="relative w-full max-w-2xl h-96 mb-8 flex items-center justify-center bg-black">
         {loadingGif?.imageUrl && (
           <Image 
             src={loadingGif.imageUrl} 
             alt="System Infiltration" 
             fill 
-            className="object-contain"
+            className="object-contain mix-blend-screen"
             priority
             unoptimized
           />
@@ -89,7 +89,7 @@ export const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
         </div>
 
         {/* Tactical Logs */}
-        <div className="border-l border-primary/30 pl-4 py-2 space-y-1 bg-black backdrop-blur-sm">
+        <div className="border-l border-primary/30 pl-4 py-2 space-y-1 bg-black">
           <p className="text-[8px] text-muted-foreground/50 uppercase tracking-wider">
             {progress > 5 && "> Tunneling_Bypass_v2.0"}
           </p>
