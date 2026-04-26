@@ -15,7 +15,6 @@ import { ChevronDown, Cpu, Globe, Terminal, User, Activity, Shield } from "lucid
 
 export default function Home() {
   const heroImage = PlaceHolderImages.find(img => img.id === "hero-bg")
-  const logoAnim = PlaceHolderImages.find(img => img.id === "logo-anim")
   const profileImage = PlaceHolderImages.find(img => img.id === "about-me")
 
   return (
@@ -91,57 +90,38 @@ export default function Home() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.8)_100%)]"></div>
         
         <div className="container relative z-10 px-6 max-w-6xl mx-auto">
-          <div className="flex flex-col lg:flex-row items-center gap-16">
-            <div className="flex-1 space-y-8 text-center lg:text-left">
-              <div className="flex items-center gap-4 justify-center lg:justify-start">
-                 <div className="h-0.5 w-12 bg-primary"></div>
-                 <span className="font-code text-xs text-primary tracking-[0.4em] animate-pulse">UPLINK_STABLE // {portfolioData.profile.handle.toUpperCase()}</span>
-              </div>
-              
-              <div className="space-y-2">
-                <GlitchText text={portfolioData.profile.name} className="text-5xl md:text-8xl font-black block leading-[0.8] mb-4" as="h1" />
-                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6">
-                  <h2 className="text-xl md:text-3xl font-headline text-accent uppercase tracking-tighter">
-                    {portfolioData.profile.role}
-                  </h2>
-                  <div className="hidden md:block h-1 w-1 bg-muted-foreground rounded-full"></div>
-                  <span className="font-code text-muted-foreground text-sm uppercase tracking-widest">OPERATIVE // DEDSEC_SF</span>
-                </div>
-              </div>
-
-              <p className="max-w-xl mx-auto lg:mx-0 text-lg text-muted-foreground/90 leading-relaxed font-body border-l-2 border-primary/30 pl-6 py-2">
-                {portfolioData.profile.bio}
-              </p>
-
-              <div className="flex flex-wrap justify-center lg:justify-start gap-6 pt-6">
-                <button 
-                  onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="bg-primary text-primary-foreground px-10 py-4 font-headline text-sm hover:bg-primary/90 transition-all flex items-center gap-4 group relative overflow-hidden"
-                >
-                  <div className="absolute inset-0 bg-white/10 -translate-x-full group-hover:translate-x-full transition-transform duration-500"></div>
-                  ACCESS_REPOSITORY <ChevronDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
-                </button>
-                <button className="border border-primary/30 text-primary px-10 py-4 font-headline text-sm hover:bg-primary/5 transition-all backdrop-blur-sm">
-                  EXTRACT_INTEL (CV)
-                </button>
+          <div className="flex flex-col items-center justify-center text-center lg:text-left lg:items-start space-y-8">
+            <div className="flex items-center gap-4 justify-center lg:justify-start">
+               <div className="h-0.5 w-12 bg-primary"></div>
+               <span className="font-code text-xs text-primary tracking-[0.4em] animate-pulse">UPLINK_STABLE // {portfolioData.profile.handle.toUpperCase()}</span>
+            </div>
+            
+            <div className="space-y-2">
+              <GlitchText text={portfolioData.profile.name} className="text-5xl md:text-8xl font-black block leading-[0.8] mb-4" as="h1" />
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6">
+                <h2 className="text-xl md:text-3xl font-headline text-accent uppercase tracking-tighter">
+                  {portfolioData.profile.role}
+                </h2>
+                <div className="hidden md:block h-1 w-1 bg-muted-foreground rounded-full"></div>
+                <span className="font-code text-muted-foreground text-sm uppercase tracking-widest">OPERATIVE // DEDSEC_SF</span>
               </div>
             </div>
 
-            {/* Signature Area */}
-            <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 shrink-0 group flex items-center justify-center">
-              <div className="absolute inset-0 border border-primary/20 rounded-full animate-spin-slow opacity-20 group-hover:opacity-40 transition-opacity"></div>
-              <div className="absolute inset-4 border border-accent/20 rounded-full animate-reverse-spin opacity-20 group-hover:opacity-40 transition-opacity"></div>
-              {logoAnim?.imageUrl && (
-                <div className="relative w-48 h-24 md:w-64 md:h-32">
-                   <Image 
-                    src={logoAnim.imageUrl} 
-                    alt="HUD Signature" 
-                    fill 
-                    className="object-contain animate-flicker grayscale contrast-125"
-                    data-ai-hint="glitch bars"
-                  />
-                </div>
-              )}
+            <p className="max-w-xl mx-auto lg:mx-0 text-lg text-muted-foreground/90 leading-relaxed font-body border-l-2 border-primary/30 pl-6 py-2">
+              {portfolioData.profile.bio}
+            </p>
+
+            <div className="flex flex-wrap justify-center lg:justify-start gap-6 pt-6">
+              <button 
+                onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+                className="bg-primary text-primary-foreground px-10 py-4 font-headline text-sm hover:bg-primary/90 transition-all flex items-center gap-4 group relative overflow-hidden"
+              >
+                <div className="absolute inset-0 bg-white/10 -translate-x-full group-hover:translate-x-full transition-transform duration-500"></div>
+                ACCESS_REPOSITORY <ChevronDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
+              </button>
+              <button className="border border-primary/30 text-primary px-10 py-4 font-headline text-sm hover:bg-primary/5 transition-all backdrop-blur-sm">
+                EXTRACT_INTEL (CV)
+              </button>
             </div>
           </div>
         </div>
