@@ -3,48 +3,58 @@
   "profile": {
     "name": "Rishu Gupta",
     "handle": "Cyber_Gupta",
-    "role": "Full-Stack Developer & Security Analyst",
-    "bio": "Specializing in building resilient web architectures and secure cloud infrastructures. Dedicated to bridging the gap between high-performance code and uncompromising digital security. DedSec operative.",
+    "role": "Full-Stack Developer & Software Engineer",
+    "bio": "B.Tech CSE Undergraduate (2022–2026) at Siliguri Institute of Technology. Specializing in real-time synchronized systems, scalable backend architectures, and AI-powered solutions. Dedicated to building efficient, user-centric digital products.",
     "location": "India",
     "email": "rishu@dedsec.io",
     "socials": [
       { "platform": "GitHub", "url": "https://github.com/rishuGuptaRk", "icon": "Github" },
-      { "platform": "Twitter", "url": "https://twitter.com", "icon": "Twitter" },
-      { "platform": "Discord", "url": "https://discord.com", "icon": "MessageSquare" }
+      { "platform": "LinkedIn", "url": "https://linkedin.com", "icon": "Linkedin" },
+      { "platform": "Twitter", "url": "https://twitter.com", "icon": "Twitter" }
     ]
   },
   "skills": [
-    { "name": "Node.js & Backend", "level": 92, "category": "Core" },
-    { "name": "React & Next.js", "level": 95, "category": "Frontend" },
-    { "name": "TypeScript", "level": 90, "category": "Language" },
-    { "name": "Cloud Security", "level": 85, "category": "Security" },
-    { "name": "Docker & K8s", "level": 80, "category": "DevOps" },
-    { "name": "Python", "level": 88, "category": "Backend" }
+    { "name": "MERN Stack", "level": 95, "category": "Full-Stack" },
+    { "name": "Java & C++", "level": 92, "category": "Languages" },
+    { "name": "Next.js & React", "level": 94, "category": "Frontend" },
+    { "name": "Node.js & Express", "level": 90, "category": "Backend" },
+    { "name": "Firebase & Genkit", "level": 88, "category": "AI/Cloud" },
+    { "name": "SQL & MongoDB", "level": 85, "category": "Database" },
+    { "name": "Socket.io", "level": 82, "category": "Real-time" },
+    { "name": "Data Structures", "level": 90, "category": "Core" }
   ],
   "projects": [
     {
-      "id": "secure-vault-v1",
-      "title": "SecureVault Node",
-      "synopsis": "End-to-end encrypted file storage system with decentralized access controls.",
-      "description": "Implemented a zero-knowledge architecture using AES-256-GCM for file encryption and RSA-4096 for secure key exchange between distributed nodes.",
-      "tech": ["Next.js", "WebCrypto API", "PostgreSQL"],
+      "id": "watch-party-v2",
+      "title": "Sync Social Video",
+      "synopsis": "Real-time synchronized video streaming platform with room-based architecture.",
+      "description": "Implemented live synchronization for shared viewing experiences using Socket.io and Firebase. Integrated AI-powered suggestions via Genkit.",
+      "tech": ["Next.js", "Firebase", "Genkit AI", "Socket.io"],
       "image": "project-1"
     },
     {
-      "id": "network-analyzer",
-      "title": "PacketSleuth",
-      "synopsis": "Real-time network traffic analysis tool with visual HUD for intrusion detection.",
-      "description": "Developed a high-throughput engine for monitoring network packets and identifying anomalous behavior using machine learning heuristics.",
-      "tech": ["Python", "Socket.io", "React"],
+      "id": "ecomm-nexus",
+      "title": "Full-Stack E-commerce",
+      "synopsis": "Complete shopping platform with secure payments and optimized database performance.",
+      "description": "Developed a robust MERN stack application featuring JWT authentication, Stripe integration, and high-performance MongoDB indexing.",
+      "tech": ["React", "Node.js", "MongoDB", "Express"],
       "image": "project-2"
     },
     {
-      "id": "api-gateway",
-      "title": "Aura Gateway",
-      "synopsis": "Highly scalable API gateway with automated rate-limiting and DDoS protection.",
-      "description": "Built a custom proxy layer handling 50k+ requests per minute with integrated Redis-based caching and intelligent traffic shaping.",
-      "tech": ["Node.js", "Redis", "Docker"],
+      "id": "dsa-prep-ai",
+      "title": "AI DSA Prep Hub",
+      "synopsis": "Intelligent learning platform with personalized study plans and AI code analysis.",
+      "description": "Built using Google Gemini API to explain concepts and debug code. Features a tracking dashboard for student progress.",
+      "tech": ["Next.js", "Firebase", "Gemini API", "Genkit"],
       "image": "project-3"
+    },
+    {
+      "id": "library-sys",
+      "title": "LMS Java Core",
+      "synopsis": "OOP-based library management system with modular design and borrowing workflows.",
+      "description": "Focuses on clean code principles, book cataloging, and administrative role-based access control.",
+      "tech": ["Java", "OOP", "MySQL"],
+      "image": "project-1"
     }
   ]
 }

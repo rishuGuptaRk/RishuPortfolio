@@ -12,7 +12,7 @@ import { ContactModule } from "@/components/contact-module"
 import { AiSynopsisTool } from "@/components/ai-synopsis-tool"
 import { PlaceHolderImages } from "@/lib/placeholder-images"
 import { LoadingScreen } from "@/components/loading-screen"
-import { ChevronDown, Cpu, Globe, Terminal, User, Activity, Shield } from "lucide-react"
+import { ChevronDown, Cpu, Globe, Terminal, User, Activity, Shield, Award } from "lucide-react"
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
@@ -41,17 +41,17 @@ export default function Home() {
             <Terminal className="text-primary group-hover:scale-110 transition-transform" />
           </div>
           <div className="hidden sm:block">
-            <GlitchText text="CYBER_FOLIO" className="text-xl leading-none block" as="h1" />
-            <p className="text-[9px] font-code text-primary/50 tracking-[0.3em] uppercase">DedSec_Uplink_Active</p>
+            <GlitchText text="RISHU_GUPTA" className="text-xl leading-none block" as="h1" />
+            <p className="text-[9px] font-code text-primary/50 tracking-[0.3em] uppercase">SIT_NODE_ACTIVE // B.TECH CSE</p>
           </div>
         </div>
 
         <div className="hidden md:flex gap-10">
           {[
-            { id: "projects", label: "Software" },
-            { id: "skills", label: "Capabilities" },
-            { id: "lab", label: "AI_Core" },
-            { id: "contact", label: "Network" }
+            { id: "projects", label: "Repositories" },
+            { id: "skills", label: "Tech_Stack" },
+            { id: "lab", label: "Neural_AI" },
+            { id: "contact", label: "Uplink" }
           ].map((item) => (
             <button
               key={item.id}
@@ -69,7 +69,7 @@ export default function Home() {
         <div className="flex items-center gap-6">
           <div className="text-right hidden sm:block">
             <div className="flex items-center gap-2 mb-1">
-              <span className="text-[8px] font-code text-muted-foreground">LATENCY: 24ms</span>
+              <span className="text-[8px] font-code text-muted-foreground">STATUS: ENCRYPTED</span>
               <Activity className="w-3 h-3 text-green-500" />
             </div>
             <div className="flex gap-0.5">
@@ -116,7 +116,7 @@ export default function Home() {
           <div className="flex flex-col items-center justify-center text-center lg:text-left lg:items-start space-y-8">
             <div className="flex items-center gap-4 justify-center lg:justify-start">
                <div className="h-0.5 w-12 bg-primary"></div>
-               <span className="font-code text-xs text-primary tracking-[0.4em] animate-pulse">UPLINK_STABLE // {portfolioData.profile.handle.toUpperCase()}</span>
+               <span className="font-code text-xs text-primary tracking-[0.4em] animate-pulse">SYSTEM_INIT // {portfolioData.profile.handle.toUpperCase()}</span>
             </div>
             
             <div className="space-y-2">
@@ -126,7 +126,7 @@ export default function Home() {
                   {portfolioData.profile.role}
                 </h2>
                 <div className="hidden md:block h-1 w-1 bg-muted-foreground rounded-full"></div>
-                <span className="font-code text-muted-foreground text-sm uppercase tracking-widest">OPERATIVE // DEDSEC_CORP</span>
+                <span className="font-code text-muted-foreground text-sm uppercase tracking-widest">CLASS // CSE_2026_SIT</span>
               </div>
             </div>
 
@@ -140,7 +140,7 @@ export default function Home() {
                 className="bg-primary text-primary-foreground px-10 py-4 font-headline text-sm hover:bg-primary/90 transition-all flex items-center gap-4 group relative overflow-hidden"
               >
                 <div className="absolute inset-0 bg-white/10 -translate-x-full group-hover:translate-x-full transition-transform duration-500"></div>
-                ACCESS_REPOSITORY <ChevronDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
+                ACCESS_RECORDS <ChevronDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
               </button>
               <button 
                 onClick={handleDownloadCV}
@@ -150,16 +150,6 @@ export default function Home() {
               </button>
             </div>
           </div>
-        </div>
-
-        {/* HUD Elements */}
-        <div className="absolute bottom-12 right-12 flex items-center gap-6 opacity-30 hidden xl:flex">
-          <div className="text-right">
-            <p className="text-[8px] font-code text-primary uppercase">System_Core</p>
-            <p className="text-[10px] font-code text-white">v2.4.0_STABLE</p>
-          </div>
-          <div className="w-px h-12 bg-primary/40"></div>
-          <Activity className="w-6 h-6 text-primary animate-pulse" />
         </div>
       </section>
 
@@ -172,16 +162,16 @@ export default function Home() {
                 <Cpu className="text-primary w-6 h-6" />
                 <span className="font-code text-xs text-primary uppercase tracking-[0.3em]">Code_Infiltration_Modules</span>
               </div>
-              <GlitchText text="Project_Logs" className="text-5xl font-headline" />
+              <GlitchText text="Deployment_Logs" className="text-5xl font-headline" />
             </div>
             <div className="font-code text-[11px] text-muted-foreground border border-primary/20 p-4 bg-muted/10 backdrop-blur-sm">
               <div className="flex justify-between gap-12 mb-1">
-                <span>RECORDS_FOUND:</span>
+                <span>MODULES_COMPILED:</span>
                 <span className="text-primary">00{portfolioData.projects.length}</span>
               </div>
               <div className="flex justify-between gap-12">
                 <span>AUTH_STATUS:</span>
-                <span className="text-green-500">GRANTED</span>
+                <span className="text-green-500">ADMIN_ACCESS</span>
               </div>
             </div>
           </div>
@@ -212,27 +202,27 @@ export default function Home() {
                   )}
                   <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60"></div>
                   <div className="absolute bottom-4 left-4 font-code text-[10px] text-primary bg-background/80 px-2 py-1">
-                    SF_NODE_415
+                    SIT_NODE_415
                   </div>
                 </div>
                 <div className="space-y-6">
-                  <h4 className="text-3xl font-headline text-primary tracking-tighter uppercase">Operative_Bio</h4>
+                  <h4 className="text-3xl font-headline text-primary tracking-tighter uppercase">Background_Intel</h4>
                   <div className="space-y-4 text-muted-foreground font-body leading-relaxed text-sm">
                     <p>
-                      Active developer with a focus on full-stack excellence. Transitioned from high-performance systems research into scalable application development.
+                      Hands-on experience in building modern web applications and intelligent systems. Strong foundation in <span className="text-accent">Data Structures</span>, <span className="text-accent">DBMS</span>, and <span className="text-accent">Operating Systems</span>.
                     </p>
                     <p>
-                      Specializes in building <span className="text-accent">secure node architectures</span> and <span className="text-accent">highly interactive interfaces</span>.
+                      Certified MERN Stack Developer and J.P. Morgan Software Engineering Alumnus. Focused on creating impactful digital products with <span className="text-accent">REST APIs</span> and <span className="text-accent">Kafka</span>.
                     </p>
                   </div>
                   <div className="grid grid-cols-2 gap-6 pt-4 border-t border-primary/10">
                     <div>
-                      <p className="text-[9px] font-code text-primary/60 uppercase mb-1">Integrity</p>
-                      <p className="text-xs font-headline text-green-500 tracking-widest">VERIFIED</p>
+                      <p className="text-[9px] font-code text-primary/60 uppercase mb-1">Status</p>
+                      <p className="text-xs font-headline text-green-500 tracking-widest">OPTIMIZING</p>
                     </div>
                     <div>
-                      <p className="text-[9px] font-code text-primary/60 uppercase mb-1">Signal</p>
-                      <p className="text-xs font-headline text-accent tracking-widest">ENCRYPTED</p>
+                      <p className="text-[9px] font-code text-primary/60 uppercase mb-1">Certifications</p>
+                      <p className="text-xs font-headline text-accent tracking-widest">JP_MORGAN_VERIFIED</p>
                     </div>
                   </div>
                 </div>
@@ -251,11 +241,11 @@ export default function Home() {
             <div className="w-16 h-16 border border-accent/30 flex items-center justify-center rotate-45 group hover:rotate-90 transition-transform duration-700">
                <Globe className="text-accent w-8 h-8 -rotate-45 group-hover:-rotate-90 transition-transform" />
             </div>
-            <span className="font-code text-xs text-accent uppercase tracking-[0.4em]">DedSec_Neural_Network</span>
+            <span className="font-code text-xs text-accent uppercase tracking-[0.4em]">Neural_Inference_Core</span>
           </div>
-          <GlitchText text="AI_Synopsis_Generator" className="text-5xl font-headline mt-6 mb-6 block" />
+          <GlitchText text="AI_Synopsis_Lab" className="text-5xl font-headline mt-6 mb-6 block" />
           <p className="max-w-2xl mx-auto text-muted-foreground/80 font-body text-sm leading-relaxed">
-            Feed raw project data into our distributed neural cluster. Our AI agent will synthesize a compelling tactical summary for your documentation.
+            Harnessing Google Gemini and Genkit AI to synthesize technical synopses. An experiment in automated documentation for high-scale repositories.
           </p>
         </div>
         <div className="container px-6 max-w-7xl mx-auto">
@@ -280,29 +270,25 @@ export default function Home() {
                 <Shield className="w-6 h-6 text-primary relative z-10" />
               </div>
               <div>
-                <p className="text-sm font-headline text-primary tracking-widest uppercase">DedSec_Global_Grid</p>
-                <p className="text-[10px] font-code text-muted-foreground/60 uppercase tracking-widest">Everything is connected</p>
+                <p className="text-sm font-headline text-primary tracking-widest uppercase">DedSec_SIT_Grid</p>
+                <p className="text-[10px] font-code text-muted-foreground/60 uppercase tracking-widest">Connecting Siliguri to the World</p>
               </div>
             </div>
             
             <div className="flex gap-16 font-code text-[10px] text-muted-foreground/40 uppercase tracking-[0.2em]">
               <div className="space-y-2">
                 <p className="text-primary/40">Node_ID</p>
-                <p className="text-foreground/70">SF-7712-A</p>
-              </div>
-              <div className="space-y-2">
-                <p className="text-primary/40">Encryption</p>
-                <p className="text-foreground/70">SHA-512_RSA</p>
+                <p className="text-foreground/70">SIT-734101</p>
               </div>
               <div className="space-y-2">
                 <p className="text-primary/40">Signal</p>
-                <p className="text-foreground/70 text-green-500">STABLE</p>
+                <p className="text-green-500">OPTIMAL</p>
               </div>
             </div>
 
             <div className="flex gap-4">
               {portfolioData.profile.socials.map((social, i) => (
-                <a key={i} href={social.url} className="w-12 h-12 border border-primary/20 flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110">
+                <a key={i} href={social.url} target="_blank" rel="noopener noreferrer" className="w-12 h-12 border border-primary/20 flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110">
                   <Globe className="w-5 h-5" />
                 </a>
               ))}
@@ -311,13 +297,8 @@ export default function Home() {
           
           <div className="mt-20 pt-8 border-t border-primary/5 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-[10px] font-code text-muted-foreground/30 uppercase tracking-[0.3em]">
-              © 2024 CYBER_FOLIO // SYSTEM_CORE_v2.4.0
+              © 2024 RISHU_GUPTA // DEVELOPER_ACCESS_GRANTED
             </p>
-            <div className="flex gap-4 text-[9px] font-code text-primary/30 uppercase tracking-widest">
-              <span>Privacy_Policy</span>
-              <span className="w-1 h-1 bg-primary/20 rounded-full mt-1"></span>
-              <span>Terms_of_Infiltration</span>
-            </div>
           </div>
         </div>
       </footer>
