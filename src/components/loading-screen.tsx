@@ -3,7 +3,6 @@
 
 import React, { useState, useEffect } from "react"
 import Image from "next/image"
-import { GlitchText } from "./glitch-text"
 import { PlaceHolderImages } from "@/lib/placeholder-images"
 
 export const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
@@ -22,14 +21,14 @@ export const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
       setProgress(prev => {
         if (prev >= 100) {
           clearInterval(progressInterval)
-          setTimeout(onComplete, 1200) // Brief pause at 100% for impact
+          setTimeout(onComplete, 1500) // Slightly longer pause for impact
           return 100
         }
         // Random increments for a "crunchy" feel
-        const jump = Math.floor(Math.random() * 20) + 5
+        const jump = Math.floor(Math.random() * 15) + 5
         return Math.min(prev + jump, 100)
       })
-    }, 150)
+    }, 180)
 
     return () => {
       clearInterval(dotsInterval)
@@ -37,87 +36,85 @@ export const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
     }
   }, [onComplete])
 
-  const barCount = 24
-  const filledCount = Math.floor((progress / 100) * barCount)
-  const barString = "[" + "#".repeat(filledCount) + "-".repeat(barCount - filledCount) + "]"
+  const barWidth = 30
+  const filledCount = Math.floor((progress / 100) * barWidth)
+  const barString = "[" + "#".repeat(filledCount) + "-".repeat(barWidth - filledCount) + "]"
 
   return (
     <div className="fixed inset-0 z-[200] bg-black flex flex-col items-center justify-center p-6 select-none overflow-hidden font-code">
-      {/* Glitch Overlay */}
-      <div className="absolute inset-0 pointer-events-none opacity-20 bg-[radial-gradient(circle_at_center,rgba(139,77,242,0.15)_0%,transparent_70%)]"></div>
-
       {/* Centered GIF container */}
-      <div className="relative w-72 h-40 mb-12 flex items-center justify-center">
+      <div className="relative w-full max-w-md h-64 mb-12 flex items-center justify-center">
         {heroGif?.imageUrl && (
           <Image 
             src={heroGif.imageUrl} 
-            alt="System Breach" 
+            alt="System Infiltration" 
             fill 
-            className="object-contain grayscale contrast-150 brightness-110"
+            className="object-contain grayscale contrast-125 brightness-110"
             priority
-            unoptimized // Useful for GIFs to ensure they play correctly
+            unoptimized
           />
         )}
-        <div className="absolute inset-0 bg-primary/10 blur-3xl rounded-full animate-pulse"></div>
+        {/* Glow effect behind GIF */}
+        <div className="absolute inset-0 bg-primary/5 blur-3xl rounded-full animate-pulse -z-10"></div>
       </div>
       
       {/* Progress HUD */}
-      <div className="w-full max-w-sm space-y-8 relative z-10">
+      <div className="w-full max-w-sm space-y-6 relative z-10">
         <div className="space-y-4">
-          <div className="flex justify-between items-end">
+          <div className="flex justify-between items-end px-1">
             <div className="flex flex-col">
               <span className="text-primary text-[10px] tracking-[0.3em] uppercase font-bold">
-                Infiltrating_Network{dots}
+                ESTABLISHING_UPLINK{dots}
               </span>
-              <span className="text-muted-foreground/40 text-[9px] mt-1 tracking-widest uppercase">
-                Uplink: SF-NODE-415-STABLE
+              <span className="text-muted-foreground/30 text-[8px] mt-1 tracking-widest uppercase">
+                SF_NODE_415_CONNECTED
               </span>
             </div>
             <div className="text-right">
-              <span className="text-primary text-xl font-headline tracking-tighter">
+              <span className="text-primary text-2xl font-headline tracking-tighter">
                 {progress}%
               </span>
             </div>
           </div>
           
-          {/* DedSec Bracketed Text Bar */}
-          <div className="text-[11px] text-primary/90 tracking-[0.5em] leading-none text-center font-bold">
+          {/* DedSec Bracketed Visual Bar */}
+          <div className="text-[12px] text-primary/80 tracking-[0.2em] leading-none text-center font-bold font-code overflow-hidden whitespace-nowrap">
             {barString}
           </div>
           
-          {/* Visual Progress Bar */}
-          <div className="h-[3px] w-full bg-primary/10 relative overflow-hidden border-x border-primary/20">
+          {/* Underline Progress Bar */}
+          <div className="h-[2px] w-full bg-primary/10 relative overflow-hidden">
             <div 
-              className="absolute top-0 left-0 h-full bg-primary shadow-[0_0_15px_rgba(139,77,242,0.8)] transition-all duration-300 ease-out"
+              className="absolute top-0 left-0 h-full bg-primary shadow-[0_0_10px_rgba(139,77,242,0.8)] transition-all duration-300 ease-out"
               style={{ width: `${progress}%` }}
             >
-              <div className="absolute top-0 right-0 w-8 h-full bg-white/40 blur-sm"></div>
+              <div className="absolute top-0 right-0 w-4 h-full bg-white/30 blur-sm"></div>
             </div>
           </div>
         </div>
 
         {/* Tactical Logs */}
-        <div className="border-l border-primary/20 pl-4 py-3 space-y-2 bg-primary/[0.03] backdrop-blur-sm">
-          <p className="text-[9px] text-muted-foreground/60 uppercase leading-none tracking-wider">
-            {progress > 10 && "> Tunneling_Bypass_v1.0.4"}
+        <div className="border-l border-primary/20 pl-4 py-2 space-y-1 bg-primary/[0.02]">
+          <p className="text-[8px] text-muted-foreground/50 uppercase tracking-wider">
+            {progress > 10 && "> Tunneling_Bypass_v2.0"}
           </p>
-          <p className="text-[9px] text-muted-foreground/60 uppercase leading-none tracking-wider">
-            {progress > 40 && "> Injecting_DedSec_Runtime..."}
+          <p className="text-[8px] text-muted-foreground/50 uppercase tracking-wider">
+            {progress > 40 && "> Injecting_DedSec_Core..."}
           </p>
-          <p className="text-[9px] text-muted-foreground/60 uppercase leading-none tracking-wider">
-            {progress > 70 && "> Accessing_Core_Memory_Node..."}
+          <p className="text-[8px] text-muted-foreground/50 uppercase tracking-wider">
+            {progress > 75 && "> Bypassing_Firewall_Node..."}
           </p>
-          <p className="text-[10px] text-primary font-bold uppercase leading-none animate-pulse tracking-widest">
+          <p className="text-[9px] text-primary font-bold uppercase animate-pulse tracking-widest">
             {progress > 90 && ">> ACCESS_GRANTED. WELCOME_RETR0."}
           </p>
         </div>
       </div>
 
-      {/* Frame Decorations */}
-      <div className="absolute top-8 left-8 w-16 h-16 border-t border-l border-primary/30 opacity-40"></div>
-      <div className="absolute top-8 right-8 w-16 h-16 border-t border-r border-primary/30 opacity-40"></div>
-      <div className="absolute bottom-8 left-8 w-16 h-16 border-b border-l border-primary/30 opacity-40"></div>
-      <div className="absolute bottom-8 right-8 w-16 h-16 border-b border-r border-primary/30 opacity-40"></div>
+      {/* Aesthetic Border Corners */}
+      <div className="absolute top-10 left-10 w-12 h-12 border-t border-l border-primary/20"></div>
+      <div className="absolute top-10 right-10 w-12 h-12 border-t border-r border-primary/20"></div>
+      <div className="absolute bottom-10 left-10 w-12 h-12 border-b border-l border-primary/20"></div>
+      <div className="absolute bottom-10 right-10 w-12 h-12 border-b border-r border-primary/20"></div>
     </div>
   )
 }
