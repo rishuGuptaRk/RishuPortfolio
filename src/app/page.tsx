@@ -24,6 +24,10 @@ export default function Home() {
     return <LoadingScreen onComplete={() => setIsLoading(false)} />
   }
 
+  const handleDownloadCV = () => {
+    window.open('/pdf/Rishu_Gupta_Resume.pdf', '_blank')
+  }
+
   return (
     <div className="min-h-screen selection:bg-accent selection:text-accent-foreground overflow-x-hidden animate-in fade-in duration-1000">
       <div className="scanline"></div>
@@ -122,7 +126,7 @@ export default function Home() {
                   {portfolioData.profile.role}
                 </h2>
                 <div className="hidden md:block h-1 w-1 bg-muted-foreground rounded-full"></div>
-                <span className="font-code text-muted-foreground text-sm uppercase tracking-widest">OPERATIVE // DEDSEC_SF</span>
+                <span className="font-code text-muted-foreground text-sm uppercase tracking-widest">OPERATIVE // DEDSEC_CORP</span>
               </div>
             </div>
 
@@ -138,7 +142,10 @@ export default function Home() {
                 <div className="absolute inset-0 bg-white/10 -translate-x-full group-hover:translate-x-full transition-transform duration-500"></div>
                 ACCESS_REPOSITORY <ChevronDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
               </button>
-              <button className="border border-primary/30 text-primary px-10 py-4 font-headline text-sm hover:bg-primary/5 transition-all backdrop-blur-sm">
+              <button 
+                onClick={handleDownloadCV}
+                className="border border-primary/30 text-primary px-10 py-4 font-headline text-sm hover:bg-primary/5 transition-all backdrop-blur-sm"
+              >
                 EXTRACT_INTEL (CV)
               </button>
             </div>
@@ -212,10 +219,10 @@ export default function Home() {
                   <h4 className="text-3xl font-headline text-primary tracking-tighter uppercase">Operative_Bio</h4>
                   <div className="space-y-4 text-muted-foreground font-body leading-relaxed text-sm">
                     <p>
-                      Active in the Bay Area cyber-scene for 10+ cycles. Transitioned from low-level vulnerability research into full-stack infrastructure engineering.
+                      Active developer with a focus on full-stack excellence. Transitioned from high-performance systems research into scalable application development.
                     </p>
                     <p>
-                      Specializes in building <span className="text-accent">high-availability node architectures</span> and <span className="text-accent">secure IoT bridges</span>.
+                      Specializes in building <span className="text-accent">secure node architectures</span> and <span className="text-accent">highly interactive interfaces</span>.
                     </p>
                   </div>
                   <div className="grid grid-cols-2 gap-6 pt-4 border-t border-primary/10">
@@ -273,7 +280,7 @@ export default function Home() {
                 <Shield className="w-6 h-6 text-primary relative z-10" />
               </div>
               <div>
-                <p className="text-sm font-headline text-primary tracking-widest uppercase">DedSec_SF_Grid</p>
+                <p className="text-sm font-headline text-primary tracking-widest uppercase">DedSec_Global_Grid</p>
                 <p className="text-[10px] font-code text-muted-foreground/60 uppercase tracking-widest">Everything is connected</p>
               </div>
             </div>
