@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useState, useEffect } from "react"
@@ -10,12 +11,10 @@ export const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
   const loadingGif = PlaceHolderImages.find(img => img.id === "loading-gif")
 
   useEffect(() => {
-    // Simulated loading dots
     const dotsInterval = setInterval(() => {
       setDots(prev => (prev.length >= 3 ? "" : prev + "."))
     }, 500)
 
-    // Hacker-style jumpy progress bar
     const progressInterval = setInterval(() => {
       setProgress(prev => {
         if (prev >= 100) {
@@ -23,7 +22,6 @@ export const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
           setTimeout(onComplete, 1200)
           return 100
         }
-        // Random increments for a "crunchy" feel
         const jump = Math.floor(Math.random() * 12) + 4
         return Math.min(prev + jump, 100)
       })
@@ -91,7 +89,7 @@ export const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
         </div>
 
         {/* Tactical Logs */}
-        <div className="border-l border-primary/30 pl-4 py-2 space-y-1 bg-primary/[0.03] backdrop-blur-sm">
+        <div className="border-l border-primary/30 pl-4 py-2 space-y-1 bg-black backdrop-blur-sm">
           <p className="text-[8px] text-muted-foreground/50 uppercase tracking-wider">
             {progress > 5 && "> Tunneling_Bypass_v2.0"}
           </p>
