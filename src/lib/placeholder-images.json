@@ -7,6 +7,12 @@
       "imageHint": "hacker data"
     },
     {
+      "id": "logo-anim",
+      "description": "Glitchy bar animation",
+      "imageUrl": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHN6Z3Z6Z3Z6Z3Z6Z3Z6Z3Z6Z3Z6Z3Z6Z3Z6Z3Z6Z3Z6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/v0oxuonlK0p6o/giphy.gif",
+      "imageHint": "glitch bars"
+    },
+    {
       "id": "project-1",
       "description": "Digital network security visualization",
       "imageUrl": "https://picsum.photos/seed/hack1/800/600",

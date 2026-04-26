@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useState } from "react"
@@ -131,15 +132,17 @@ export default function Home() {
         </div>
 
         {/* Decorative GIF overlay */}
-        <div className="absolute bottom-12 right-12 w-32 h-20 opacity-40 grayscale contrast-150 hidden lg:block">
-           <Image 
-            src={logoAnim?.imageUrl || ""} 
-            alt="Glitch Animation" 
-            fill 
-            className="object-contain" 
-            unoptimized
-           />
-        </div>
+        {logoAnim?.imageUrl && (
+          <div className="absolute bottom-12 right-12 w-32 h-20 opacity-40 grayscale contrast-150 hidden lg:block">
+            <Image 
+              src={logoAnim.imageUrl} 
+              alt="Glitch Animation" 
+              fill 
+              className="object-contain" 
+              unoptimized
+            />
+          </div>
+        )}
       </section>
 
       {/* Projects Section */}
