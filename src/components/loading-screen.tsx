@@ -21,14 +21,14 @@ export const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
       setProgress(prev => {
         if (prev >= 100) {
           clearInterval(progressInterval)
-          setTimeout(onComplete, 1500) // Slightly longer pause for impact
+          setTimeout(onComplete, 1200)
           return 100
         }
         // Random increments for a "crunchy" feel
-        const jump = Math.floor(Math.random() * 15) + 5
+        const jump = Math.floor(Math.random() * 12) + 4
         return Math.min(prev + jump, 100)
       })
-    }, 180)
+    }, 150)
 
     return () => {
       clearInterval(dotsInterval)
@@ -36,14 +36,14 @@ export const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
     }
   }, [onComplete])
 
-  const barWidth = 30
+  const barWidth = 40
   const filledCount = Math.floor((progress / 100) * barWidth)
   const barString = "[" + "#".repeat(filledCount) + "-".repeat(barWidth - filledCount) + "]"
 
   return (
     <div className="fixed inset-0 z-[200] bg-black flex flex-col items-center justify-center p-6 select-none overflow-hidden font-code">
       {/* Centered GIF container */}
-      <div className="relative w-full max-w-md h-64 mb-12 flex items-center justify-center">
+      <div className="relative w-full max-w-xl h-64 mb-12 flex items-center justify-center">
         {heroGif?.imageUrl && (
           <Image 
             src={heroGif.imageUrl} 
@@ -59,7 +59,7 @@ export const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
       </div>
       
       {/* Progress HUD */}
-      <div className="w-full max-w-sm space-y-6 relative z-10">
+      <div className="w-full max-w-lg space-y-6 relative z-10">
         <div className="space-y-4">
           <div className="flex justify-between items-end px-1">
             <div className="flex flex-col">
@@ -78,14 +78,14 @@ export const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
           </div>
           
           {/* DedSec Bracketed Visual Bar */}
-          <div className="text-[12px] text-primary/80 tracking-[0.2em] leading-none text-center font-bold font-code overflow-hidden whitespace-nowrap">
+          <div className="text-[12px] text-primary/80 tracking-[0.1em] leading-none text-center font-bold font-code overflow-hidden whitespace-nowrap">
             {barString}
           </div>
           
           {/* Underline Progress Bar */}
           <div className="h-[2px] w-full bg-primary/10 relative overflow-hidden">
             <div 
-              className="absolute top-0 left-0 h-full bg-primary shadow-[0_0_10px_rgba(139,77,242,0.8)] transition-all duration-300 ease-out"
+              className="absolute top-0 left-0 h-full bg-primary shadow-[0_0_15px_rgba(139,77,242,1)] transition-all duration-300 ease-out"
               style={{ width: `${progress}%` }}
             >
               <div className="absolute top-0 right-0 w-4 h-full bg-white/30 blur-sm"></div>
@@ -94,18 +94,18 @@ export const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
         </div>
 
         {/* Tactical Logs */}
-        <div className="border-l border-primary/20 pl-4 py-2 space-y-1 bg-primary/[0.02]">
+        <div className="border-l border-primary/30 pl-4 py-2 space-y-1 bg-primary/[0.03] backdrop-blur-sm">
           <p className="text-[8px] text-muted-foreground/50 uppercase tracking-wider">
-            {progress > 10 && "> Tunneling_Bypass_v2.0"}
+            {progress > 5 && "> Tunneling_Bypass_v2.0"}
           </p>
           <p className="text-[8px] text-muted-foreground/50 uppercase tracking-wider">
-            {progress > 40 && "> Injecting_DedSec_Core..."}
+            {progress > 30 && "> Injecting_DedSec_Core_Modules..."}
           </p>
           <p className="text-[8px] text-muted-foreground/50 uppercase tracking-wider">
-            {progress > 75 && "> Bypassing_Firewall_Node..."}
+            {progress > 60 && "> Bypassing_Firewall_Node_415..."}
           </p>
           <p className="text-[9px] text-primary font-bold uppercase animate-pulse tracking-widest">
-            {progress > 90 && ">> ACCESS_GRANTED. WELCOME_RETR0."}
+            {progress > 85 && ">> ACCESS_GRANTED. WELCOME_RETR0."}
           </p>
         </div>
       </div>

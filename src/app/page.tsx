@@ -87,7 +87,7 @@ export default function Home() {
             src={heroImage.imageUrl}
             alt="DedSec Wallpaper"
             fill
-            className="object-cover opacity-60 grayscale brightness-[0.7] scale-105"
+            className="object-cover opacity-70 grayscale brightness-[0.7] scale-105"
             priority
             unoptimized
             data-ai-hint="cyber network"
