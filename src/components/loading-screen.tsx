@@ -1,4 +1,3 @@
-
 "use client"
 
 import React, { useState, useEffect } from "react"
@@ -42,8 +41,8 @@ export const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
 
   return (
     <div className="fixed inset-0 z-[200] bg-black flex flex-col items-center justify-center p-6 select-none overflow-hidden font-code">
-      {/* Centered GIF container */}
-      <div className="relative w-full max-w-2xl h-80 mb-12 flex items-center justify-center">
+      {/* Centered GIF container - No glow to ensure perfect blending with black background */}
+      <div className="relative w-full max-w-2xl h-96 mb-8 flex items-center justify-center bg-black">
         {loadingGif?.imageUrl && (
           <Image 
             src={loadingGif.imageUrl} 
@@ -54,8 +53,6 @@ export const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
             unoptimized
           />
         )}
-        {/* Glow effect behind GIF */}
-        <div className="absolute inset-0 bg-primary/5 blur-3xl rounded-full animate-pulse -z-10"></div>
       </div>
       
       {/* Progress HUD */}
@@ -63,7 +60,7 @@ export const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
         <div className="space-y-4">
           <div className="flex justify-between items-end px-1">
             <div className="flex flex-col">
-              <span className="text-primary text-[10px] tracking-[0.3em] uppercase font-bold">
+              <span className="text-primary text-[10px] tracking-[0.3em] uppercase font-bold font-hacked">
                 ESTABLISHING_UPLINK{dots}
               </span>
               <span className="text-muted-foreground/30 text-[8px] mt-1 tracking-widest uppercase">
@@ -104,7 +101,7 @@ export const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
           <p className="text-[8px] text-muted-foreground/50 uppercase tracking-wider">
             {progress > 60 && "> Bypassing_Firewall_Node_415..."}
           </p>
-          <p className="text-[9px] text-primary font-bold uppercase animate-pulse tracking-widest">
+          <p className="text-[9px] text-primary font-bold uppercase animate-pulse tracking-widest font-hacked">
             {progress > 85 && ">> ACCESS_GRANTED. WELCOME_RETR0."}
           </p>
         </div>
