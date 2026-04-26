@@ -1,3 +1,34 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-bg",
+      "description": "Animated high-tech data flow",
+      "imageUrl": "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExY2I1MjI0enF6N2wydWN3cGNpc2xpMGh4dThxeHl6bDB4YzVwaWJpbCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/EaEWuES5SDSpcnOlRt/giphy.gif",
+      "imageHint": "hacker data"
+    },
+    {
+      "id": "project-1",
+      "description": "Digital network security visualization",
+      "imageUrl": "https://picsum.photos/seed/hack1/800/600",
+      "imageHint": "network security"
+    },
+    {
+      "id": "project-2",
+      "description": "IoT device control interface",
+      "imageUrl": "https://picsum.photos/seed/hack2/800/600",
+      "imageHint": "iot interface"
+    },
+    {
+      "id": "project-3",
+      "description": "Encrypted communication platform",
+      "imageUrl": "https://picsum.photos/seed/hack3/800/600",
+      "imageHint": "encrypted code"
+    },
+    {
+      "id": "about-me",
+      "description": "Silhouette of a hacker in front of multiple monitors",
+      "imageUrl": "https://picsum.photos/seed/hacker-profile/600/800",
+      "imageHint": "hacker silhouette"
+    }
+  ]
 }
