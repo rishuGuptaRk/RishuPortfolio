@@ -14,6 +14,12 @@
       "imageHint": "hacker skull"
     },
     {
+      "id": "loading-gif",
+      "description": "DedSec system infiltration glitch",
+      "imageUrl": "https://raw.githubusercontent.com/Anshul-69/DedSec-Terminal/main/dedsec.gif",
+      "imageHint": "hacker glitch"
+    },
+    {
       "id": "project-1",
       "description": "Network security intrusion module",
       "imageUrl": "https://picsum.photos/seed/sec-module-1/800/600",
