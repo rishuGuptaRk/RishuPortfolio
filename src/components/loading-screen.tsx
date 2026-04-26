@@ -43,13 +43,13 @@ export const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
   return (
     <div className="fixed inset-0 z-[200] bg-black flex flex-col items-center justify-center p-6 select-none overflow-hidden font-code">
       {/* Centered GIF container */}
-      <div className="relative w-full max-w-xl h-64 mb-12 flex items-center justify-center">
+      <div className="relative w-full max-w-2xl h-80 mb-12 flex items-center justify-center">
         {loadingGif?.imageUrl && (
           <Image 
             src={loadingGif.imageUrl} 
             alt="System Infiltration" 
             fill 
-            className="object-contain grayscale contrast-125 brightness-110"
+            className="object-contain"
             priority
             unoptimized
           />
