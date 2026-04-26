@@ -1,7 +1,6 @@
-
 "use client"
 
-import React from "react"
+import React, { useState, useEffect } from "react"
 import Image from "next/image"
 import portfolioData from "./data/portfolio.json"
 import { GlitchText } from "@/components/glitch-text"
@@ -11,14 +10,20 @@ import { SkillMatrix } from "@/components/skill-matrix"
 import { ContactModule } from "@/components/contact-module"
 import { AiSynopsisTool } from "@/components/ai-synopsis-tool"
 import { PlaceHolderImages } from "@/lib/placeholder-images"
+import { LoadingScreen } from "@/components/loading-screen"
 import { ChevronDown, Cpu, Globe, Terminal, User, Activity, Shield } from "lucide-react"
 
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(true)
   const heroImage = PlaceHolderImages.find(img => img.id === "hero-bg")
   const profileImage = PlaceHolderImages.find(img => img.id === "about-me")
 
+  if (isLoading) {
+    return <LoadingScreen onComplete={() => setIsLoading(false)} />
+  }
+
   return (
-    <div className="min-h-screen selection:bg-accent selection:text-accent-foreground overflow-x-hidden">
+    <div className="min-h-screen selection:bg-accent selection:text-accent-foreground overflow-x-hidden animate-in fade-in duration-1000">
       <div className="scanline"></div>
 
       {/* Navigation HUD */}
@@ -83,7 +88,7 @@ export default function Home() {
             fill
             className="object-cover opacity-60 grayscale brightness-[0.7] scale-105"
             priority
-            data-ai-hint="hacker network"
+            data-ai-hint="cyber network"
           />
         )}
         
