@@ -44,9 +44,27 @@
       "imageHint": "cyberpunk portrait"
     },
     {
-      "id": "profile-pic",
-      "description": "DedSec glitch profile signature",
+      "id": "profile-pic-1",
+      "description": "DedSec glitch profile signature 1",
       "imageUrl": "https://c.tenor.com/FMTaWoHYgdkAAAAC/dedsec.gif",
+      "imageHint": "glitch profile"
+    },
+    {
+      "id": "profile-pic-2",
+      "description": "DedSec glitch profile signature 2",
+      "imageUrl": "https://thumbs.gfycat.com/ApprehensiveOddballAgama-max-1mb.gif",
+      "imageHint": "glitch profile"
+    },
+    {
+      "id": "profile-pic-3",
+      "description": "DedSec glitch profile signature 3",
+      "imageUrl": "https://picsum.photos/seed/dedsec-p-3/200/200",
+      "imageHint": "glitch profile"
+    },
+    {
+      "id": "profile-pic-4",
+      "description": "DedSec glitch profile signature 4",
+      "imageUrl": "https://picsum.photos/seed/dedsec-p-4/200/200",
       "imageHint": "glitch profile"
     }
   ]

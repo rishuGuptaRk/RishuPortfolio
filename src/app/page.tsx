@@ -12,13 +12,23 @@ import { ContactModule } from "@/components/contact-module"
 import { AiSynopsisTool } from "@/components/ai-synopsis-tool"
 import { PlaceHolderImages } from "@/lib/placeholder-images"
 import { LoadingScreen } from "@/components/loading-screen"
-import { ChevronDown, Cpu, Globe, Terminal, User, Activity, Shield, Award } from "lucide-react"
+import { ChevronDown, Cpu, Globe, Terminal, User, Activity, Shield } from "lucide-react"
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
+  const [randomProfilePic, setRandomProfilePic] = useState<string | null>(null)
+  
   const heroImage = PlaceHolderImages.find(img => img.id === "hero-bg")
-  const profileImage = PlaceHolderImages.find(img => img.id === "about-me")
-  const topProfilePic = PlaceHolderImages.find(img => img.id === "profile-pic")
+  const aboutMeImage = PlaceHolderImages.find(img => img.id === "about-me")
+
+  useEffect(() => {
+    // Randomize top-right profile pic from available profile-pic placeholders
+    const profileOptions = PlaceHolderImages.filter(img => img.id.startsWith("profile-pic-"))
+    if (profileOptions.length > 0) {
+      const randomIndex = Math.floor(Math.random() * profileOptions.length)
+      setRandomProfilePic(profileOptions[randomIndex].imageUrl)
+    }
+  }, [])
 
   if (isLoading) {
     return <LoadingScreen onComplete={() => setIsLoading(false)} />
@@ -80,14 +90,13 @@ export default function Home() {
           </div>
           <div className="h-10 w-10 border border-primary/30 rounded-none overflow-hidden flex items-center justify-center bg-muted/20 relative group cursor-pointer">
              <div className="absolute inset-0 bg-primary/10 scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
-             {topProfilePic?.imageUrl ? (
+             {randomProfilePic ? (
                <Image 
-                 src={topProfilePic.imageUrl}
+                 src={randomProfilePic}
                  alt="Profile"
                  fill
                  className="object-cover grayscale contrast-125 brightness-110 hover:grayscale-0 transition-all"
                  unoptimized
-                 data-ai-hint="glitch profile"
                />
              ) : (
                <User className="text-primary relative z-10" />
@@ -106,7 +115,6 @@ export default function Home() {
             className="object-cover opacity-70 grayscale brightness-[0.7] scale-105"
             priority
             unoptimized
-            data-ai-hint="cyber network"
           />
         )}
         
@@ -191,13 +199,12 @@ export default function Home() {
             <HudContainer title="SUBJECT_DOSSIER" className="flex flex-col">
               <div className="flex flex-col md:flex-row gap-10 mb-10">
                 <div className="relative w-full md:w-56 h-72 shrink-0 border border-primary/20 bg-muted/20 group overflow-hidden">
-                  {profileImage?.imageUrl && (
+                  {aboutMeImage?.imageUrl && (
                     <Image
-                      src={profileImage.imageUrl}
+                      src={aboutMeImage.imageUrl}
                       alt="Operative Profile"
                       fill
                       className="object-cover grayscale contrast-125 transition-all duration-700 group-hover:grayscale-0 group-hover:scale-110"
-                      data-ai-hint="cyberpunk portrait"
                     />
                   )}
                   <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60"></div>

@@ -29,6 +29,10 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'c.tenor.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'thumbs.gfycat.com',
       }
     ],
   },
