@@ -18,6 +18,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
   const heroImage = PlaceHolderImages.find(img => img.id === "hero-bg")
   const profileImage = PlaceHolderImages.find(img => img.id === "about-me")
+  const topProfilePic = PlaceHolderImages.find(img => img.id === "profile-pic")
 
   if (isLoading) {
     return <LoadingScreen onComplete={() => setIsLoading(false)} />
@@ -75,7 +76,18 @@ export default function Home() {
           </div>
           <div className="h-10 w-10 border border-primary/30 rounded-none overflow-hidden flex items-center justify-center bg-muted/20 relative group cursor-pointer">
              <div className="absolute inset-0 bg-primary/10 scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
-             <User className="text-primary relative z-10" />
+             {topProfilePic?.imageUrl ? (
+               <Image 
+                 src={topProfilePic.imageUrl}
+                 alt="Profile"
+                 fill
+                 className="object-cover grayscale contrast-125 brightness-110 hover:grayscale-0 transition-all"
+                 unoptimized
+                 data-ai-hint="glitch profile"
+               />
+             ) : (
+               <User className="text-primary relative z-10" />
+             )}
           </div>
         </div>
       </nav>

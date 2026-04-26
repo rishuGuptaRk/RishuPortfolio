@@ -42,6 +42,12 @@
       "description": "DEDSEC operative tactical silhouette",
       "imageUrl": "https://picsum.photos/seed/operative-retr0/600/800",
       "imageHint": "cyberpunk portrait"
+    },
+    {
+      "id": "profile-pic",
+      "description": "DedSec glitch profile signature",
+      "imageUrl": "https://c.tenor.com/FMTaWoHYgdkAAAAC/dedsec.gif",
+      "imageHint": "glitch profile"
     }
   ]
 }
