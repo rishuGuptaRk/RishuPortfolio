@@ -1,8 +1,10 @@
+
 import type {Metadata} from 'next';
 import './globals.css';
+import { CustomCursor } from '@/components/custom-cursor';
 
 export const metadata: Metadata = {
-  title: 'CyberFolio | DedSec Portfolio',
+  title: 'CyberFolio | Rishu Gupta',
   description: 'Interactive Hacker Portfolio inspired by Watch Dogs 2',
 };
 
@@ -20,6 +22,7 @@ export default function RootLayout({
       </head>
       <body className="font-body antialiased bg-background text-foreground">
         <div className="scanline"></div>
+        <CustomCursor />
         {children}
       </body>
     </html>
