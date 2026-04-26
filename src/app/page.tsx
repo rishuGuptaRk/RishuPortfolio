@@ -16,7 +16,6 @@ import { ChevronDown, Cpu, Shield, Globe, Terminal, User, Activity } from "lucid
 export default function Home() {
   const heroImage = PlaceHolderImages.find(img => img.id === "hero-bg")
   const profileImage = PlaceHolderImages.find(img => img.id === "about-me")
-  const dedsecSkull = PlaceHolderImages.find(img => img.id === "dedsec-skull")
   const logoAnim = PlaceHolderImages.find(img => img.id === "logo-anim")
 
   return (
@@ -128,35 +127,36 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Signature Area */}
-            {dedsecSkull?.imageUrl && (
-              <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 shrink-0 group">
-                <div className="absolute inset-0 border border-primary/20 rounded-full animate-spin-slow opacity-20 group-hover:opacity-40 transition-opacity"></div>
-                <div className="absolute inset-4 border border-accent/20 rounded-full animate-reverse-spin opacity-20 group-hover:opacity-40 transition-opacity"></div>
-                <Image 
-                  src={dedsecSkull.imageUrl} 
-                  alt="Hacker Signature" 
-                  fill 
-                  className="object-contain p-8 drop-shadow-[0_0_30px_rgba(139,77,242,0.3)] animate-flicker grayscale contrast-125"
-                  data-ai-hint="hacker skull"
-                />
-              </div>
-            )}
+            {/* Signature Area (Glitch Bars) */}
+            <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 shrink-0 group flex items-center justify-center">
+              <div className="absolute inset-0 border border-primary/20 rounded-full animate-spin-slow opacity-20 group-hover:opacity-40 transition-opacity"></div>
+              <div className="absolute inset-4 border border-accent/20 rounded-full animate-reverse-spin opacity-20 group-hover:opacity-40 transition-opacity"></div>
+              {logoAnim?.imageUrl ? (
+                <div className="relative w-48 h-24 md:w-64 md:h-32">
+                   <Image 
+                    src={logoAnim.imageUrl} 
+                    alt="HUD Signature" 
+                    fill 
+                    className="object-contain animate-flicker grayscale contrast-125"
+                    data-ai-hint="glitch bars"
+                  />
+                </div>
+              ) : (
+                <div className="text-primary font-hacked text-6xl animate-pulse">DEDSEC</div>
+              )}
+            </div>
           </div>
         </div>
 
-        {/* Decorative HUD overlay */}
-        {logoAnim?.imageUrl && (
-          <div className="absolute bottom-12 right-12 w-32 h-20 opacity-30 grayscale contrast-150 hidden xl:block">
-            <Image 
-              src={logoAnim.imageUrl} 
-              alt="HUD Animation" 
-              fill 
-              className="object-contain" 
-              data-ai-hint="glitch bars"
-            />
+        {/* HUD Elements */}
+        <div className="absolute bottom-12 right-12 flex items-center gap-6 opacity-30 hidden xl:flex">
+          <div className="text-right">
+            <p className="text-[8px] font-code text-primary uppercase">System_Core</p>
+            <p className="text-[10px] font-code text-white">v2.4.0_STABLE</p>
           </div>
-        )}
+          <div className="w-px h-12 bg-primary/40"></div>
+          <Activity className="w-6 h-6 text-primary animate-pulse" />
+        </div>
       </section>
 
       {/* Projects Section */}

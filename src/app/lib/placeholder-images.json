@@ -1,3 +1,4 @@
+
 {
   "placeholderImages": [
     {
@@ -14,7 +15,7 @@
     },
     {
       "id": "logo-anim",
-      "description": "Abstract tech bars",
+      "description": "Abstract glitch bars",
       "imageUrl": "https://picsum.photos/seed/cyber-bars/400/200",
       "imageHint": "glitch bars"
     },
