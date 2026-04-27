@@ -1,3 +1,4 @@
+
 "use client"
 
 import React from "react"
@@ -22,13 +23,18 @@ export const ContactModule = () => {
           <div className="space-y-4">
             <h5 className="text-xs font-code text-accent uppercase tracking-widest">Global Handlers</h5>
             <div className="flex flex-wrap gap-4">
-              <a href="#" className="flex items-center gap-2 p-3 bg-card border border-primary/20 hover:border-primary transition-all rounded group">
+              <a 
+                href="https://github.com/rishuGuptaRk" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 p-3 bg-card border border-primary/20 hover:border-primary transition-all rounded group"
+              >
                 <Github className="w-5 h-5 text-primary group-hover:text-accent" />
-                <span className="text-sm font-code">Retr0_Code</span>
+                <span className="text-sm font-code">rishuGuptaRk</span>
               </a>
               <a href="#" className="flex items-center gap-2 p-3 bg-card border border-primary/20 hover:border-primary transition-all rounded group">
                 <Twitter className="w-5 h-5 text-primary group-hover:text-accent" />
-                <span className="text-sm font-code">@DedSec_Retr0</span>
+                <span className="text-sm font-code">@Cyber_Gupta</span>
               </a>
               <a href="#" className="flex items-center gap-2 p-3 bg-card border border-primary/20 hover:border-primary transition-all rounded group">
                 <MessageSquare className="w-5 h-5 text-primary group-hover:text-accent" />
@@ -41,7 +47,7 @@ export const ContactModule = () => {
             <Radio className="w-6 h-6 text-accent animate-pulse" />
             <div>
               <p className="text-[10px] font-code text-accent uppercase">Current Location</p>
-              <p className="font-headline text-sm">SAN_FRANCISCO_NODE_415</p>
+              <p className="font-headline text-sm">SILIGURI_NODE_WB</p>
             </div>
           </div>
         </div>

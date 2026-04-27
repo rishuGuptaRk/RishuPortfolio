@@ -31,17 +31,19 @@
       "synopsis": "Real-time synchronized video streaming platform with room-based architecture.",
       "description": "Engineered a high-performance video synchronization engine. Implemented live synchronization for shared viewing experiences using Socket.io and Firebase. Integrated AI-powered suggestions via Genkit for a seamless social experience.",
       "tech": ["NEXT.JS", "FIREBASE", "GENKIT AI", "SOCKET.IO"],
+      "github": "https://github.com/rishuGuptaRk/Together",
       "metrics": { "latency": "32ms", "lighthouse": "99/100" },
       "image": "project-1"
     },
     {
-      "id": "ecomm-nexus",
-      "title": "ECOMM NEXUS",
+      "id": "library-sys",
+      "title": "LIBRARY MGMT SYS",
       "category": "FULLSTACK ARCHITECTURE",
-      "synopsis": "Complete shopping platform with secure payments and optimized database performance.",
-      "description": "Developed a robust MERN stack application featuring JWT authentication, Stripe integration, and high-performance MongoDB indexing for sub-second query responses under heavy load.",
-      "tech": ["REACT", "NODE.JS", "MONGODB", "STRIPE"],
-      "metrics": { "latency": "45ms", "lighthouse": "98/100" },
+      "synopsis": "Automated resource tracking and management system for high-volume libraries.",
+      "description": "Developed a robust management platform for tracking academic resources. Features real-time availability updates, automated due-date notifications, and a secure admin dashboard for inventory control.",
+      "tech": ["REACT", "NODE.JS", "MONGODB", "EXPRESS"],
+      "github": "https://github.com/rishuGuptaRk/LibraryManagementSystem",
+      "metrics": { "latency": "42ms", "lighthouse": "97/100" },
       "image": "project-2"
     },
     {
@@ -51,6 +53,7 @@
       "synopsis": "Intelligent learning platform with personalized study plans and AI code analysis.",
       "description": "Built using Google Gemini API to explain complex algorithmic concepts and debug code. Features a persistent tracking dashboard for real-time student progress monitoring.",
       "tech": ["NEXT.JS", "FIREBASE", "GEMINI API", "GENKIT"],
+      "github": "https://github.com/rishuGuptaRk/DSA-Prep-hub-with-AI",
       "metrics": { "latency": "58ms", "lighthouse": "96/100" },
       "image": "project-3"
     }

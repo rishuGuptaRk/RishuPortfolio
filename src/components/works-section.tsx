@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useEffect, useRef } from "react"
@@ -18,6 +19,7 @@ interface Project {
   category: string
   description: string
   tech: string[]
+  github: string
   metrics: {
     latency: string
     lighthouse: string
@@ -123,9 +125,14 @@ export const WorksSection = () => {
                     <Button className="bg-primary hover:bg-primary/80 text-primary-foreground font-headline font-bold h-12 px-10 rounded-none group flex-1 sm:flex-none shadow-[0_0_15px_rgba(var(--primary),0.3)]">
                       LAUNCH_SYSTEM <ExternalLink className="ml-2 w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                     </Button>
-                    <button className="flex items-center justify-center gap-3 text-white/60 hover:text-primary font-headline font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] transition-all h-12 px-8 border border-white/5 hover:border-primary/50 bg-white/5">
+                    <a 
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-3 text-white/60 hover:text-primary font-headline font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] transition-all h-12 px-8 border border-white/5 hover:border-primary/50 bg-white/5"
+                    >
                       <Github className="w-5 h-5" /> SOURCE_CODE
-                    </button>
+                    </a>
                   </div>
                 </div>
 
