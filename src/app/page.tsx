@@ -22,6 +22,7 @@ export default function Home() {
   const dedsecSkull = PlaceHolderImages.find(img => img.id === "dedsec-skull")
 
   useEffect(() => {
+    // Strictly randomize from local assets
     const localProfiles = [
       "/images/Ava1.gif",
       "/images/Ava-2.gif"
@@ -143,7 +144,7 @@ export default function Home() {
         initial="hidden"
         animate="visible"
       >
-        {/* Hero Section */}
+        {/* Hero Section - Centered Alignment as requested */}
         <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center pt-20 px-8">
           {/* Background Dither Skull */}
           <div className="absolute inset-0 flex items-center justify-center opacity-20 pointer-events-none overflow-hidden">
