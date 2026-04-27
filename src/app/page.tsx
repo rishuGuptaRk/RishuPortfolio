@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react"
 import Image from "next/image"
 import portfolioData from "./data/portfolio.json"
 import recoveryData from "./lib/recovery-data.json"
-import { ProjectShowcase } from "@/components/project-showcase"
 import { SkillMatrix } from "@/components/skill-matrix"
 import { ContactModule } from "@/components/contact-module"
 import { AiDossierLab } from "@/components/ai-dossier-lab"
@@ -18,7 +17,6 @@ import {
   Menu, 
   X,
   User,
-  FolderCode,
   Cpu,
   Bot
 } from "lucide-react"
@@ -42,7 +40,7 @@ export default function Home() {
     setProfilePic(localProfiles[Math.floor(Math.random() * localProfiles.length)])
 
     const handleScroll = () => {
-      const sections = ["hero", "about", "projects", "skills", "lab", "contact"]
+      const sections = ["hero", "about", "skills", "lab", "contact"]
       const current = sections.find(section => {
         const el = document.getElementById(section)
         if (el) {
@@ -80,7 +78,6 @@ export default function Home() {
   const navItems = [
     { id: "hero", label: "HOME", icon: Terminal },
     { id: "about", label: "ABOUT_OPERATIVE", icon: User },
-    { id: "projects", label: "REPOSITORIES", icon: FolderCode },
     { id: "skills", label: "TECH_STACK", icon: Cpu },
     { id: "lab", label: "NEURAL_AI", icon: Bot },
   ]
@@ -255,8 +252,6 @@ export default function Home() {
             <AboutMe />
           </div>
         </motion.section>
-
-        <ProjectShowcase projects={portfolioData.projects as any} />
 
         <motion.section 
           id="skills" 
