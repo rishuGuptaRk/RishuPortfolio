@@ -75,7 +75,7 @@ export const InteractiveSkull = () => {
               src={skullImg.imageUrl}
               alt="DedSec System Core"
               fill
-              className={`object-contain transition-all duration-500 ${isLaughing ? 'opacity-100 grayscale-0' : 'opacity-20 grayscale'}`}
+              className={`object-contain transition-all duration-500 ${isLaughing ? 'opacity-100 grayscale-0' : 'opacity-40 grayscale'}`}
               unoptimized
             />
           )}
