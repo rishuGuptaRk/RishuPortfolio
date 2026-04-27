@@ -22,12 +22,11 @@ export const ContactModule = () => {
     setIsSending(true)
 
     try {
-      // Updated with User's Service ID
       await emailjs.sendForm(
         'service_parc3eb', 
-        'YOUR_TEMPLATE_ID', 
+        'template_129gio6', 
         formRef.current, 
-        'YOUR_PUBLIC_KEY'
+        'N45Ktmx8wtYtliECi'
       )
 
       toast({
