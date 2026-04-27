@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useState, useEffect } from "react"
@@ -62,16 +63,15 @@ export default function Home() {
   const handleNavClick = (id: string) => {
     setIsNavigating(true)
     
-    // Simulate system "processing" before the actual jump
+    // 2000ms "Deep Infiltration" sequence
     setTimeout(() => {
       const element = document.getElementById(id)
       element?.scrollIntoView({ behavior: "smooth" })
       
-      // Keep the transition active long enough to cover the scroll duration
       setTimeout(() => {
         setIsNavigating(false)
       }, 1200) 
-    }, 800)
+    }, 2000)
   }
 
   if (isLoading) {
@@ -90,7 +90,6 @@ export default function Home() {
     <div className="relative min-h-screen bg-background selection:bg-primary selection:text-primary-foreground font-body overflow-x-clip">
       <div className="scanline"></div>
       
-      {/* Global Glitch Transition Overlay */}
       <AnimatePresence>
         {isNavigating && (
           <motion.div 
@@ -102,7 +101,6 @@ export default function Home() {
             exit={{ opacity: 0, transition: { duration: 0.8 } }}
             className="fixed inset-0 z-[200] pointer-events-none bg-black/40 backdrop-blur-sm flex items-center justify-center overflow-hidden"
           >
-            {/* Visual Interference Layers */}
             <div className="absolute inset-0 bg-primary/5 mix-blend-overlay" />
             <div className="absolute inset-0 bg-[url('https://raw.githubusercontent.com/Anshul-69/DedSec-Terminal/main/dedsec.gif')] opacity-20 mix-blend-screen bg-center bg-no-repeat bg-contain" />
             
@@ -133,7 +131,7 @@ export default function Home() {
                   <motion.div 
                     initial={{ width: "0%" }}
                     animate={{ width: "100%" }}
-                    transition={{ duration: 1.8, ease: "easeInOut" }}
+                    transition={{ duration: 2.0, ease: "easeInOut" }}
                     className="absolute top-0 left-0 h-full bg-primary"
                   />
                 </div>
@@ -141,7 +139,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Scanning Scanline */}
             <motion.div 
               animate={{ top: ["-10%", "110%"] }}
               transition={{ duration: 0.5, repeat: Infinity, ease: "linear" }}
@@ -184,7 +181,7 @@ export default function Home() {
             onClick={() => handleNavClick('contact')}
             className="border-2 border-white/60 px-4 py-1.5 text-[10px] font-headline font-bold uppercase tracking-widest hover:border-primary hover:text-primary transition-all rounded-md"
           >
-            UPLINK
+            CONTACT
           </button>
         </nav>
 

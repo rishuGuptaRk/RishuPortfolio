@@ -1,20 +1,57 @@
 
 "use client"
 
-import React from "react"
+import React, { useRef, useState } from "react"
 import { HudContainer } from "./hud-container"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
-import { Github, Linkedin, Instagram, Send, Radio } from "lucide-react"
+import { Github, Linkedin, Instagram, Send, Radio, Loader2 } from "lucide-react"
+import emailjs from '@emailjs/browser'
+import { useToast } from "@/hooks/use-toast"
 
 export const ContactModule = () => {
+  const formRef = useRef<HTMLFormElement>(null)
+  const [isSending, setIsSending] = useState(false)
+  const { toast } = useToast()
+
+  const handleSendEmail = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!formRef.current) return
+
+    setIsSending(true)
+
+    try {
+      // NOTE: User needs to replace these placeholders with actual EmailJS keys
+      await emailjs.sendForm(
+        'YOUR_SERVICE_ID', 
+        'YOUR_TEMPLATE_ID', 
+        formRef.current, 
+        'YOUR_PUBLIC_KEY'
+      )
+
+      toast({
+        title: "TRANSMISSION_SUCCESS",
+        description: "Your packet has been encrypted and sent to the operative.",
+      })
+      formRef.current.reset()
+    } catch (error) {
+      toast({
+        title: "TRANSMISSION_FAILURE",
+        description: "System error during packet relay. Please retry uplink.",
+        variant: "destructive",
+      })
+    } finally {
+      setIsSending(false)
+    }
+  }
+
   return (
     <HudContainer title="ENCRYPTED_COMMS_CHANNEL" className="max-w-5xl mx-auto">
       <div className="grid md:grid-cols-2 gap-12">
         <div className="space-y-8">
           <div>
-            <h4 className="text-2xl font-headline text-primary mb-4">ESTABLISH_UPLINK</h4>
+            <h4 className="text-2xl font-headline text-primary mb-4 uppercase">Contact_Operative</h4>
             <p className="text-muted-foreground font-body leading-relaxed">
               If you have projects that require a high degree of technical infiltration or a clean front-end finish, transmit your requirements through the secure form.
             </p>
@@ -62,27 +99,36 @@ export const ContactModule = () => {
           </div>
         </div>
 
-        <form className="space-y-4">
+        <form ref={formRef} onSubmit={handleSendEmail} className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
               <label className="text-[10px] font-code text-primary uppercase">Alias</label>
-              <Input placeholder="OPERATIVE NAME" className="bg-background border-primary/30" />
+              <Input name="from_name" placeholder="OPERATIVE NAME" required className="bg-background border-primary/30" />
             </div>
             <div className="space-y-2">
               <label className="text-[10px] font-code text-primary uppercase">Return Signal</label>
-              <Input placeholder="EMAIL ADDRESS" className="bg-background border-primary/30" />
+              <Input type="email" name="reply_to" placeholder="EMAIL ADDRESS" required className="bg-background border-primary/30" />
             </div>
           </div>
           <div className="space-y-2">
             <label className="text-[10px] font-code text-primary uppercase">Subject</label>
-            <Input placeholder="TRANSMISSION TOPIC" className="bg-background border-primary/30" />
+            <Input name="subject" placeholder="TRANSMISSION TOPIC" required className="bg-background border-primary/30" />
           </div>
           <div className="space-y-2">
             <label className="text-[10px] font-code text-primary uppercase">Payload</label>
-            <Textarea placeholder="ENTER YOUR MESSAGE..." className="bg-background border-primary/30 min-h-[150px]" />
+            <Textarea name="message" placeholder="ENTER YOUR MESSAGE..." required className="bg-background border-primary/30 min-h-[150px]" />
           </div>
-          <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-headline py-6">
-            <Send className="w-4 h-4 mr-2" /> TRANSMIT_PACKET
+          <Button 
+            type="submit" 
+            disabled={isSending}
+            className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-headline py-6"
+          >
+            {isSending ? (
+              <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+            ) : (
+              <Send className="w-4 h-4 mr-2" />
+            )}
+            {isSending ? 'TRANSMITTING...' : 'TRANSMIT_PACKET'}
           </Button>
           <p className="text-[10px] font-code text-center text-muted-foreground mt-4">
             DEDSEC_ENCRYPTION_LAYER_v4.2 ACTIVE
