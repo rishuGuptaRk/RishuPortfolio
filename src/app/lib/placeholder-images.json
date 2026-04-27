@@ -39,9 +39,9 @@
     },
     {
       "id": "about-me",
-      "description": "DEDSEC operative tactical silhouette",
-      "imageUrl": "https://picsum.photos/seed/operative-retr0/600/800",
-      "imageHint": "cyberpunk portrait"
+      "description": "DEDSEC operative tactical profile",
+      "imageUrl": "https://picsum.photos/seed/rishu-operative/800/1000",
+      "imageHint": "tech operative"
     }
   ]
 }

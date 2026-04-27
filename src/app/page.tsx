@@ -11,8 +11,9 @@ import { ContactModule } from "@/components/contact-module"
 import { AiDossierLab } from "@/components/ai-dossier-lab"
 import { LoadingScreen } from "@/components/loading-screen"
 import { ThemeMatrix } from "@/components/theme-matrix"
+import { AboutMe } from "@/components/about-me"
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion"
-import { ChevronDown, Terminal, Github, Linkedin, Twitter, ArrowRight, Zap } from "lucide-react"
+import { ChevronDown, Terminal, Github, Linkedin, Twitter, ArrowRight, Zap, Info } from "lucide-react"
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
@@ -33,7 +34,7 @@ export default function Home() {
     setProfilePic(localProfiles[Math.floor(Math.random() * localProfiles.length)])
 
     const handleScroll = () => {
-      const sections = ["hero", "projects", "skills", "lab", "contact"]
+      const sections = ["hero", "about", "projects", "skills", "lab", "contact"]
       const current = sections.find(section => {
         const el = document.getElementById(section)
         if (el) {
@@ -114,6 +115,7 @@ export default function Home() {
         <nav className="hidden lg:flex items-center gap-10">
           {[
             { id: "hero", label: "HOME" },
+            { id: "about", label: "ABOUT_OPERATIVE" },
             { id: "projects", label: "REPOSITORIES" },
             { id: "skills", label: "TECH_STACK" },
             { id: "lab", label: "NEURAL_AI" },
@@ -205,7 +207,7 @@ export default function Home() {
 
               <div className="md:col-span-3 flex justify-end">
                 <button 
-                  onClick={() => handleNavClick('lab')}
+                  onClick={() => handleNavClick('about')}
                   className="border border-primary text-primary px-10 py-5 text-[10px] font-headline font-bold uppercase tracking-widest hover:bg-primary hover:text-background transition-all flex items-center gap-3"
                 >
                   ACCESS_DOSSIER <ArrowRight className="w-4 h-4" />
@@ -214,6 +216,20 @@ export default function Home() {
             </motion.div>
           </div>
         </section>
+
+        {/* About Operative */}
+        <motion.section 
+          id="about" 
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="py-32 px-6 md:px-12"
+        >
+          <div className="container max-w-7xl mx-auto">
+            <AboutMe />
+          </div>
+        </motion.section>
 
         {/* Repositories */}
         <motion.section 
