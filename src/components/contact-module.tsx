@@ -1,4 +1,3 @@
-
 "use client"
 
 import React, { useRef, useState } from "react"
@@ -23,16 +22,16 @@ export const ContactModule = () => {
 
     const formData = new FormData(formRef.current)
     
-    // Explicitly cast to strings to ensure EmailJS compatibility
+    // Synchronizing with your provided EmailJS template keys
     const templateParams = {
-      from_name: String(formData.get('from_name')),
-      reply_to: String(formData.get('reply_to')),
-      subject: String(formData.get('subject')),
+      name: String(formData.get('from_name')),
+      from_email: String(formData.get('reply_to')),
+      time: new Date().toLocaleString(),
       message: String(formData.get('message')),
     }
 
     try {
-      // Transmission using provided credentials
+      // Transmission using verified credentials
       const response = await emailjs.send(
         'service_parc3eb', 
         'template_129gio6', 
@@ -139,9 +138,9 @@ export const ContactModule = () => {
             className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-headline py-6"
           >
             {isSending ? (
-              <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+              <Loader2 className="h-4 w-4 mr-2 animate-spin" />
             ) : (
-              <Send className="w-4 h-4 mr-2" />
+              <Send className="h-4 w-4 mr-2" />
             )}
             {isSending ? 'TRANSMITTING...' : 'TRANSMIT_PACKET'}
           </Button>
