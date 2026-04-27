@@ -2,13 +2,9 @@
 import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+  output: 'export', // Required for GitHub Pages static deployment
   images: {
+    unoptimized: true, // Required for static export as GitHub Pages doesn't have an Image Optimization API
     remotePatterns: [
       {
         protocol: 'https',
@@ -39,6 +35,12 @@ const nextConfig: NextConfig = {
         hostname: 'pa1.narvii.com',
       }
     ],
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
   },
 };
 
