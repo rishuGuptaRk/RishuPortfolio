@@ -30,7 +30,7 @@ export default function Home() {
   })
 
   useEffect(() => {
-    const localProfiles = ["/images/Ava1.gif", "/images/Ava-2.gif"]
+    const localProfiles = ["/images/Ava1.gif", "/images/Ava-2.gif", "/images/Ava3.gif"]
     setProfilePic(localProfiles[Math.floor(Math.random() * localProfiles.length)])
 
     const handleScroll = () => {
