@@ -40,7 +40,7 @@
     {
       "id": "about-me",
       "description": "DEDSEC operative tactical profile",
-      "imageUrl": "https://picsum.photos/seed/rishu-operative/800/1000",
+      "imageUrl": "/images/Profile.jpg",
       "imageHint": "tech operative"
     }
   ]

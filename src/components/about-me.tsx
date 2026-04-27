@@ -24,7 +24,7 @@ export const AboutMe = () => {
                 alt="Rishu Gupta" 
                 fill 
                 className="object-cover grayscale contrast-110 brightness-90 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
-                unoptimized
+                unoptimized={profileImg?.imageUrl.endsWith('.gif')}
               />
             </div>
             {/* Tactical Markers */}
