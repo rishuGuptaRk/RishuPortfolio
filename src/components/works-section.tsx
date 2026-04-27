@@ -68,16 +68,16 @@ export const WorksSection = () => {
           return (
             <section
               key={project.id}
-              className="relative w-screen h-screen flex items-center justify-center flex-shrink-0 px-4 md:px-12 border-r border-white/5"
+              className="relative w-screen h-screen flex items-center justify-center flex-shrink-0 px-6 md:px-12 border-r border-white/5"
             >
               {/* Background Index Number */}
               <div className="absolute left-8 top-1/2 -translate-y-1/2 text-[15vw] font-black text-primary/5 pointer-events-none select-none z-0 font-headline leading-none">
                 0{index + 1}
               </div>
 
-              <div className="container max-w-7xl mx-auto grid lg:grid-cols-12 gap-8 md:gap-16 items-center relative z-10">
+              <div className="container max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 md:gap-20 items-center relative z-10">
                 {/* Info Panel */}
-                <div className="lg:col-span-5 space-y-6 md:space-y-8">
+                <div className="lg:col-span-5 space-y-6 md:space-y-10">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 border border-primary/30 flex items-center justify-center bg-primary/5">
                       <Zap className="w-5 h-5 text-primary" />
@@ -87,8 +87,8 @@ export const WorksSection = () => {
                     </span>
                   </div>
 
-                  <div className="space-y-3 md:space-y-4">
-                    <h2 className="text-4xl sm:text-6xl md:text-8xl font-black font-headline text-white leading-[0.9] tracking-tighter uppercase">
+                  <div className="space-y-4 md:space-y-6">
+                    <h2 className="text-4xl sm:text-5xl md:text-7xl font-black font-headline text-white leading-[1] tracking-tighter uppercase">
                       {project.title}
                     </h2>
                     <p className="text-sm md:text-base lg:text-lg text-muted-foreground/80 font-body leading-relaxed max-w-xl">
@@ -104,32 +104,32 @@ export const WorksSection = () => {
                     ))}
                   </div>
 
-                  <div className="grid grid-cols-2 gap-8 pt-6 border-t border-white/10">
+                  <div className="grid grid-cols-2 gap-8 pt-8 border-t border-white/10">
                     <div className="group">
-                      <p className="text-[9px] font-code text-muted-foreground uppercase tracking-widest mb-1">LATENCY_STABLE</p>
+                      <p className="text-[9px] font-code text-muted-foreground uppercase tracking-widest mb-2">LATENCY_STABLE</p>
                       <div className="flex items-center gap-2">
                         <Activity className="w-4 h-4 text-primary opacity-50 group-hover:opacity-100 transition-opacity" />
-                        <p className="text-2xl md:text-3xl font-headline font-bold text-primary">{project.metrics.latency}</p>
+                        <p className="text-2xl md:text-4xl font-headline font-bold text-primary">{project.metrics.latency}</p>
                       </div>
                     </div>
                     <div className="group">
-                      <p className="text-[9px] font-code text-muted-foreground uppercase tracking-widest mb-1">LIGHTHOUSE_SCORE</p>
+                      <p className="text-[9px] font-code text-muted-foreground uppercase tracking-widest mb-2">LIGHTHOUSE_SCORE</p>
                       <div className="flex items-center gap-2">
                         <Layout className="w-4 h-4 text-primary opacity-50 group-hover:opacity-100 transition-opacity" />
-                        <p className="text-2xl md:text-3xl font-headline font-bold text-primary">{project.metrics.lighthouse}</p>
+                        <p className="text-2xl md:text-4xl font-headline font-bold text-primary">{project.metrics.lighthouse}</p>
                       </div>
                     </div>
                   </div>
 
-                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-6">
-                    <Button className="bg-primary hover:bg-primary/80 text-primary-foreground font-headline font-bold h-12 px-10 rounded-none group flex-1 sm:flex-none shadow-[0_0_15px_rgba(var(--primary),0.3)]">
+                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-8">
+                    <Button className="bg-primary hover:bg-primary/80 text-primary-foreground font-headline font-bold h-14 px-10 rounded-none group flex-1 sm:flex-none shadow-[0_0_20px_rgba(var(--primary),0.2)]">
                       LAUNCH_SYSTEM <ExternalLink className="ml-2 w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                     </Button>
                     <a 
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-3 text-white/60 hover:text-primary font-headline font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] transition-all h-12 px-8 border border-white/5 hover:border-primary/50 bg-white/5"
+                      className="flex items-center justify-center gap-3 text-white/60 hover:text-primary font-headline font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] transition-all h-14 px-8 border border-white/5 hover:border-primary/50 bg-white/5"
                     >
                       <Github className="w-5 h-5" /> SOURCE_CODE
                     </a>
@@ -137,7 +137,7 @@ export const WorksSection = () => {
                 </div>
 
                 {/* Preview Lab Panel */}
-                <div className="lg:col-span-7 relative aspect-square hidden lg:block">
+                <div className="lg:col-span-7 relative aspect-video hidden lg:block">
                   <div className="absolute inset-0 border border-white/10 bg-black/60 backdrop-blur-md rounded-sm overflow-hidden group">
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-transparent to-transparent opacity-60" />
                     
@@ -150,13 +150,15 @@ export const WorksSection = () => {
                     </div>
                     
                     {imageData && (
-                      <Image
-                        src={imageData.imageUrl}
-                        alt={project.title}
-                        fill
-                        className="object-cover opacity-30 grayscale contrast-150 group-hover:opacity-60 group-hover:scale-105 transition-all duration-1000"
-                        unoptimized={imageData.imageUrl.endsWith('.gif')}
-                      />
+                      <div className="relative w-full h-full p-1">
+                        <Image
+                          src={imageData.imageUrl}
+                          alt={project.title}
+                          fill
+                          className="object-cover opacity-40 grayscale contrast-150 group-hover:opacity-70 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000"
+                          unoptimized={imageData.imageUrl.endsWith('.gif')}
+                        />
+                      </div>
                     )}
                     
                     <div className="absolute inset-0 opacity-10 pointer-events-none bg-grid-primary" />
