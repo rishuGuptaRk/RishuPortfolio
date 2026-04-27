@@ -1,9 +1,9 @@
-
 "use client"
 
 import React, { useState, useEffect } from "react"
 import Image from "next/image"
 import portfolioData from "./data/portfolio.json"
+import recoveryData from "./lib/recovery-data.json"
 import { HudContainer } from "@/components/hud-container"
 import { ProjectCard } from "@/components/project-card"
 import { SkillMatrix } from "@/components/skill-matrix"
@@ -21,6 +21,9 @@ export default function Home() {
   
   const dedsecSkull = PlaceHolderImages.find(img => img.id === "dedsec-skull")
   const aboutMeImage = PlaceHolderImages.find(img => img.id === "about-me")
+
+  // Using recovery data as the source of truth for profile if current is "fuckedup"
+  const profile = recoveryData.backup_data.profile || portfolioData.profile
 
   useEffect(() => {
     const localProfiles = [
@@ -53,12 +56,12 @@ export default function Home() {
   }
 
   const headlineVariants = {
-    hidden: { y: "60%", opacity: 0 },
+    hidden: { y: "100%", opacity: 0 },
     visible: { 
       y: 0, 
       opacity: 1, 
       transition: { 
-        duration: 0.9, 
+        duration: 1.2, 
         ease: [0.33, 1, 0.68, 1] 
       } 
     }
@@ -88,7 +91,7 @@ export default function Home() {
           {[
             { id: "projects", label: "REPOSITORIES" },
             { id: "skills", label: "TECH_STACK" },
-            { id: "lab", label: "NEURAL_AI" }
+            { id: "lab", label: "DOSSIER_LAB" }
           ].map((item) => (
             <button
               key={item.id}
@@ -98,12 +101,6 @@ export default function Home() {
               {item.label}
             </button>
           ))}
-          <button 
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: "smooth" })}
-            className="border border-white/20 px-6 py-2 text-[10px] font-headline font-bold uppercase tracking-[0.25em] text-white hover:bg-white/5 transition-all"
-          >
-            UPLINK
-          </button>
         </nav>
 
         <motion.div 
@@ -111,30 +108,16 @@ export default function Home() {
           animate={{ opacity: 1, x: 0 }}
           className="flex items-center gap-6"
         >
-          <div className="hidden sm:flex flex-col items-end">
-            <div className="flex items-center gap-1.5 mb-1">
-              <span className="text-[8px] font-code text-primary tracking-widest uppercase">STATUS: ENCRYPTED</span>
-              <Zap className="w-2.5 h-2.5 text-accent animate-pulse" />
-            </div>
-            <div className="flex gap-0.5">
-              <div className="w-2 h-3.5 bg-primary/20"></div>
-              <div className="w-2 h-3.5 bg-primary/40"></div>
-              <div className="w-2 h-3.5 bg-primary/60"></div>
-              <div className="w-2 h-3.5 bg-primary animate-flicker"></div>
-            </div>
-          </div>
+          <ThemeMatrix />
           {profilePic && (
-            <div className="relative w-11 h-11 border border-primary/30 bg-black/40 p-0.5">
-              <div className="absolute inset-0 border border-primary/20 -m-1"></div>
-              <div className="relative w-full h-full overflow-hidden">
-                <Image 
-                  src={profilePic} 
-                  alt="Operative" 
-                  fill 
-                  className="object-cover grayscale brightness-125 contrast-125" 
-                  unoptimized 
-                />
-              </div>
+            <div className="relative w-11 h-11 border border-primary/30 bg-black/40 p-0.5 overflow-hidden">
+              <Image 
+                src={profilePic} 
+                alt="Operative" 
+                fill 
+                className="object-cover grayscale brightness-125 contrast-125" 
+                unoptimized 
+              />
             </div>
           )}
         </motion.div>
@@ -145,56 +128,48 @@ export default function Home() {
         initial="hidden"
         animate="visible"
       >
-        {/* Left-Aligned Hero Section */}
-        <section id="hero" className="relative min-h-screen flex flex-col items-start justify-center pt-24 px-8 lg:px-24">
+        {/* Centered Hero Section */}
+        <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center pt-24 px-8 text-center">
           {/* Central Background Skull */}
-          <div className="absolute inset-0 flex items-center justify-center opacity-[0.15] pointer-events-none">
+          <div className="absolute inset-0 flex items-center justify-center opacity-[0.1] pointer-events-none">
             {dedsecSkull && (
               <Image 
                 src={dedsecSkull.imageUrl} 
                 alt="System Background" 
-                width={700} 
-                height={700} 
+                width={800} 
+                height={800} 
                 className="object-contain mix-blend-screen grayscale" 
                 unoptimized 
               />
             )}
           </div>
 
-          <div className="relative z-10 w-full flex flex-col items-start space-y-6 max-w-7xl">
-            <motion.div variants={itemVariants} className="flex items-center gap-6 text-primary font-code text-[11px] tracking-[0.4em] uppercase mb-4 opacity-70">
-               <span className="h-[1px] w-12 bg-primary"></span>
-               SYSTEM_INIT // CYBER_GUPTA
+          <div className="relative z-10 w-full flex flex-col items-center space-y-8 max-w-5xl">
+            <motion.div variants={itemVariants} className="flex items-center gap-4 text-primary font-code text-[11px] tracking-[0.4em] uppercase mb-4 opacity-70">
+               SYSTEM_INIT // RECOVERY_STABLE
             </motion.div>
             
             <div className="overflow-hidden">
               <motion.h1 
                 variants={headlineVariants}
-                className="text-7xl md:text-[140px] font-black font-hacked text-white tracking-tighter uppercase leading-[0.85] mb-2"
-                style={{ textShadow: "0 0 40px rgba(139, 92, 246, 0.2)" }}
+                className="text-6xl md:text-[120px] font-black font-hacked text-white tracking-tighter uppercase leading-[0.85] mb-4"
+                style={{ textShadow: "0 0 40px rgba(139, 92, 246, 0.3)" }}
               >
                 RISHU GUPTA
               </motion.h1>
             </div>
 
-            <motion.div variants={itemVariants} className="flex items-center gap-6 w-full flex-wrap">
-              <h2 className="text-2xl md:text-5xl font-headline font-bold text-accent uppercase tracking-tighter text-outline">
-                FULL-STACK DEVELOPER & SOFTWARE ENGINEER
-              </h2>
-              <span className="text-muted-foreground/30 text-[10px] tracking-[0.3em] font-code uppercase ml-auto lg:ml-0">
-                CLASS // CSE_2026_SIT
-              </span>
+            <motion.h2 variants={itemVariants} className="text-xl md:text-4xl font-headline font-bold text-accent uppercase tracking-tighter text-outline">
+              {profile.role}
+            </motion.h2>
+
+            <motion.div variants={itemVariants} className="max-w-2xl mt-8">
+              <p className="text-lg text-muted-foreground/90 font-body leading-relaxed">
+                {profile.bio}
+              </p>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="max-w-3xl mt-8">
-              <div className="border-l-2 border-primary/40 pl-8 py-2">
-                <p className="text-lg text-muted-foreground/90 font-body leading-relaxed">
-                  {portfolioData.profile.bio}
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div variants={itemVariants} className="flex flex-wrap gap-6 pt-12">
+            <motion.div variants={itemVariants} className="flex flex-wrap justify-center gap-6 pt-12">
               <button 
                 onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
                 className="bg-primary text-white px-10 py-5 text-xs font-bold font-headline uppercase tracking-[0.2em] flex items-center gap-4 hover:bg-primary/80 transition-all group"
@@ -209,10 +184,6 @@ export default function Home() {
               </button>
             </motion.div>
           </div>
-          
-          <div className="absolute bottom-12 left-24 hidden lg:block">
-            <div className="w-px h-24 bg-gradient-to-b from-primary to-transparent opacity-40"></div>
-          </div>
         </section>
 
         {/* Repositories Section */}
@@ -221,7 +192,6 @@ export default function Home() {
             <motion.div variants={itemVariants} className="flex items-center gap-6 mb-16">
               <h3 className="text-2xl font-headline font-bold text-white tracking-tighter uppercase">REPOSITORY_FETCH</h3>
               <div className="h-[1px] flex-1 bg-white/5"></div>
-              <span className="text-[10px] font-code text-primary/60 uppercase tracking-widest">INDEX_v2.4</span>
             </motion.div>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -252,22 +222,14 @@ export default function Home() {
                           src={aboutMeImage.imageUrl}
                           alt="Operative Profile"
                           fill
-                          className="object-cover grayscale contrast-125 transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105"
+                          className="object-cover grayscale contrast-125"
                         />
                       )}
-                      <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent"></div>
-                      <div className="absolute bottom-6 left-6 font-code text-[10px] text-primary bg-black/80 px-4 py-2 border border-primary/40">
-                        STATUS: OPERATIVE_ACTIVE
-                      </div>
                     </div>
                     <div className="space-y-6">
                       <p className="text-muted-foreground font-body leading-relaxed text-lg">
-                        Computer Science undergraduate with a strong passion for <span className="text-primary font-bold">full-stack development</span> and <span className="text-primary font-bold">real-time systems</span>. 
+                        Specializing in <span className="text-primary font-bold">real-time synchronized systems</span> and <span className="text-primary font-bold">AI-powered solutions</span>. Dedicated to building efficient, user-centric digital products.
                       </p>
-                      <div className="flex flex-wrap gap-4">
-                        <div className="bg-primary/10 border border-primary/30 px-5 py-2 text-[10px] font-code text-primary uppercase tracking-widest">BACKEND_FOCUSED</div>
-                        <div className="bg-primary/10 border border-primary/30 px-5 py-2 text-[10px] font-code text-primary uppercase tracking-widest">AI_INTEGRATOR</div>
-                      </div>
                     </div>
                   </div>
                 </HudContainer>
@@ -280,11 +242,11 @@ export default function Home() {
           </div>
         </section>
 
-        {/* AI Dossier Section */}
+        {/* Dossier Section */}
         <section id="lab" className="py-32 border-b border-white/5">
           <div className="container px-8 max-w-7xl mx-auto">
             <motion.div variants={itemVariants} className="flex items-center gap-6 mb-16">
-              <h3 className="text-2xl font-headline font-bold text-white tracking-tighter uppercase">NEURAL_AI_DOSSIER</h3>
+              <h3 className="text-2xl font-headline font-bold text-white tracking-tighter uppercase">DEDSEC_DOSSIER_LAB</h3>
               <div className="h-[1px] flex-1 bg-white/5"></div>
             </motion.div>
             <motion.div variants={itemVariants}>
@@ -305,18 +267,11 @@ export default function Home() {
 
       {/* Tactical Footer */}
       <footer className="py-24 border-t border-white/5">
-        <div className="container px-8 max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-16">
-            <div className="flex items-center gap-6">
-              <div className="w-12 h-12 border border-primary/40 bg-black/60 flex items-center justify-center font-code text-primary text-xl font-bold">
-                {">_"}
-              </div>
-              <div className="flex flex-col">
-                <span className="text-xl font-black font-headline tracking-tighter text-white uppercase leading-none">RISHU_GUPTA</span>
-                <p className="text-[10px] font-code text-muted-foreground/50 uppercase tracking-[0.3em] mt-1.5">© 2024 // DEDSEC_SF_NODE // ENCRYPTED</p>
-              </div>
+        <div className="container px-8 max-w-7xl mx-auto text-center">
+          <div className="flex flex-col items-center gap-8">
+            <div className="w-12 h-12 border border-primary/40 bg-black/60 flex items-center justify-center font-code text-primary text-xl font-bold">
+              {">_"}
             </div>
-            
             <div className="flex gap-12">
               {portfolioData.profile.socials.map((social, i) => (
                 <a key={i} href={social.url} target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-primary transition-colors text-[10px] font-headline font-bold tracking-[0.3em] uppercase">
@@ -324,8 +279,7 @@ export default function Home() {
                 </a>
               ))}
             </div>
-            
-            <ThemeMatrix />
+            <p className="text-[10px] font-code text-muted-foreground/50 uppercase tracking-[0.3em]">© 2024 // DEDSEC_SF_NODE // RECOVERED</p>
           </div>
         </div>
       </footer>
