@@ -25,7 +25,7 @@ const ProjectSlide = ({ project, index }: { project: Project; index: number }) =
   const imageData = PlaceHolderImages.find(img => img.id === project.image)
 
   return (
-    <div className="relative w-screen h-screen flex items-center justify-center flex-shrink-0 px-4 md:px-12 overflow-hidden">
+    <div className="relative w-screen h-screen flex items-center justify-center flex-shrink-0 px-4 md:px-12 overflow-hidden bg-[#050505]">
       {/* Background Section Number */}
       <div className="absolute left-8 top-1/2 -translate-y-1/2 text-[20vw] font-black text-primary/5 pointer-events-none select-none z-0 font-headline leading-none">
         0{index + 1}
@@ -137,20 +137,21 @@ export const ProjectShowcase = ({ projects }: { projects: Project[] }) => {
   const targetRef = useRef<HTMLDivElement>(null)
   
   // The scroll progress of the container
+  // Logic: trigger is the container ($container in your JS)
   const { scrollYProgress } = useScroll({
     target: targetRef,
     offset: ["start start", "end end"]
   })
 
-  // We need to translate by (N-1) * 100% to show all projects
-  // But since the container is (N * 100%), we translate by a fraction
+  // Horizontal translation logic (tl in your JS)
+  // Maps 0-1 vertical scroll to -(n-1)*100% horizontal movement
   const xTranslate = useTransform(
     scrollYProgress, 
     [0, 1], 
     ["0%", `-${(projects.length - 1) * 100}%`]
   )
   
-  // Use high-stiffness spring for responsive input tracking
+  // Scrub behavior (scrub: 1 in your JS)
   const springX = useSpring(xTranslate, {
     stiffness: 250,
     damping: 50,
@@ -159,12 +160,12 @@ export const ProjectShowcase = ({ projects }: { projects: Project[] }) => {
 
   return (
     <section id="projects" ref={targetRef} className="relative h-[400vh] bg-[#050505] overflow-visible">
-      {/* Sticky Container - This is the "pin: true" equivalent */}
+      {/* Sticky Container (pin: true in your JS) */}
       <div className="sticky top-0 h-screen w-full overflow-hidden">
-        {/* Horizontal Track - The width is based on project count */}
+        {/* Horizontal Track (cards in your JS) */}
         <motion.div 
           style={{ x: springX }} 
-          className={`flex h-full w-[${projects.length * 100}%] flex-nowrap`}
+          className="flex h-full w-fit flex-nowrap"
         >
           {projects.map((project, index) => (
             <ProjectSlide 

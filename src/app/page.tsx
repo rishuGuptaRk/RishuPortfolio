@@ -12,23 +12,16 @@ import { AiDossierLab } from "@/components/ai-dossier-lab"
 import { LoadingScreen } from "@/components/loading-screen"
 import { ThemeMatrix } from "@/components/theme-matrix"
 import { AboutMe } from "@/components/about-me"
-import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion"
+import { motion, useScroll, useSpring } from "framer-motion"
 import { 
-  ChevronDown, 
   Terminal, 
-  Github, 
-  Linkedin, 
-  Twitter, 
   ArrowRight, 
-  Zap, 
-  Info, 
   Menu, 
   X,
   User,
   FolderCode,
   Cpu,
-  Bot,
-  MessageSquare
+  Bot
 } from "lucide-react"
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet"
 
@@ -316,11 +309,6 @@ export default function Home() {
       </main>
 
       <footer className="py-12 md:py-16 border-t border-white/5 text-center bg-black/40">
-        <div className="flex justify-center gap-8 mb-8">
-          <Github className="w-5 h-5 text-muted-foreground hover:text-primary transition-colors cursor-pointer" />
-          <Linkedin className="w-5 h-5 text-muted-foreground hover:text-primary transition-colors cursor-pointer" />
-          <Twitter className="w-5 h-5 text-muted-foreground hover:text-primary transition-colors cursor-pointer" />
-        </div>
         <p className="text-[9px] md:text-[10px] font-code text-muted-foreground/50 uppercase tracking-[0.3em] px-4">
           © 2024 // RG_NODE_SF // SYSTEM_STABLE
         </p>
