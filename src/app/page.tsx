@@ -13,7 +13,24 @@ import { LoadingScreen } from "@/components/loading-screen"
 import { ThemeMatrix } from "@/components/theme-matrix"
 import { AboutMe } from "@/components/about-me"
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion"
-import { ChevronDown, Terminal, Github, Linkedin, Twitter, ArrowRight, Zap, Info } from "lucide-react"
+import { 
+  ChevronDown, 
+  Terminal, 
+  Github, 
+  Linkedin, 
+  Twitter, 
+  ArrowRight, 
+  Zap, 
+  Info, 
+  Menu, 
+  X,
+  User,
+  FolderCode,
+  Cpu,
+  Bot,
+  MessageSquare
+} from "lucide-react"
+import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet"
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
@@ -73,6 +90,14 @@ export default function Home() {
     }
   }
 
+  const navItems = [
+    { id: "hero", label: "HOME", icon: Terminal },
+    { id: "about", label: "ABOUT_OPERATIVE", icon: User },
+    { id: "projects", label: "REPOSITORIES", icon: FolderCode },
+    { id: "skills", label: "TECH_STACK", icon: Cpu },
+    { id: "lab", label: "NEURAL_AI", icon: Bot },
+  ]
+
   return (
     <div className="min-h-screen bg-background selection:bg-primary selection:text-primary-foreground font-body">
       <div className="scanline"></div>
@@ -112,14 +137,9 @@ export default function Home() {
           </div>
         </motion.div>
 
+        {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-10">
-          {[
-            { id: "hero", label: "HOME" },
-            { id: "about", label: "ABOUT_OPERATIVE" },
-            { id: "projects", label: "REPOSITORIES" },
-            { id: "skills", label: "TECH_STACK" },
-            { id: "lab", label: "NEURAL_AI" },
-          ].map((item) => (
+          {navItems.map((item) => (
             <button
               key={item.id}
               onClick={() => handleNavClick(item.id)}
@@ -147,9 +167,71 @@ export default function Home() {
           <div className="hidden md:block">
             <ThemeMatrix />
           </div>
+          
+          {/* Mobile Navigation Trigger */}
+          <div className="lg:hidden">
+            <Sheet>
+              <SheetTrigger asChild>
+                <button className="p-2 border border-primary/30 bg-primary/5 hover:bg-primary/10 text-primary transition-colors rounded-sm">
+                  <Menu className="w-5 h-5" />
+                </button>
+              </SheetTrigger>
+              <SheetContent side="right" className="bg-black/95 border-l border-primary/30 p-0 text-white w-full sm:max-w-xs">
+                <div className="flex flex-col h-full">
+                  <div className="p-6 border-b border-white/5 flex items-center justify-between">
+                    <span className="font-headline font-black text-xl tracking-tighter">RG_CORE</span>
+                    <SheetClose className="text-primary hover:rotate-90 transition-transform">
+                      <X className="w-6 h-6" />
+                    </SheetClose>
+                  </div>
+                  
+                  <div className="flex-1 overflow-y-auto py-8 px-6 space-y-6">
+                    <div className="space-y-2">
+                      <span className="text-[10px] font-code text-primary/60 uppercase tracking-[0.4em]">Main_Nodes</span>
+                      <nav className="flex flex-col gap-2">
+                        {navItems.map((item) => (
+                          <SheetClose asChild key={item.id}>
+                            <button
+                              onClick={() => handleNavClick(item.id)}
+                              className={`flex items-center gap-4 p-4 border border-white/5 hover:border-primary/50 transition-all group ${activeSection === item.id ? 'bg-primary/10 border-primary/30' : ''}`}
+                            >
+                              <item.icon className={`w-5 h-5 ${activeSection === item.id ? 'text-primary' : 'text-white/30 group-hover:text-primary'}`} />
+                              <span className={`text-[11px] font-headline font-bold tracking-widest ${activeSection === item.id ? 'text-white' : 'text-white/60'}`}>
+                                {item.label}
+                              </span>
+                            </button>
+                          </SheetClose>
+                        ))}
+                      </nav>
+                    </div>
+
+                    <div className="space-y-2">
+                      <span className="text-[10px] font-code text-primary/60 uppercase tracking-[0.4em]">System_Override</span>
+                      <div className="p-4 border border-white/5">
+                        <ThemeMatrix />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="p-6 border-t border-white/5">
+                    <SheetClose asChild>
+                      <button 
+                        onClick={() => handleNavClick('contact')}
+                        className="w-full bg-primary text-black font-headline font-black py-4 text-[12px] tracking-[0.2em] uppercase flex items-center justify-center gap-3"
+                      >
+                        <MessageSquare className="w-4 h-4" /> ESTABLISH_UPLINK
+                      </button>
+                    </SheetClose>
+                  </div>
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
+
           <button className="hidden sm:block bg-white text-background px-4 md:px-6 py-2 md:py-2.5 text-[9px] font-headline font-bold uppercase tracking-widest hover:bg-primary transition-all">
             RESUME
           </button>
+          
           {profilePic && (
             <div className="relative w-8 h-8 md:w-10 md:h-10 border border-primary/30 p-0.5 overflow-hidden">
               <Image src={profilePic} alt="Operative" fill className="object-cover grayscale contrast-125" unoptimized />
