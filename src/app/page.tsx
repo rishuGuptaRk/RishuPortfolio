@@ -102,9 +102,9 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      <header className="fixed top-0 left-0 w-full z-[100] px-6 md:px-12 py-6 flex justify-between items-center bg-gradient-to-b from-background/90 to-transparent backdrop-blur-sm border-b border-white/5">
+      <header className="fixed top-0 left-0 w-full z-[100] px-4 md:px-12 py-4 md:py-6 flex justify-between items-center bg-gradient-to-b from-background/90 to-transparent backdrop-blur-sm border-b border-white/5">
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex items-center gap-2">
-          <span className="text-2xl font-black font-headline tracking-tighter text-white">RG.</span>
+          <span className="text-xl md:text-2xl font-black font-headline tracking-tighter text-white">RG.</span>
           <div className="hidden sm:block h-6 w-px bg-white/10 mx-2" />
           <div className="hidden sm:flex items-center gap-1">
             <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
@@ -144,12 +144,14 @@ export default function Home() {
         </nav>
 
         <div className="flex items-center gap-4">
-          <ThemeMatrix />
-          <button className="hidden sm:block bg-white text-background px-6 py-2.5 text-[9px] font-headline font-bold uppercase tracking-widest hover:bg-primary transition-all">
+          <div className="hidden md:block">
+            <ThemeMatrix />
+          </div>
+          <button className="hidden sm:block bg-white text-background px-4 md:px-6 py-2 md:py-2.5 text-[9px] font-headline font-bold uppercase tracking-widest hover:bg-primary transition-all">
             RESUME
           </button>
           {profilePic && (
-            <div className="relative w-10 h-10 border border-primary/30 p-0.5 overflow-hidden">
+            <div className="relative w-8 h-8 md:w-10 md:h-10 border border-primary/30 p-0.5 overflow-hidden">
               <Image src={profilePic} alt="Operative" fill className="object-cover grayscale contrast-125" unoptimized />
             </div>
           )}
@@ -158,22 +160,22 @@ export default function Home() {
 
       <main>
         {/* Hero Section */}
-        <section id="hero" className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 pt-32">
+        <section id="hero" className="relative min-h-screen flex flex-col justify-center px-4 md:px-12 pt-32 pb-12">
           <div className="relative z-10 space-y-4 max-w-7xl w-full">
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="flex items-center gap-4 text-primary font-code text-[11px] tracking-[0.5em] uppercase opacity-80"
+              className="flex items-center gap-4 text-primary font-code text-[10px] md:text-[11px] tracking-[0.5em] uppercase opacity-80"
             >
-              <span className="w-12 h-px bg-primary/40" /> SYSTEM_INITIALIZED
+              <span className="w-8 md:w-12 h-px bg-primary/40" /> SYSTEM_INITIALIZED
             </motion.div>
             
-            <div className="overflow-hidden space-y-2">
+            <div className="overflow-hidden space-y-1 md:space-y-2">
               <motion.h1 
                 initial={{ y: 100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 1.2, ease: [0.33, 1, 0.68, 1] }}
-                className="text-7xl md:text-[150px] font-black font-headline text-white tracking-tighter uppercase leading-[0.8]"
+                className="text-5xl sm:text-7xl md:text-[150px] font-black font-headline text-white tracking-tighter uppercase leading-[0.8]"
               >
                 RISHU
               </motion.h1>
@@ -181,10 +183,10 @@ export default function Home() {
                 initial={{ y: 100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 1.2, delay: 0.1, ease: [0.33, 1, 0.68, 1] }}
-                className="text-7xl md:text-[150px] font-black font-headline tracking-tighter uppercase leading-[0.8] flex items-end"
+                className="text-5xl sm:text-7xl md:text-[150px] font-black font-headline tracking-tighter uppercase leading-[0.8] flex items-end"
               >
                 <span className="text-transparent" style={{ WebkitTextStroke: '2px hsl(var(--primary))' }}>GUPTA</span>
-                <span className="text-primary ml-2 mb-2 md:mb-4">.</span>
+                <span className="text-primary ml-1 md:ml-2 mb-1 md:mb-4">.</span>
               </motion.h1>
             </div>
 
@@ -192,23 +194,23 @@ export default function Home() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8 }}
-              className="pt-24 grid md:grid-cols-12 gap-12 items-end border-t border-white/5"
+              className="pt-12 md:pt-24 grid md:grid-cols-12 gap-8 md:gap-12 items-end border-t border-white/5"
             >
               <div className="md:col-span-3 space-y-1">
-                <h2 className="text-3xl md:text-4xl font-black font-headline text-white leading-none">FULLSTACK</h2>
-                <h2 className="text-3xl md:text-4xl font-black font-headline text-primary leading-none uppercase">DEVELOPER</h2>
+                <h2 className="text-2xl md:text-4xl font-black font-headline text-white leading-none">FULLSTACK</h2>
+                <h2 className="text-2xl md:text-4xl font-black font-headline text-primary leading-none uppercase">DEVELOPER</h2>
               </div>
               
-              <div className="md:col-span-6 border-l border-primary/20 pl-8">
-                <p className="max-w-xl text-muted-foreground leading-relaxed text-sm md:text-base font-body">
+              <div className="md:col-span-6 md:border-l border-primary/20 md:pl-8">
+                <p className="max-w-xl text-muted-foreground leading-relaxed text-xs md:text-base font-body line-clamp-4 md:line-clamp-none">
                   {profile.bio}
                 </p>
               </div>
 
-              <div className="md:col-span-3 flex justify-end">
+              <div className="md:col-span-3 flex justify-start md:justify-end">
                 <button 
                   onClick={() => handleNavClick('about')}
-                  className="border border-primary text-primary px-10 py-5 text-[10px] font-headline font-bold uppercase tracking-widest hover:bg-primary hover:text-background transition-all flex items-center gap-3"
+                  className="w-full md:w-auto border border-primary text-primary px-6 md:px-10 py-4 md:py-5 text-[10px] font-headline font-bold uppercase tracking-widest hover:bg-primary hover:text-background transition-all flex items-center justify-center gap-3"
                 >
                   ACCESS_DOSSIER <ArrowRight className="w-4 h-4" />
                 </button>
@@ -224,7 +226,7 @@ export default function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="py-32 px-6 md:px-12"
+          className="py-16 md:py-32 px-4 md:px-12"
         >
           <div className="container max-w-7xl mx-auto">
             <AboutMe />
@@ -238,16 +240,16 @@ export default function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="py-32 px-6 md:px-12 max-w-7xl mx-auto"
+          className="py-16 md:py-32 px-4 md:px-12 max-w-7xl mx-auto"
         >
-          <div className="flex items-end justify-between mb-20">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-20 gap-4">
             <div>
               <span className="text-[10px] font-code text-primary uppercase tracking-[0.4em] mb-4 block animate-pulse">// SELECTED_WORKS</span>
-              <h3 className="text-4xl font-headline font-black text-white uppercase tracking-tighter">PROJECT_REPOSITORIES</h3>
+              <h3 className="text-3xl md:text-4xl font-headline font-black text-white uppercase tracking-tighter">PROJECT_REPOSITORIES</h3>
             </div>
-            <button className="text-[10px] font-headline font-bold text-muted-foreground hover:text-primary transition-colors uppercase tracking-widest border-b border-muted-foreground/20 pb-1">VIEW_ALL_REPOS</button>
+            <button className="text-[10px] font-headline font-bold text-muted-foreground hover:text-primary transition-colors uppercase tracking-widest border-b border-muted-foreground/20 pb-1 w-fit">VIEW_ALL_REPOS</button>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {portfolioData.projects.map((project, i) => (
               <motion.div key={project.id} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ delay: i * 0.1 }}>
                 <ProjectCard project={project} />
@@ -263,7 +265,7 @@ export default function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="py-32 bg-primary/[0.02] border-y border-white/5 px-6 md:px-12"
+          className="py-16 md:py-32 bg-primary/[0.02] border-y border-white/5 px-4 md:px-12"
         >
           <div className="container max-w-7xl mx-auto">
             <SkillMatrix skills={portfolioData.skills} />
@@ -277,7 +279,7 @@ export default function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="py-32 px-6 md:px-12"
+          className="py-16 md:py-32 px-4 md:px-12"
         >
           <div className="container max-w-7xl mx-auto">
             <AiDossierLab />
@@ -291,7 +293,7 @@ export default function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="py-32 border-t border-white/5 px-6 md:px-12"
+          className="py-16 md:py-32 border-t border-white/5 px-4 md:px-12"
         >
           <div className="container max-w-7xl mx-auto">
             <ContactModule />
@@ -299,13 +301,13 @@ export default function Home() {
         </motion.section>
       </main>
 
-      <footer className="py-16 border-t border-white/5 text-center bg-black/40">
+      <footer className="py-12 md:py-16 border-t border-white/5 text-center bg-black/40">
         <div className="flex justify-center gap-8 mb-8">
           <Github className="w-5 h-5 text-muted-foreground hover:text-primary transition-colors cursor-pointer" />
           <Linkedin className="w-5 h-5 text-muted-foreground hover:text-primary transition-colors cursor-pointer" />
           <Twitter className="w-5 h-5 text-muted-foreground hover:text-primary transition-colors cursor-pointer" />
         </div>
-        <p className="text-[10px] font-code text-muted-foreground/50 uppercase tracking-[0.3em]">
+        <p className="text-[9px] md:text-[10px] font-code text-muted-foreground/50 uppercase tracking-[0.3em] px-4">
           © 2024 // RG_NODE_SF // SYSTEM_STABLE
         </p>
       </footer>

@@ -7,6 +7,7 @@ import { motion, useSpring, useMotionValue, AnimatePresence } from "framer-motio
 export const CustomCursor = () => {
   const [isHovering, setIsHovering] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
   const [coords, setCoords] = useState({ x: 0, y: 0 })
   
   // High-precision tracking
@@ -19,7 +20,17 @@ export const CustomCursor = () => {
   const lagY = useSpring(mouseY, springConfig)
 
   useEffect(() => {
+    // Check if device is mobile/touch
+    const checkDevice = () => {
+      const isTouch = window.matchMedia("(pointer: coarse)").matches
+      setIsMobile(isTouch)
+    }
+    
+    checkDevice()
+    window.addEventListener("resize", checkDevice)
+
     const handleMouseMove = (e: MouseEvent) => {
+      if (isMobile) return
       mouseX.set(e.clientX)
       mouseY.set(e.clientY)
       setCoords({ x: e.clientX, y: e.clientY })
@@ -27,6 +38,7 @@ export const CustomCursor = () => {
     }
 
     const handleMouseOver = (e: MouseEvent) => {
+      if (isMobile) return
       const target = e.target as HTMLElement
       if (target.closest('button, a, input, textarea, [role="button"], .interactive')) {
         setIsHovering(true)
@@ -36,7 +48,9 @@ export const CustomCursor = () => {
     }
 
     const handleMouseLeave = () => setIsVisible(false)
-    const handleMouseEnter = () => setIsVisible(true)
+    const handleMouseEnter = () => {
+      if (!isMobile) setIsVisible(true)
+    }
 
     window.addEventListener("mousemove", handleMouseMove)
     window.addEventListener("mouseover", handleMouseOver)
@@ -44,17 +58,18 @@ export const CustomCursor = () => {
     document.addEventListener("mouseenter", handleMouseEnter)
 
     return () => {
+      window.removeEventListener("resize", checkDevice)
       window.removeEventListener("mousemove", handleMouseMove)
       window.removeEventListener("mouseover", handleMouseOver)
       document.removeEventListener("mouseleave", handleMouseLeave)
       document.removeEventListener("mouseenter", handleMouseEnter)
     }
-  }, [mouseX, mouseY, isVisible])
+  }, [mouseX, mouseY, isVisible, isMobile])
 
-  if (!isVisible) return null
+  if (isMobile || !isVisible) return null
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-[9999] overflow-hidden">
+    <div className="fixed inset-0 pointer-events-none z-[9999] overflow-hidden hidden md:block">
       {/* Primary HUD Readout (Position & Status) */}
       <motion.div 
         className="absolute flex flex-col gap-1 pointer-events-none"

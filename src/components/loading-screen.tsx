@@ -45,12 +45,12 @@ export const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
   }, [progress, logs])
 
   return (
-    <div className="fixed inset-0 z-[200] bg-[#060606] flex flex-col items-center justify-center p-8 font-code overflow-hidden">
+    <div className="fixed inset-0 z-[200] bg-[#060606] flex flex-col items-center justify-center p-6 md:p-8 font-code overflow-hidden">
       {/* Background UI Grid */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-grid-primary"></div>
       
-      {/* GIF Container - Removed boundaries and ring, background blended with #060606 */}
-      <div className="relative w-72 h-72 mb-12 flex items-center justify-center overflow-visible">
+      {/* GIF Container */}
+      <div className="relative w-48 h-48 md:w-72 md:h-72 mb-8 md:mb-12 flex items-center justify-center overflow-visible">
         <Image 
           src="/images/hacking watch dogs GIF.gif" 
           alt="Infiltration" 
@@ -61,21 +61,21 @@ export const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
         />
       </div>
       
-      <div className="w-full max-w-md space-y-6 relative z-10">
+      <div className="w-full max-w-[90vw] md:max-w-md space-y-4 md:space-y-6 relative z-10">
         <div className="flex justify-between items-end">
           <div className="flex flex-col">
-            <span className="text-primary text-[10px] uppercase font-bold tracking-[0.4em] animate-pulse">
-              SYSTEM_INFILTRATION_IN_PROGRESS
+            <span className="text-primary text-[8px] md:text-[10px] uppercase font-bold tracking-[0.4em] animate-pulse">
+              SYSTEM_INFILTRATION
             </span>
-            <span className="text-primary/40 text-[8px] font-mono mt-1">
-              USER_ID: DEDSEC_OPERATIVE // NODE: SF_041
+            <span className="text-primary/40 text-[7px] md:text-[8px] font-mono mt-1">
+              NODE: SF_041
             </span>
           </div>
-          <span className="text-primary font-headline text-3xl tabular-nums tracking-tighter">{progress}%</span>
+          <span className="text-primary font-headline text-xl md:text-3xl tabular-nums tracking-tighter">{progress}%</span>
         </div>
 
         {/* Progress Bar */}
-        <div className="h-1.5 w-full bg-white/5 border border-white/10 relative overflow-hidden">
+        <div className="h-1 md:h-1.5 w-full bg-white/5 border border-white/10 relative overflow-hidden">
           <motion.div 
             className="absolute top-0 left-0 h-full bg-primary"
             initial={{ width: "0%" }}
@@ -86,19 +86,19 @@ export const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
         </div>
 
         {/* Terminal Logs */}
-        <div className="h-28 overflow-hidden border-l-2 border-primary/20 pl-5 space-y-1.5">
+        <div className="h-20 md:h-28 overflow-hidden border-l border-primary/20 pl-4 md:pl-5 space-y-1">
           <AnimatePresence mode="popLayout">
-            {logs.slice(-4).map((log, i) => (
+            {logs.slice(-3).map((log, i) => (
               <motion.div
                 key={log}
-                initial={{ opacity: 0, x: -15 }}
+                initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 15 }}
-                className="text-[10px] text-primary font-mono uppercase tracking-tight flex items-center gap-3"
+                exit={{ opacity: 0, x: 10 }}
+                className="text-[9px] md:text-[10px] text-primary font-mono uppercase tracking-tight flex items-center gap-2 md:gap-3"
               >
-                <span className="text-primary/30 min-w-[70px]">[{new Date().toLocaleTimeString([], { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' })}]</span>
-                <span className={i === logs.slice(-4).length - 1 ? "text-primary font-bold" : "text-primary/40"}>
-                  {i === logs.slice(-4).length - 1 ? ">> " : "   "} {log}
+                <span className="text-primary/30 hidden xs:inline min-w-[60px] md:min-w-[70px]">[{new Date().toLocaleTimeString([], { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' })}]</span>
+                <span className={i === logs.slice(-3).length - 1 ? "text-primary font-bold" : "text-primary/40"}>
+                  {i === logs.slice(-3).length - 1 ? ">> " : "   "} {log}
                 </span>
               </motion.div>
             ))}
