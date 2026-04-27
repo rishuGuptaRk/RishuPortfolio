@@ -10,6 +10,7 @@ import { AiDossierLab } from "@/components/ai-dossier-lab"
 import { LoadingScreen } from "@/components/loading-screen"
 import { ThemeMatrix } from "@/components/theme-matrix"
 import { AboutMe } from "@/components/about-me"
+import { WorksSection } from "@/components/works-section"
 import { motion, useScroll, useSpring } from "framer-motion"
 import { 
   Terminal, 
@@ -18,7 +19,8 @@ import {
   X,
   User,
   Cpu,
-  Bot
+  Bot,
+  Briefcase
 } from "lucide-react"
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet"
 
@@ -40,7 +42,7 @@ export default function Home() {
     setProfilePic(localProfiles[Math.floor(Math.random() * localProfiles.length)])
 
     const handleScroll = () => {
-      const sections = ["hero", "about", "skills", "lab", "contact"]
+      const sections = ["hero", "about", "works", "skills", "lab", "contact"]
       const current = sections.find(section => {
         const el = document.getElementById(section)
         if (el) {
@@ -77,9 +79,10 @@ export default function Home() {
 
   const navItems = [
     { id: "hero", label: "HOME", icon: Terminal },
-    { id: "about", label: "ABOUT_OPERATIVE", icon: User },
-    { id: "skills", label: "TECH_STACK", icon: Cpu },
-    { id: "lab", label: "NEURAL_AI", icon: Bot },
+    { id: "about", label: "ABOUT", icon: User },
+    { id: "works", label: "WORKS", icon: Briefcase },
+    { id: "skills", label: "STACK", icon: Cpu },
+    { id: "lab", label: "NEURAL", icon: Bot },
   ]
 
   return (
@@ -98,7 +101,7 @@ export default function Home() {
           </div>
         </motion.div>
 
-        <nav className="hidden lg:flex items-center gap-10">
+        <nav className="hidden lg:flex items-center gap-8">
           {navItems.map((item) => (
             <button
               key={item.id}
@@ -252,6 +255,10 @@ export default function Home() {
             <AboutMe />
           </div>
         </motion.section>
+
+        <section id="works">
+          <WorksSection />
+        </section>
 
         <motion.section 
           id="skills" 
