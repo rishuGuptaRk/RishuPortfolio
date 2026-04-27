@@ -78,7 +78,7 @@ const ProjectSlide = ({ project, index }: { project: Project; index: number }) =
           </div>
 
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-6">
-            <Button className="bg-primary hover:bg-primary/80 text-primary-foreground font-headline font-bold h-12 px-10 rounded-none group flex-1 sm:flex-none">
+            <Button className="bg-primary hover:bg-primary/80 text-primary-foreground font-headline font-bold h-12 px-10 rounded-none group flex-1 sm:flex-none shadow-[0_0_15px_rgba(var(--primary),0.3)]">
               LAUNCH_SYSTEM <ExternalLink className="ml-2 w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
             </Button>
             <button className="flex items-center justify-center gap-3 text-white/60 hover:text-primary font-headline font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] transition-all h-12 px-8 border border-white/5 hover:border-primary/50 bg-white/5">
@@ -95,7 +95,7 @@ const ProjectSlide = ({ project, index }: { project: Project; index: number }) =
             {/* Interactive Core */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
               <div className="w-64 h-64 rounded-full bg-primary/10 blur-[120px] animate-pulse" />
-              <div className="relative z-10 w-24 h-24 rounded-full border border-primary/30 flex items-center justify-center bg-black/80 backdrop-blur-3xl group-hover:scale-110 transition-transform duration-1000">
+              <div className="relative z-10 w-24 h-24 rounded-full border border-primary/30 flex items-center justify-center bg-black/80 backdrop-blur-3xl group-hover:scale-110 transition-transform duration-1000 shadow-[0_0_30px_rgba(var(--primary),0.2)]">
                 <Terminal className="w-10 h-10 text-primary animate-flicker" />
                 <div className="absolute inset-0 border border-primary/20 rounded-full animate-ping opacity-30" />
               </div>
@@ -136,28 +136,35 @@ const ProjectSlide = ({ project, index }: { project: Project; index: number }) =
 export const ProjectShowcase = ({ projects }: { projects: Project[] }) => {
   const targetRef = useRef<HTMLDivElement>(null)
   
+  // The scroll progress of the container
   const { scrollYProgress } = useScroll({
     target: targetRef,
     offset: ["start start", "end end"]
   })
 
-  // Percentage-based translation is more stable across different screen ratios
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", `-${(projects.length - 1) * 100}%`])
+  // We need to translate by (N-1) * 100% to show all projects
+  // But since the container is (N * 100%), we translate by a fraction
+  const xTranslate = useTransform(
+    scrollYProgress, 
+    [0, 1], 
+    ["0%", `-${(projects.length - 1) * 100}%`]
+  )
   
-  const springX = useSpring(x, {
-    stiffness: 200,
-    damping: 40,
-    restDelta: 0.001
+  // Use high-stiffness spring for responsive input tracking
+  const springX = useSpring(xTranslate, {
+    stiffness: 250,
+    damping: 50,
+    restDelta: 0.0001
   })
 
   return (
     <section id="projects" ref={targetRef} className="relative h-[400vh] bg-[#050505] overflow-visible">
-      {/* Sticky Container */}
+      {/* Sticky Container - This is the "pin: true" equivalent */}
       <div className="sticky top-0 h-screen w-full overflow-hidden">
-        {/* Horizontal Track */}
+        {/* Horizontal Track - The width is based on project count */}
         <motion.div 
           style={{ x: springX }} 
-          className="flex h-full w-[300%] flex-nowrap"
+          className={`flex h-full w-[${projects.length * 100}%] flex-nowrap`}
         >
           {projects.map((project, index) => (
             <ProjectSlide 

@@ -194,7 +194,7 @@ export default function Home() {
         </div>
       </header>
 
-      <main>
+      <main className="overflow-x-clip">
         {/* Hero Section */}
         <section id="hero" className="relative min-h-screen flex flex-col justify-center px-4 md:px-12 pt-32 pb-12">
           <div className="relative z-10 space-y-4 max-w-7xl w-full">
@@ -269,7 +269,7 @@ export default function Home() {
           </div>
         </motion.section>
 
-        {/* Repositories - Fixed Horizontal Showcase */}
+        {/* Repositories - Horizontal Sticky Scroll */}
         <ProjectShowcase projects={portfolioData.projects as any} />
 
         {/* System Capabilities */}
