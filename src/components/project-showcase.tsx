@@ -25,83 +25,84 @@ const ProjectSlide = ({ project, index }: { project: Project; index: number }) =
   const imageData = PlaceHolderImages.find(img => img.id === project.image)
 
   return (
-    <div className="relative w-screen h-screen flex items-center justify-center flex-shrink-0 px-4 md:px-12">
+    <div className="relative w-screen h-screen flex items-center justify-center flex-shrink-0 px-4 md:px-12 overflow-hidden">
       {/* Background Section Number */}
-      <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[15vw] md:text-[20vw] font-black text-primary/5 pointer-events-none select-none z-0 font-headline">
+      <div className="absolute left-8 top-1/2 -translate-y-1/2 text-[15vw] md:text-[20vw] font-black text-primary/5 pointer-events-none select-none z-0 font-headline leading-none">
         0{index + 1}
       </div>
 
       <div className="container max-w-7xl mx-auto grid lg:grid-cols-12 gap-8 md:gap-16 items-center relative z-10">
-        {/* Left Content (Col 5) */}
-        <div className="lg:col-span-5 space-y-4 md:space-y-8">
+        {/* Left Content */}
+        <div className="lg:col-span-5 space-y-6 md:space-y-8">
           <motion.div 
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
             className="flex items-center gap-3"
           >
             <div className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-primary/30 flex items-center justify-center bg-primary/5">
               <Zap className="w-4 h-4 md:w-5 md:h-5 text-primary" />
             </div>
-            <span className="text-primary font-headline font-bold text-[8px] md:text-[10px] tracking-[0.3em] uppercase">
+            <span className="text-primary font-headline font-bold text-[9px] md:text-[11px] tracking-[0.3em] uppercase">
               {project.category}
             </span>
           </motion.div>
 
-          <div className="space-y-2 md:space-y-4">
-            <h2 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black font-headline text-white leading-[0.9] tracking-tighter uppercase">
+          <div className="space-y-3 md:space-y-4">
+            <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black font-headline text-white leading-[0.9] tracking-tighter uppercase">
               {project.title}
             </h2>
-            <p className="text-xs md:text-base lg:text-lg text-muted-foreground/80 font-body leading-relaxed max-w-xl line-clamp-4 md:line-clamp-none">
+            <p className="text-sm md:text-base lg:text-lg text-muted-foreground/80 font-body leading-relaxed max-w-xl">
               {project.description}
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-1.5 md:gap-2">
+          <div className="flex flex-wrap gap-2">
             {project.tech.map(t => (
-              <div key={t} className="px-2 py-0.5 md:px-3 md:py-1 border border-primary/20 text-[8px] md:text-[10px] font-code text-primary/70 tracking-widest bg-primary/5">
+              <div key={t} className="px-3 py-1 border border-primary/20 text-[9px] md:text-[11px] font-code text-primary/80 tracking-widest bg-primary/5 uppercase">
                 {t}
               </div>
             ))}
           </div>
 
-          <div className="grid grid-cols-2 gap-4 md:gap-8 pt-4 md:pt-6 border-t border-white/10">
+          <div className="grid grid-cols-2 gap-8 pt-6 border-t border-white/10">
             <div className="group">
-              <p className="text-[8px] md:text-[9px] font-code text-muted-foreground uppercase tracking-widest mb-1">Latency</p>
+              <p className="text-[9px] font-code text-muted-foreground uppercase tracking-widest mb-1">LATENCY_STABLE</p>
               <div className="flex items-center gap-2">
-                <Activity className="w-3 h-3 md:w-4 md:h-4 text-primary opacity-50 group-hover:opacity-100 transition-opacity" />
-                <p className="text-lg md:text-2xl font-headline font-bold text-primary">{project.metrics.latency}</p>
+                <Activity className="w-4 h-4 text-primary opacity-50 group-hover:opacity-100 transition-opacity" />
+                <p className="text-2xl md:text-3xl font-headline font-bold text-primary">{project.metrics.latency}</p>
               </div>
             </div>
             <div className="group">
-              <p className="text-[8px] md:text-[9px] font-code text-muted-foreground uppercase tracking-widest mb-1">Lighthouse</p>
+              <p className="text-[9px] font-code text-muted-foreground uppercase tracking-widest mb-1">LIGHTHOUSE_SCORE</p>
               <div className="flex items-center gap-2">
-                <Layout className="w-3 h-3 md:w-4 md:h-4 text-primary opacity-50 group-hover:opacity-100 transition-opacity" />
-                <p className="text-lg md:text-2xl font-headline font-bold text-primary">{project.metrics.lighthouse}</p>
+                <Layout className="w-4 h-4 text-primary opacity-50 group-hover:opacity-100 transition-opacity" />
+                <p className="text-2xl md:text-3xl font-headline font-bold text-primary">{project.metrics.lighthouse}</p>
               </div>
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 md:gap-4 pt-2 md:pt-4">
-            <Button className="bg-primary hover:bg-primary/80 text-primary-foreground font-headline font-bold h-10 md:h-12 px-6 md:px-8 rounded-none group flex-1 sm:flex-none">
-              LAUNCH <ExternalLink className="ml-2 w-3 h-3 md:w-4 md:h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-6">
+            <Button className="bg-primary hover:bg-primary/80 text-primary-foreground font-headline font-bold h-12 px-10 rounded-none group flex-1 sm:flex-none">
+              LAUNCH_SYSTEM <ExternalLink className="ml-2 w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
             </Button>
-            <button className="flex items-center justify-center gap-2 text-white/60 hover:text-primary font-headline font-bold text-[9px] md:text-xs uppercase tracking-widest transition-colors h-10 md:h-12 px-4 md:px-6 border border-white/5 hover:border-primary/50">
-              <Github className="w-4 h-4 md:w-5 md:h-5" /> SOURCE
+            <button className="flex items-center justify-center gap-3 text-white/60 hover:text-primary font-headline font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] transition-all h-12 px-8 border border-white/5 hover:border-primary/50 bg-white/5">
+              <Github className="w-5 h-5" /> SOURCE_CODE
             </button>
           </div>
         </div>
 
-        {/* Right Visual Panel (Col 7) */}
-        <div className="lg:col-span-7 relative aspect-square md:aspect-video lg:aspect-square hidden sm:block">
-          <div className="absolute inset-0 border border-white/10 bg-black/40 backdrop-blur-sm rounded-sm overflow-hidden group">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-50" />
+        {/* Right Visual Panel */}
+        <div className="lg:col-span-7 relative aspect-square hidden lg:block">
+          <div className="absolute inset-0 border border-white/10 bg-black/60 backdrop-blur-md rounded-sm overflow-hidden group">
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-transparent to-transparent opacity-60" />
             
-            {/* Animated Center Core */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-32 h-32 md:w-64 md:h-64 rounded-full bg-primary/5 blur-[100px] animate-pulse" />
-              <div className="relative z-10 w-16 h-16 md:w-24 md:h-24 rounded-full border border-primary/30 flex items-center justify-center bg-black/60 backdrop-blur-2xl group-hover:scale-110 transition-transform duration-700">
-                <Terminal className="w-6 h-6 md:w-8 md:h-8 text-primary" />
-                <div className="absolute inset-0 border border-primary/20 rounded-full animate-ping opacity-20" />
+            {/* Interactive Core */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div className="w-64 h-64 rounded-full bg-primary/10 blur-[120px] animate-pulse" />
+              <div className="relative z-10 w-24 h-24 rounded-full border border-primary/30 flex items-center justify-center bg-black/80 backdrop-blur-3xl group-hover:scale-110 transition-transform duration-1000">
+                <Terminal className="w-10 h-10 text-primary animate-flicker" />
+                <div className="absolute inset-0 border border-primary/20 rounded-full animate-ping opacity-30" />
               </div>
             </div>
             
@@ -110,27 +111,33 @@ const ProjectSlide = ({ project, index }: { project: Project; index: number }) =
                 src={imageData.imageUrl}
                 alt={project.title}
                 fill
-                className="object-cover opacity-20 grayscale contrast-125 group-hover:opacity-40 group-hover:scale-105 transition-all duration-1000"
+                className="object-cover opacity-30 grayscale contrast-150 group-hover:opacity-60 group-hover:scale-105 transition-all duration-1000"
                 unoptimized={imageData.imageUrl.endsWith('.gif')}
               />
             )}
             
-            {/* Scanning Line */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-20">
-              <div className="w-full h-px bg-primary absolute top-0 animate-[scan_3s_linear_infinite]" />
+            {/* Tactical Grid Overlay */}
+            <div className="absolute inset-0 opacity-10 pointer-events-none bg-grid-primary" />
+            
+            {/* Scanning Line Animation */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-30">
+              <div className="w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent absolute top-0 animate-[scan_4s_linear_infinite]" />
             </div>
           </div>
           
-          {/* Tactical Corner Elements */}
-          <div className="absolute -top-3 -left-3 w-10 h-10 border-t-2 border-l-2 border-primary/50" />
-          <div className="absolute -bottom-3 -right-3 w-10 h-10 border-b-2 border-r-2 border-primary/50" />
+          {/* Decorative HUD Elements */}
+          <div className="absolute -top-4 -left-4 w-12 h-12 border-t-2 border-l-2 border-primary/60" />
+          <div className="absolute -bottom-4 -right-4 w-12 h-12 border-b-2 border-r-2 border-primary/60" />
+          <div className="absolute top-1/2 -right-2 -translate-y-1/2 flex flex-col gap-2">
+            {[1, 2, 3, 4].map(i => <div key={i} className="w-1 h-4 bg-primary/20" />)}
+          </div>
         </div>
       </div>
 
       <style jsx>{`
         @keyframes scan {
-          0% { transform: translateY(0vh); }
-          100% { transform: translateY(100vh); }
+          0% { transform: translateY(-10vh); }
+          100% { transform: translateY(110vh); }
         }
       `}</style>
     </div>
@@ -144,24 +151,24 @@ export const ProjectShowcase = ({ projects }: { projects: Project[] }) => {
     target: targetRef,
   })
 
-  // Horizontal translation logic: Use percentages for smoother, more reliable translation
+  // Horizontal translation logic: Map 0-1 scroll progress to 0 to -(N-1)*100%
   const x = useTransform(scrollYProgress, [0, 1], ["0%", `-${(projects.length - 1) * 100}%`])
   
-  // Smooth spring for professional cinematic feel
+  // Professional cinematic spring - slightly more stiff for responsiveness
   const springX = useSpring(x, {
-    stiffness: 80,
-    damping: 30,
+    stiffness: 150,
+    damping: 35,
     restDelta: 0.001
   })
 
   return (
-    <section id="projects" ref={targetRef} className="relative h-[400vh] bg-black">
-      {/* Sticky Container - This locks to the top of the viewport */}
-      <div className="sticky top-0 h-screen overflow-hidden flex items-center">
-        {/* Horizontal Scrolling Track */}
+    <section id="projects" ref={targetRef} className="relative h-[400vh] bg-[#050505]">
+      {/* Sticky Container - locks while scrollHeight is processed */}
+      <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center">
+        {/* Horizontal Track */}
         <motion.div 
           style={{ x: springX }} 
-          className="flex h-full w-fit"
+          className="flex h-full w-fit pointer-events-auto"
         >
           {projects.map((project, index) => (
             <ProjectSlide 
@@ -172,12 +179,20 @@ export const ProjectShowcase = ({ projects }: { projects: Project[] }) => {
           ))}
         </motion.div>
 
-        {/* Global Section UI Decor */}
-        <div className="absolute bottom-8 md:bottom-12 left-8 md:left-12 z-20 hidden sm:flex items-center gap-6">
-          <div className="h-px w-16 md:w-24 bg-primary/20" />
-          <span className="text-[8px] md:text-[10px] font-code text-primary/40 uppercase tracking-[0.5em]">
-            REPOSITORY_SCROLL_MODE_ACTIVE
-          </span>
+        {/* Global HUD Decor */}
+        <div className="absolute bottom-8 left-8 right-8 z-20 flex items-center justify-between pointer-events-none">
+          <div className="flex items-center gap-6">
+            <div className="h-px w-24 bg-primary/30" />
+            <span className="text-[10px] font-code text-primary/60 uppercase tracking-[0.5em] animate-pulse">
+              REPOSITORY_BROWSER_ACTIVE
+            </span>
+          </div>
+          <div className="flex items-center gap-4">
+            <span className="text-[10px] font-code text-primary/40 uppercase tracking-widest">
+              SYSTEM_STABLE // RG_041
+            </span>
+            <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+          </div>
         </div>
       </div>
     </section>

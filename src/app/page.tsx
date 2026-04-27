@@ -99,7 +99,7 @@ export default function Home() {
   ]
 
   return (
-    <div className="min-h-screen bg-background selection:bg-primary selection:text-primary-foreground font-body">
+    <div className="min-h-screen bg-background selection:bg-primary selection:text-primary-foreground font-body overflow-x-clip">
       <div className="scanline"></div>
       
       {/* Scroll Progress Bar */}
