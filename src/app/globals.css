@@ -62,7 +62,13 @@
 @layer base {
   * {
     @apply border-border;
+    cursor: none !important;
   }
+  
+  html, body {
+    cursor: none !important;
+  }
+
   body {
     @apply bg-background text-foreground selection:bg-primary selection:text-primary-foreground overflow-x-hidden antialiased;
     background-image: 
