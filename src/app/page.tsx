@@ -1,4 +1,3 @@
-
 "use client"
 
 import React, { useState, useEffect } from "react"
@@ -258,7 +257,7 @@ export default function Home() {
                 initial={{ y: 100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 1.2, ease: [0.33, 1, 0.68, 1] }}
-                className="text-5xl sm:text-7xl md:text-[150px] font-black font-headline text-white tracking-tighter uppercase leading-[0.8]"
+                className="text-5xl sm:text-7xl md:text-[150px] font-black font-headline text-white tracking-widest uppercase leading-[0.8]"
               >
                 RISHU
               </motion.h1>
@@ -266,7 +265,7 @@ export default function Home() {
                 initial={{ y: 100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 1.2, delay: 0.1, ease: [0.33, 1, 0.68, 1] }}
-                className="text-5xl sm:text-7xl md:text-[150px] font-black font-headline tracking-tighter uppercase leading-[0.8] flex items-end"
+                className="text-5xl sm:text-7xl md:text-[150px] font-black font-headline tracking-widest uppercase leading-[0.8] flex items-end"
               >
                 <span className="text-transparent" style={{ WebkitTextStroke: '2px hsl(var(--primary))' }}>GUPTA</span>
                 <span className="text-primary ml-1 md:ml-2 mb-1 md:mb-4">.</span>
