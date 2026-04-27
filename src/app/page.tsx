@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useState, useEffect } from "react"
@@ -59,7 +60,7 @@ export default function Home() {
     <div className="min-h-screen bg-background selection:bg-primary selection:text-primary-foreground font-body">
       <div className="scanline"></div>
 
-      {/* Navigation - Enhanced with tactical boxed uplink */}
+      {/* Navigation - Tactical boxed uplink */}
       <header className="fixed top-0 left-0 w-full z-[100] px-6 md:px-12 py-6 flex justify-between items-center bg-gradient-to-b from-background/90 to-transparent backdrop-blur-sm border-b border-white/5">
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex items-center gap-2">
           <span className="text-2xl font-black font-headline tracking-tighter text-white">RG.</span>
@@ -131,8 +132,8 @@ export default function Home() {
                 variants={titleRiseVariants}
                 className="text-7xl md:text-[150px] font-black font-headline tracking-tighter uppercase leading-[0.8] flex items-end"
               >
-                {/* Fixed GUPTA visibility - Solid primary color with outline for pop */}
-                <span className="text-primary" style={{ WebkitTextStroke: '2px rgba(255,255,255,0.1)' }}>GUPTA</span>
+                {/* GUPTA with tactical outline effect */}
+                <span className="text-transparent" style={{ WebkitTextStroke: '2px hsl(var(--primary))' }}>GUPTA</span>
                 <span className="text-primary ml-2 mb-2 md:mb-4">.</span>
               </motion.h1>
             </div>

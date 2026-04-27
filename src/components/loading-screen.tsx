@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useState, useEffect } from "react"
@@ -48,7 +49,7 @@ export const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
       {/* Background UI Grid */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-grid-primary"></div>
       
-      {/* GIF Container - Removed boundaries and ring as requested */}
+      {/* GIF Container - Removed boundaries and ring, background blended with #060606 */}
       <div className="relative w-72 h-72 mb-12 flex items-center justify-center overflow-visible">
         <Image 
           src="/images/hacking watch dogs GIF.gif" 
