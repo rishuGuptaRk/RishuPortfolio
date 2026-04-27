@@ -63,15 +63,15 @@ export default function Home() {
   const handleNavClick = (id: string) => {
     setIsNavigating(true)
     
-    // 1200ms "Deep Infiltration" sequence
+    // 800ms "Deep Infiltration" sequence
     setTimeout(() => {
       const element = document.getElementById(id)
       element?.scrollIntoView({ behavior: "smooth" })
       
       setTimeout(() => {
         setIsNavigating(false)
-      }, 800) 
-    }, 1200)
+      }, 400) 
+    }, 800)
   }
 
   if (isLoading) {
@@ -98,7 +98,7 @@ export default function Home() {
               opacity: [0, 1, 0.8, 1, 0.9, 1],
               backdropFilter: ["blur(0px)", "blur(10px)", "blur(5px)", "blur(15px)", "blur(8px)", "blur(20px)"]
             }}
-            exit={{ opacity: 0, transition: { duration: 0.8 } }}
+            exit={{ opacity: 0, transition: { duration: 0.4 } }}
             className="fixed inset-0 z-[200] pointer-events-none bg-black/40 backdrop-blur-sm flex items-center justify-center overflow-hidden"
           >
             <div className="absolute inset-0 bg-primary/5 mix-blend-overlay" />
@@ -131,7 +131,7 @@ export default function Home() {
                   <motion.div 
                     initial={{ width: "0%" }}
                     animate={{ width: "100%" }}
-                    transition={{ duration: 1.2, ease: "easeInOut" }}
+                    transition={{ duration: 0.8, ease: "easeInOut" }}
                     className="absolute top-0 left-0 h-full bg-primary"
                   />
                 </div>
@@ -141,7 +141,7 @@ export default function Home() {
 
             <motion.div 
               animate={{ top: ["-10%", "110%"] }}
-              transition={{ duration: 0.5, repeat: Infinity, ease: "linear" }}
+              transition={{ duration: 0.4, repeat: Infinity, ease: "linear" }}
               className="absolute left-0 right-0 h-px bg-primary shadow-[0_0_15px_hsl(var(--primary))] z-[210]"
             />
           </motion.div>
