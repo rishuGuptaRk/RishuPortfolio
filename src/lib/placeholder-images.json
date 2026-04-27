@@ -8,14 +8,14 @@
     },
     {
       "id": "dedsec-skull",
-      "description": "High definition dithered skull signature",
-      "imageUrl": "https://picsum.photos/seed/dedsec-skull-hd/800/800",
+      "description": "Interactive matrix-style DedSec skull",
+      "imageUrl": "https://raw.githubusercontent.com/Anshul-69/DedSec-Terminal/main/dedsec.gif",
       "imageHint": "hacker skull"
     },
     {
       "id": "loading-gif",
       "description": "DedSec system infiltration glitch",
-      "imageUrl": "https://raw.githubusercontent.com/Anshul-69/DedSec-Terminal/main/dedsec.gif",
+      "imageUrl": "/images/hacking watch dogs GIF.gif",
       "imageHint": "hacker glitch"
     },
     {

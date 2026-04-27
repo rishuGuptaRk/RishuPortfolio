@@ -12,7 +12,7 @@ import { AiDossierLab } from "@/components/ai-dossier-lab"
 import { PlaceHolderImages } from "@/lib/placeholder-images"
 import { LoadingScreen } from "@/components/loading-screen"
 import { ThemeMatrix } from "@/components/theme-matrix"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
