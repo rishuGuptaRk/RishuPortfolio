@@ -1,5 +1,9 @@
+
+"use client"
+
 import React from "react"
 import { cn } from "@/lib/utils"
+import { motion } from "framer-motion"
 
 interface HudContainerProps {
   children: React.ReactNode
@@ -13,7 +17,12 @@ export const HudContainer = ({ children, title, className, variant = "default" }
   const titleColor = variant === "accent" ? "text-accent" : "text-primary"
 
   return (
-    <div className={cn("relative border border-primary/20 bg-card/40 backdrop-blur-md p-6 group", className)}>
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className={cn("relative border border-primary/20 bg-card/40 backdrop-blur-md p-6 group overflow-hidden", className)}
+    >
       {/* Precision Corners */}
       <div className={cn("absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 transition-all duration-300 group-hover:w-5 group-hover:h-5", borderColor)}></div>
       <div className={cn("absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 transition-all duration-300 group-hover:w-5 group-hover:h-5", borderColor)}></div>
@@ -46,6 +55,11 @@ export const HudContainer = ({ children, title, className, variant = "default" }
 
       {/* Grid Pattern Overlay */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.05] bg-[linear-gradient(rgba(139,77,242,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(139,77,242,0.1)_1px,transparent_1px)] bg-[size:15px_15px]"></div>
-    </div>
+      
+      {/* Scanning Line Animation on Hover */}
+      <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-10 transition-opacity duration-500 overflow-hidden">
+        <div className="w-full h-full bg-gradient-to-b from-transparent via-primary to-transparent animate-[scanline_2s_linear_infinite]"></div>
+      </div>
+    </motion.div>
   )
 }

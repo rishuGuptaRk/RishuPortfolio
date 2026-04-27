@@ -1,3 +1,4 @@
+
 "use client"
 
 import React from "react"
@@ -5,8 +6,9 @@ import Image from "next/image"
 import { HudContainer } from "./hud-container"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { ExternalLink, Terminal, Eye } from "lucide-react"
+import { ExternalLink, Terminal } from "lucide-react"
 import { PlaceHolderImages } from "@/lib/placeholder-images"
+import { motion } from "framer-motion"
 
 interface ProjectCardProps {
   project: {
@@ -23,21 +25,25 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
   const imageData = PlaceHolderImages.find(img => img.id === project.image)
 
   return (
-    <HudContainer className="h-full flex flex-col group/project transition-all duration-300 hover:-translate-y-1">
+    <HudContainer className="h-full flex flex-col group/project transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(250,204,21,0.1)]">
       <div className="relative h-52 mb-6 overflow-hidden border border-primary/10">
         <Image
           src={imageData?.imageUrl || `https://picsum.photos/seed/${project.id}/600/400`}
           alt={project.title}
           fill
-          className="object-cover transition-all duration-700 grayscale group-hover/project:grayscale-0 group-hover/project:scale-105"
+          className="object-cover transition-all duration-700 grayscale group-hover/project:grayscale-0 group-hover/project:scale-110"
           data-ai-hint={imageData?.imageHint || "tech project"}
+          unoptimized={imageData?.imageUrl.endsWith('.gif')}
         />
         
-        {/* Hover Overlay */}
-        <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover/project:opacity-100 transition-opacity pointer-events-none mix-blend-overlay"></div>
+        {/* Scanning Scanline Overlay */}
+        <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover/project:opacity-100 transition-opacity pointer-events-none mix-blend-overlay overflow-hidden">
+          <div className="w-full h-1 bg-primary/40 absolute top-0 animate-[scanline_1.5s_linear_infinite]"></div>
+        </div>
+
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover/project:opacity-100 transition-all duration-300 translate-y-4 group-hover/project:translate-y-0">
           <div className="bg-primary/90 text-primary-foreground px-4 py-2 font-code text-[10px] uppercase tracking-widest shadow-xl">
-            VIEW_UPLINK_DETAILS
+            ACCESS_MODULE
           </div>
         </div>
 
@@ -52,7 +58,7 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
 
       <div className="flex-1 space-y-3">
         <div className="flex items-start justify-between">
-          <h4 className="text-xl font-headline text-primary group-hover/project:text-accent transition-colors">
+          <h4 className="text-xl font-headline text-primary group-hover/project:text-accent transition-colors font-bold tracking-tighter">
             {project.title}
           </h4>
           <span className="text-[10px] font-code text-primary/40">[{project.id.split('-')[1]?.toUpperCase() || 'SYS'}]</span>
@@ -70,6 +76,13 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
           <ExternalLink className="w-3 h-3 mr-2" /> EXECUTE
         </Button>
       </div>
+
+      <style jsx>{`
+        @keyframes scanline {
+          0% { transform: translateY(-100%); }
+          100% { transform: translateY(5200%); }
+        }
+      `}</style>
     </HudContainer>
   )
 }
