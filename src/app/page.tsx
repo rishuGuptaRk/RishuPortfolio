@@ -8,25 +8,27 @@ import { HudContainer } from "@/components/hud-container"
 import { ProjectCard } from "@/components/project-card"
 import { SkillMatrix } from "@/components/skill-matrix"
 import { ContactModule } from "@/components/contact-module"
-import { AiSynopsisTool } from "@/components/ai-synopsis-tool"
+import { AiDossierLab } from "@/components/ai-dossier-lab"
 import { PlaceHolderImages } from "@/lib/placeholder-images"
 import { LoadingScreen } from "@/components/loading-screen"
-import { motion } from "framer-motion"
+import { ThemeMatrix } from "@/components/theme-matrix"
+import { motion, AnimatePresence } from "framer-motion"
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
-  const [randomProfilePic, setRandomProfilePic] = useState<string | null>(null)
+  const [profilePic, setProfilePic] = useState<string | null>(null)
   
   const aboutMeImage = PlaceHolderImages.find(img => img.id === "about-me")
 
   useEffect(() => {
-    const profileOptions = [
-      "https://thumbs.gfycat.com/ApprehensiveOddballAgama-max-1mb.gif",
-      "https://c.tenor.com/FMTaWoHYgdkAAAAC/dedsec.gif",
-      "https://pa1.narvii.com/6775/a1b98f6adbc54269f8d1ed691f0ffd591615b893_00.gif"
+    // Only local images from /images/ directory as requested
+    const localProfiles = [
+      "/images/p1.gif",
+      "/images/p2.gif",
+      "/images/p3.gif"
     ]
-    const randomIndex = Math.floor(Math.random() * profileOptions.length)
-    setRandomProfilePic(profileOptions[randomIndex])
+    const randomIndex = Math.floor(Math.random() * localProfiles.length)
+    setProfilePic(localProfiles[randomIndex])
   }, [])
 
   if (isLoading) {
@@ -41,13 +43,26 @@ export default function Home() {
     hidden: { opacity: 0 },
     visible: { 
       opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.3 }
+      transition: { staggerChildren: 0.15, delayChildren: 0.2 }
     }
   }
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } }
+  }
+
+  const headlineVariants = {
+    hidden: { y: "100%", opacity: 0 },
+    visible: (i: number) => ({ 
+      y: 0, 
+      opacity: 1, 
+      transition: { 
+        duration: 0.8, 
+        delay: 0.5 + (i * 0.1), 
+        ease: [0.33, 1, 0.68, 1] 
+      } 
+    })
   }
 
   return (
@@ -64,12 +79,12 @@ export default function Home() {
           <span className="text-2xl font-black font-headline tracking-tighter text-white">RG<span className="text-primary">.</span></span>
         </motion.div>
 
-        <div className="hidden md:flex gap-12">
+        <div className="hidden md:flex items-center gap-12">
           {[
             { id: "hero", label: "HOME" },
             { id: "projects", label: "REPOSITORIES" },
             { id: "skills", label: "TECH_STACK" },
-            { id: "lab", label: "NEURAL_AI" },
+            { id: "lab", label: "DOSSIER_LAB" },
             { id: "contact", label: "CONTACT" }
           ].map((item, idx) => (
             <motion.button
@@ -84,6 +99,7 @@ export default function Home() {
               <div className="absolute -left-3 top-1/2 -translate-y-1/2 w-1 h-1 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </motion.button>
           ))}
+          <ThemeMatrix />
         </div>
 
         <motion.div 
@@ -97,9 +113,9 @@ export default function Home() {
           >
             RESUME
           </button>
-          {randomProfilePic && (
+          {profilePic && (
             <div className="relative w-10 h-10 border border-primary/40 rounded-sm overflow-hidden bg-black/40">
-              <Image src={randomProfilePic} alt="System Operative" fill className="object-cover grayscale brightness-125" unoptimized />
+              <Image src={profilePic} alt="Operative" fill className="object-cover grayscale brightness-125" unoptimized />
               <div className="absolute inset-0 bg-primary/20 pointer-events-none mix-blend-overlay"></div>
             </div>
           )}
@@ -112,31 +128,43 @@ export default function Home() {
         animate="visible"
       >
         {/* Hero Section */}
-        <section id="hero" className="relative min-h-screen flex flex-col justify-center pt-20">
+        <section id="hero" className="relative min-h-screen flex flex-col justify-center pt-20 overflow-hidden">
           <div className="container px-8 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
             <div className="lg:col-span-12 space-y-4">
               <motion.div variants={itemVariants} className="flex items-center gap-4">
-                 <span className="font-code text-xs text-primary tracking-[0.4em] uppercase animate-pulse">// SYSTEM INITIALIZED</span>
+                 <span className="font-code text-xs text-primary tracking-[0.4em] uppercase animate-pulse">// ACCESSING_SF_CORE_NODE</span>
               </motion.div>
               
-              <div className="space-y-0 leading-[0.85]">
-                <motion.h1 variants={itemVariants} className="text-7xl md:text-[180px] font-black font-headline text-white tracking-tighter uppercase">
-                  RISHU
-                </motion.h1>
-                <motion.h1 variants={itemVariants} className="text-7xl md:text-[180px] font-black font-headline tracking-tighter uppercase text-outline">
-                  GUPTA<span className="text-primary">.</span>
-                </motion.h1>
+              <div className="space-y-0 leading-[0.85] overflow-hidden">
+                <div className="overflow-hidden">
+                  <motion.h1 
+                    custom={0}
+                    variants={headlineVariants}
+                    className="text-7xl md:text-[180px] font-black font-headline text-white tracking-tighter uppercase"
+                  >
+                    RISHU
+                  </motion.h1>
+                </div>
+                <div className="overflow-hidden">
+                  <motion.h1 
+                    custom={1}
+                    variants={headlineVariants}
+                    className="text-7xl md:text-[180px] font-black font-headline tracking-tighter uppercase text-outline"
+                  >
+                    GUPTA<span className="text-primary">.</span>
+                  </motion.h1>
+                </div>
               </div>
 
               <motion.div variants={itemVariants} className="pt-24 grid md:grid-cols-2 gap-12 items-start border-t border-white/5">
                 <div>
                   <h2 className="text-3xl md:text-5xl font-headline font-bold text-white uppercase leading-none mb-4">
                     FULLSTACK<br />
-                    <span className="text-primary">DEVELOPER</span>
+                    <span className="text-primary">ENGINEER</span>
                   </h2>
                   <div className="flex gap-4 items-center">
-                    <div className="bg-white/10 px-3 py-1 font-code text-[10px] text-muted-foreground uppercase">Ctrl + K</div>
-                    <span className="font-code text-[10px] text-muted-foreground uppercase tracking-widest">TERMINAL ACCESS</span>
+                    <div className="bg-white/10 px-3 py-1 font-code text-[10px] text-muted-foreground uppercase">Uplink Stable</div>
+                    <span className="font-code text-[10px] text-muted-foreground uppercase tracking-widest">SF_LOCAL_NODE_415</span>
                   </div>
                 </div>
                 
@@ -148,7 +176,7 @@ export default function Home() {
                     onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
                     className="flex items-center gap-4 group"
                   >
-                    <span className="text-xs font-headline font-bold uppercase tracking-widest text-primary">SCAN_PROJECTS</span>
+                    <span className="text-xs font-headline font-bold uppercase tracking-widest text-primary">INITIALIZE_REPOSITORY_SCAN</span>
                     <div className="w-12 h-[1px] bg-primary group-hover:w-20 transition-all duration-500"></div>
                   </button>
                 </div>
@@ -162,7 +190,7 @@ export default function Home() {
           <div className="container px-8 max-w-7xl mx-auto">
             <motion.div variants={itemVariants} className="flex items-center gap-4 mb-12">
               <div className="h-[1px] w-12 bg-primary"></div>
-              <h3 className="text-xs font-headline font-bold text-primary tracking-[0.4em] uppercase">WORKS</h3>
+              <h3 className="text-xs font-headline font-bold text-primary tracking-[0.4em] uppercase">REPOSITORY_FETCH</h3>
             </motion.div>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -176,16 +204,16 @@ export default function Home() {
         </section>
 
         {/* Expertise Section */}
-        <section id="skills" className="py-32 relative bg-white/[0.02] border-y border-white/5">
+        <section id="skills" className="py-32 relative bg-white/[0.01] border-y border-white/5">
           <div className="container px-8 max-w-7xl mx-auto">
             <motion.div variants={itemVariants} className="flex items-center gap-4 mb-20">
               <div className="h-[1px] w-12 bg-primary"></div>
-              <h3 className="text-xs font-headline font-bold text-primary tracking-[0.4em] uppercase">EXPERTISE</h3>
+              <h3 className="text-xs font-headline font-bold text-primary tracking-[0.4em] uppercase">SYSTEM_CAPABILITIES</h3>
             </motion.div>
             
             <div className="grid lg:grid-cols-2 gap-20 items-stretch">
               <motion.div variants={itemVariants}>
-                <HudContainer title="SUBJECT_DOSSIER" variant="accent">
+                <HudContainer title="SUBJECT_INTEL" variant="accent">
                   <div className="flex flex-col md:flex-row gap-10">
                     <div className="relative w-full md:w-56 h-72 shrink-0 border border-primary/20 bg-muted/20 group overflow-hidden">
                       {aboutMeImage?.imageUrl && (
@@ -198,17 +226,17 @@ export default function Home() {
                       )}
                       <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60"></div>
                       <div className="absolute bottom-4 left-4 font-code text-[10px] text-primary bg-background/80 px-2 py-1">
-                        SIT_NODE_415
+                        NODE_SF_415
                       </div>
                     </div>
                     <div className="space-y-6">
-                      <h4 className="text-3xl font-headline text-white tracking-tighter uppercase font-bold">Background</h4>
+                      <h4 className="text-3xl font-headline text-white tracking-tighter uppercase font-bold">OPERATIVE_BIO</h4>
                       <div className="space-y-4 text-muted-foreground font-body leading-relaxed text-sm">
                         <p>
-                          Hands-on experience in building modern web applications and intelligent systems. Strong foundation in <span className="text-primary">Data Structures</span>, <span className="text-primary">DBMS</span>, and <span className="text-primary">Operating Systems</span>.
+                          Computer Science undergraduate with a strong passion for <span className="text-primary">full-stack development</span> and <span className="text-primary">real-time systems</span>. 
                         </p>
                         <p>
-                          Certified MERN Stack Developer and J.P. Morgan Software Engineering Alumnus. Focused on creating impactful digital products with <span className="text-primary">REST APIs</span> and <span className="text-primary">Kafka</span>.
+                          Building products that bridge the gap between user-centric design and high-performance backend architecture. Experienced in <span className="text-primary">distributed systems</span> and <span className="text-primary">AI integration</span>.
                         </p>
                       </div>
                     </div>
@@ -224,14 +252,14 @@ export default function Home() {
         </section>
 
         {/* AI Lab Section */}
-        <section id="lab" className="py-32">
+        <section id="lab" className="py-32 bg-primary/5">
           <div className="container px-8 max-w-7xl mx-auto">
             <motion.div variants={itemVariants} className="flex items-center gap-4 mb-12">
               <div className="h-[1px] w-12 bg-primary"></div>
-              <h3 className="text-xs font-headline font-bold text-primary tracking-[0.4em] uppercase">LOGIC_LAB</h3>
+              <h3 className="text-xs font-headline font-bold text-primary tracking-[0.4em] uppercase">DOSSIER_COMPILER</h3>
             </motion.div>
             <motion.div variants={itemVariants}>
-              <AiSynopsisTool />
+              <AiDossierLab />
             </motion.div>
           </div>
         </section>
@@ -253,7 +281,7 @@ export default function Home() {
             <div className="flex items-center gap-6">
               <span className="text-3xl font-black font-headline tracking-tighter text-white">RG<span className="text-primary">.</span></span>
               <div>
-                <p className="text-[10px] font-code text-muted-foreground/60 uppercase tracking-widest">© 2024 RISHU_GUPTA // ALL_RIGHTS_ENCRYPTED</p>
+                <p className="text-[10px] font-code text-muted-foreground/60 uppercase tracking-widest">© 2024 RISHU_GUPTA // ALL_CHANNELS_ENCRYPTED</p>
               </div>
             </div>
             
