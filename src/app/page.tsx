@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useState, useEffect } from "react"
@@ -70,21 +71,32 @@ export default function Home() {
         </motion.div>
 
         <nav className="hidden lg:flex items-center gap-10">
-          {["home", "arsenal", "logic", "works", "contact"].map((id) => (
+          {[
+            { id: "hero", label: "HOME" },
+            { id: "projects", label: "REPOSITORIES" },
+            { id: "skills", label: "TECH_STACK" },
+            { id: "lab", label: "NEURAL_AI" },
+          ].map((item) => (
             <button
-              key={id}
+              key={item.id}
               onClick={() => {
-                const element = document.getElementById(id === "home" ? "hero" : id === "arsenal" ? "skills" : id === "works" ? "projects" : id);
+                const element = document.getElementById(item.id);
                 element?.scrollIntoView({ behavior: "smooth" });
               }}
               className="group flex flex-col items-center gap-1"
             >
               <span className="text-[10px] font-headline font-bold uppercase tracking-[0.2em] text-white/50 group-hover:text-primary transition-colors">
-                {id}
+                {item.label}
               </span>
               <div className="w-4 h-0.5 bg-primary opacity-0 group-hover:opacity-100 transition-all transform scale-x-0 group-hover:scale-x-100" />
             </button>
           ))}
+          <button 
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            className="border-2 border-white/60 px-4 py-1.5 text-[10px] font-headline font-bold uppercase tracking-widest hover:border-primary hover:text-primary transition-all rounded-md"
+          >
+            UPLINK
+          </button>
         </nav>
 
         <div className="flex items-center gap-4">
@@ -117,7 +129,7 @@ export default function Home() {
               </motion.h1>
               <motion.h1 
                 variants={titleRiseVariants}
-                className="text-6xl md:text-[150px] font-black font-headline text-outline tracking-tighter uppercase leading-[0.8] flex items-end gap-8"
+                className="text-6xl md:text-[150px] font-black font-headline text-white tracking-tighter uppercase leading-[0.8] flex items-end gap-8"
               >
                 GUPTA<span className="text-primary text-5xl md:text-[150px]">.</span>
               </motion.h1>

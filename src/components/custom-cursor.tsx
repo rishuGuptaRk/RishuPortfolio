@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useEffect, useState } from "react"
@@ -40,6 +41,8 @@ export const CustomCursor = () => {
       <div className="w-full h-full border border-primary relative flex items-center justify-center">
         <div className="w-1 h-1 bg-accent rounded-full" />
         <div className="absolute top-0 left-0 w-1 h-1 border-t border-l border-white" />
+        <div className="absolute top-0 right-0 w-1 h-1 border-t border-r border-white" />
+        <div className="absolute bottom-0 left-0 w-1 h-1 border-b border-l border-white" />
         <div className="absolute bottom-0 right-0 w-1 h-1 border-b border-r border-white" />
       </div>
     </motion.div>
