@@ -45,22 +45,17 @@ export const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
 
   return (
     <div className="fixed inset-0 z-[200] bg-[#060606] flex flex-col items-center justify-center p-8 font-code overflow-hidden">
-      <div className="absolute inset-0 opacity-5 pointer-events-none bg-grid-primary"></div>
+      {/* Background UI Grid */}
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-grid-primary"></div>
       
-      <div className="relative w-64 h-64 mb-12 flex items-center justify-center">
-        <motion.div
-          animate={{
-            boxShadow: ["0 0 0px var(--primary)", "0 0 40px var(--primary)", "0 0 0px var(--primary)"],
-          }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="absolute inset-0 border border-primary/20 rounded-full"
-        />
+      {/* GIF Container - Removed boundaries and ring as requested */}
+      <div className="relative w-72 h-72 mb-12 flex items-center justify-center overflow-visible">
         <Image 
           src="/images/hacking watch dogs GIF.gif" 
           alt="Infiltration" 
-          width={200}
-          height={200}
-          className="object-contain grayscale brightness-125" 
+          width={280}
+          height={280}
+          className="object-contain grayscale brightness-110 contrast-125 mix-blend-screen" 
           unoptimized 
         />
       </div>
@@ -68,39 +63,41 @@ export const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
       <div className="w-full max-w-md space-y-6 relative z-10">
         <div className="flex justify-between items-end">
           <div className="flex flex-col">
-            <span className="text-primary text-[10px] uppercase font-bold tracking-[0.3em] animate-pulse">
+            <span className="text-primary text-[10px] uppercase font-bold tracking-[0.4em] animate-pulse">
               SYSTEM_INFILTRATION_IN_PROGRESS
             </span>
-            <span className="text-primary/40 text-[8px] font-mono">
-              USER_ID: DEDSEC_GUEST // NODE: SF_041
+            <span className="text-primary/40 text-[8px] font-mono mt-1">
+              USER_ID: DEDSEC_OPERATIVE // NODE: SF_041
             </span>
           </div>
-          <span className="text-primary font-headline text-3xl tabular-nums">{progress}%</span>
+          <span className="text-primary font-headline text-3xl tabular-nums tracking-tighter">{progress}%</span>
         </div>
 
-        <div className="h-2 w-full bg-white/5 border border-white/10 relative overflow-hidden">
+        {/* Progress Bar */}
+        <div className="h-1.5 w-full bg-white/5 border border-white/10 relative overflow-hidden">
           <motion.div 
             className="absolute top-0 left-0 h-full bg-primary"
             initial={{ width: "0%" }}
             animate={{ width: `${progress}%` }}
             transition={{ type: "spring", stiffness: 50 }}
           />
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,rgba(255,255,255,0.1)_50%,transparent_100%)] w-20 animate-[slide_1.5s_infinite]" />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,rgba(255,255,255,0.15)_50%,transparent_100%)] w-24 animate-[slide_2s_infinite]" />
         </div>
 
-        <div className="h-24 overflow-hidden border-l border-primary/20 pl-4 space-y-1">
+        {/* Terminal Logs */}
+        <div className="h-28 overflow-hidden border-l-2 border-primary/20 pl-5 space-y-1.5">
           <AnimatePresence mode="popLayout">
             {logs.slice(-4).map((log, i) => (
               <motion.div
                 key={log}
-                initial={{ opacity: 0, x: -10 }}
+                initial={{ opacity: 0, x: -15 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 10 }}
-                className="text-[10px] text-primary font-mono uppercase tracking-tighter flex items-center gap-2"
+                exit={{ opacity: 0, x: 15 }}
+                className="text-[10px] text-primary font-mono uppercase tracking-tight flex items-center gap-3"
               >
-                <span className="text-primary/40">[{new Date().toLocaleTimeString([], { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' })}]</span>
-                <span className={i === logs.slice(-4).length - 1 ? "text-primary" : "text-primary/40"}>
-                  {i === logs.slice(-4).length - 1 ? "> " : "  "} {log}
+                <span className="text-primary/30 min-w-[70px]">[{new Date().toLocaleTimeString([], { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' })}]</span>
+                <span className={i === logs.slice(-4).length - 1 ? "text-primary font-bold" : "text-primary/40"}>
+                  {i === logs.slice(-4).length - 1 ? ">> " : "   "} {log}
                 </span>
               </motion.div>
             ))}
@@ -111,7 +108,7 @@ export const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
       <style jsx>{`
         @keyframes slide {
           0% { transform: translateX(-100%); }
-          100% { transform: translateX(500%); }
+          100% { transform: translateX(600%); }
         }
       `}</style>
     </div>
