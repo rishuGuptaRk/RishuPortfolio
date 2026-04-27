@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useRef, useState } from "react"
@@ -22,16 +23,17 @@ export const ContactModule = () => {
 
     const formData = new FormData(formRef.current)
     
-    // Synchronizing with your provided EmailJS template keys
+    // Mapping payload to match your EmailJS template placeholders exactly
     const templateParams = {
       name: String(formData.get('from_name')),
       from_email: String(formData.get('reply_to')),
-      time: new Date().toLocaleString(),
+      time: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
       message: String(formData.get('message')),
+      subject: String(formData.get('subject')), // Optional context
     }
 
     try {
-      // Transmission using verified credentials
+      // Transmission using verified credentials provided by operative
       const response = await emailjs.send(
         'service_parc3eb', 
         'template_129gio6', 
@@ -46,13 +48,13 @@ export const ContactModule = () => {
         })
         formRef.current.reset()
       } else {
-        throw new Error('Non-200 response from EmailJS')
+        throw new Error(`Response Status: ${response.status}`)
       }
-    } catch (error) {
-      console.error("Transmission Error:", error)
+    } catch (error: any) {
+      console.error("Transmission Error:", error?.text || error?.message || error)
       toast({
         title: "TRANSMISSION_FAILURE",
-        description: "System error during packet relay. Check your uplink.",
+        description: error?.text || "System error during packet relay. Check your uplink.",
         variant: "destructive",
       })
     } finally {
