@@ -103,26 +103,26 @@ export default function Home() {
             <div className="absolute inset-0 bg-primary/5 mix-blend-overlay" />
             <div className="absolute inset-0 bg-[url('https://raw.githubusercontent.com/Anshul-69/DedSec-Terminal/main/dedsec.gif')] opacity-20 mix-blend-screen bg-center bg-no-repeat bg-contain" />
             
-            <div className="relative flex flex-col items-center gap-6">
+            <div className="relative flex flex-col items-center gap-6 px-4 text-center">
               <motion.div 
                 animate={{ 
                   scale: [1, 1.1, 0.9, 1.2, 1],
                   rotate: [0, 2, -2, 3, 0]
                 }}
                 transition={{ duration: 0.2, repeat: Infinity }}
-                className="w-24 h-24 border-2 border-primary rounded-sm flex items-center justify-center bg-black"
+                className="w-16 h-16 md:w-24 md:h-24 border-2 border-primary rounded-sm flex items-center justify-center bg-black"
               >
-                <Terminal className="w-12 h-12 text-primary" />
+                <Terminal className="w-8 h-8 md:w-12 md:h-12 text-primary" />
               </motion.div>
 
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center w-full max-w-xs md:max-w-none">
                 <motion.span 
                   animate={{ 
                     opacity: [1, 0.5, 1, 0.2, 1],
                     x: [0, 5, -5, 10, 0]
                   }}
                   transition={{ duration: 0.1, repeat: Infinity }}
-                  className="text-primary font-headline text-2xl font-black tracking-[0.5em] uppercase"
+                  className="text-primary font-headline text-lg md:text-2xl font-black tracking-[0.2em] md:tracking-[0.5em] uppercase"
                 >
                   ACCESSING_NODE
                 </motion.span>
@@ -134,7 +134,7 @@ export default function Home() {
                     className="absolute top-0 left-0 h-full bg-primary"
                   />
                 </div>
-                <span className="text-primary/40 font-code text-[10px] mt-2 tracking-widest uppercase">ENCRYPTING_TRAFFIC // BYPASSING_FIREWALL</span>
+                <span className="text-primary/40 font-code text-[8px] md:text-[10px] mt-2 tracking-widest uppercase text-center">ENCRYPTING_TRAFFIC // BYPASSING_FIREWALL</span>
               </div>
             </div>
 
