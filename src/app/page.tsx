@@ -63,7 +63,7 @@ export default function Home() {
   const handleNavClick = (id: string) => {
     setIsNavigating(true)
     
-    // Optimized 800ms "Deep Infiltration" sequence
+    // Tactical 800ms "Deep Infiltration" sequence
     setTimeout(() => {
       const element = document.getElementById(id)
       element?.scrollIntoView({ behavior: "smooth" })
@@ -258,7 +258,7 @@ export default function Home() {
                 initial={{ y: 100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 1.2, ease: [0.33, 1, 0.68, 1] }}
-                className="text-5xl sm:text-7xl md:text-[150px] font-black font-headline text-white tracking-[0.2em] md:tracking-[0.4em] uppercase leading-[0.8]"
+                className="text-5xl sm:text-7xl md:text-[150px] font-black font-headline text-white tracking-[0.3em] md:tracking-[0.5em] uppercase leading-[0.8]"
               >
                 RISHU
               </motion.h1>
@@ -266,7 +266,7 @@ export default function Home() {
                 initial={{ y: 100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 1.2, delay: 0.1, ease: [0.33, 1, 0.68, 1] }}
-                className="text-5xl sm:text-7xl md:text-[150px] font-black font-headline tracking-[0.2em] md:tracking-[0.4em] uppercase leading-[0.8] flex items-end"
+                className="text-5xl sm:text-7xl md:text-[150px] font-black font-headline tracking-[0.3em] md:tracking-[0.5em] uppercase leading-[0.8] flex items-end"
               >
                 <span className="text-transparent" style={{ WebkitTextStroke: '2px hsl(var(--primary))' }}>GUPTA</span>
                 <span className="text-primary ml-1 md:ml-2 mb-1 md:mb-4">.</span>
