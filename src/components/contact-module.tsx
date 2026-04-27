@@ -22,27 +22,33 @@ export const ContactModule = () => {
     setIsSending(true)
 
     const formData = new FormData(formRef.current)
+    
+    // Explicitly cast to strings to ensure EmailJS compatibility
     const templateParams = {
-      from_name: formData.get('from_name'),
-      reply_to: formData.get('reply_to'),
-      subject: formData.get('subject'),
-      message: formData.get('message'),
+      from_name: String(formData.get('from_name')),
+      reply_to: String(formData.get('reply_to')),
+      subject: String(formData.get('subject')),
+      message: String(formData.get('message')),
     }
 
     try {
-      // Using .send instead of .sendForm for more explicit payload handling
-      await emailjs.send(
+      // Transmission using provided credentials
+      const response = await emailjs.send(
         'service_parc3eb', 
         'template_129gio6', 
         templateParams, 
         'N45Ktmx8wtYtliECi'
       )
 
-      toast({
-        title: "TRANSMISSION_SUCCESS",
-        description: "Your packet has been encrypted and sent to the operative.",
-      })
-      formRef.current.reset()
+      if (response.status === 200) {
+        toast({
+          title: "TRANSMISSION_SUCCESS",
+          description: "Your packet has been encrypted and sent to the operative.",
+        })
+        formRef.current.reset()
+      } else {
+        throw new Error('Non-200 response from EmailJS')
+      }
     } catch (error) {
       console.error("Transmission Error:", error)
       toast({
