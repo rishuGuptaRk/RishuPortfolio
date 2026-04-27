@@ -6,7 +6,7 @@ import { HudContainer } from "./hud-container"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
-import { Github, Twitter, MessageSquare, Send, Radio } from "lucide-react"
+import { Github, Linkedin, Instagram, Send, Radio } from "lucide-react"
 
 export const ContactModule = () => {
   return (
@@ -30,15 +30,25 @@ export const ContactModule = () => {
                 className="flex items-center gap-2 p-3 bg-card border border-primary/20 hover:border-primary transition-all rounded group"
               >
                 <Github className="w-5 h-5 text-primary group-hover:text-accent" />
-                <span className="text-sm font-code">rishuGuptaRk</span>
+                <span className="text-sm font-code">Github</span>
               </a>
-              <a href="#" className="flex items-center gap-2 p-3 bg-card border border-primary/20 hover:border-primary transition-all rounded group">
-                <Twitter className="w-5 h-5 text-primary group-hover:text-accent" />
-                <span className="text-sm font-code">@Cyber_Gupta</span>
+              <a 
+                href="http://linkedin.com/in/rishu-gupta-3b6b4b179/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 p-3 bg-card border border-primary/20 hover:border-primary transition-all rounded group"
+              >
+                <Linkedin className="w-5 h-5 text-primary group-hover:text-accent" />
+                <span className="text-sm font-code">LinkedIn</span>
               </a>
-              <a href="#" className="flex items-center gap-2 p-3 bg-card border border-primary/20 hover:border-primary transition-all rounded group">
-                <MessageSquare className="w-5 h-5 text-primary group-hover:text-accent" />
-                <span className="text-sm font-code">DED_CHANNEL_7</span>
+              <a 
+                href="https://www.instagram.com/hey.rishu" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 p-3 bg-card border border-primary/20 hover:border-primary transition-all rounded group"
+              >
+                <Instagram className="w-5 h-5 text-primary group-hover:text-accent" />
+                <span className="text-sm font-code">Instagram</span>
               </a>
             </div>
           </div>
