@@ -1,6 +1,7 @@
 import type {Metadata} from 'next';
 import './globals.css';
 import { CustomCursor } from '@/components/custom-cursor';
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: 'CyberFolio | Rishu Gupta',
@@ -23,6 +24,7 @@ export default function RootLayout({
         <div className="scanline"></div>
         <CustomCursor />
         {children}
+        <Toaster />
       </body>
     </html>
   );
