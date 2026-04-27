@@ -1,4 +1,3 @@
-
 "use client"
 
 import React, { useState, useEffect } from "react"
@@ -90,7 +89,6 @@ export default function Home() {
     <div className="relative min-h-screen bg-background selection:bg-primary selection:text-primary-foreground font-body overflow-x-clip">
       <div className="scanline"></div>
       
-      {/* Scroll Progress Bar */}
       <motion.div className="fixed top-0 left-0 right-0 h-1 bg-primary z-[110] origin-left" style={{ scaleX }} />
 
       <header className="fixed top-0 left-0 w-full z-[100] px-4 md:px-12 py-4 md:py-6 flex justify-between items-center bg-gradient-to-b from-background/90 to-transparent backdrop-blur-sm border-b border-white/5">
@@ -103,7 +101,6 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-10">
           {navItems.map((item) => (
             <button
@@ -134,7 +131,6 @@ export default function Home() {
             <ThemeMatrix />
           </div>
           
-          {/* Mobile Navigation Trigger */}
           <div className="lg:hidden">
             <Sheet>
               <SheetTrigger asChild>
@@ -187,8 +183,7 @@ export default function Home() {
         </div>
       </header>
 
-      <main className="overflow-x-clip">
-        {/* Hero Section */}
+      <main className="relative">
         <section id="hero" className="relative min-h-screen flex flex-col justify-center px-4 md:px-12 pt-32 pb-12">
           <div className="relative z-10 space-y-4 max-w-7xl w-full">
             <motion.div 
@@ -248,7 +243,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* About Operative */}
         <motion.section 
           id="about" 
           variants={sectionVariants}
@@ -262,10 +256,8 @@ export default function Home() {
           </div>
         </motion.section>
 
-        {/* Repositories - Horizontal Sticky Scroll */}
         <ProjectShowcase projects={portfolioData.projects as any} />
 
-        {/* System Capabilities */}
         <motion.section 
           id="skills" 
           variants={sectionVariants}
@@ -279,7 +271,6 @@ export default function Home() {
           </div>
         </motion.section>
 
-        {/* AI Lab */}
         <motion.section 
           id="lab" 
           variants={sectionVariants}
@@ -293,7 +284,6 @@ export default function Home() {
           </div>
         </motion.section>
 
-        {/* Contact */}
         <motion.section 
           id="contact" 
           variants={sectionVariants}

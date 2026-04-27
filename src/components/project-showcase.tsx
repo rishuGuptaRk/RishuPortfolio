@@ -1,4 +1,3 @@
-
 "use client"
 
 import React, { useRef } from "react"
@@ -26,13 +25,11 @@ const ProjectSlide = ({ project, index }: { project: Project; index: number }) =
 
   return (
     <div className="relative w-screen h-screen flex items-center justify-center flex-shrink-0 px-4 md:px-12 overflow-hidden bg-[#050505]">
-      {/* Background Section Number */}
       <div className="absolute left-8 top-1/2 -translate-y-1/2 text-[20vw] font-black text-primary/5 pointer-events-none select-none z-0 font-headline leading-none">
         0{index + 1}
       </div>
 
       <div className="container max-w-7xl mx-auto grid lg:grid-cols-12 gap-8 md:gap-16 items-center relative z-10">
-        {/* Left Content */}
         <div className="lg:col-span-5 space-y-6 md:space-y-8">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-primary/30 flex items-center justify-center bg-primary/5">
@@ -87,12 +84,10 @@ const ProjectSlide = ({ project, index }: { project: Project; index: number }) =
           </div>
         </div>
 
-        {/* Right Visual Panel */}
         <div className="lg:col-span-7 relative aspect-square hidden lg:block">
           <div className="absolute inset-0 border border-white/10 bg-black/60 backdrop-blur-md rounded-sm overflow-hidden group">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-transparent to-transparent opacity-60" />
             
-            {/* Interactive Core */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
               <div className="w-64 h-64 rounded-full bg-primary/10 blur-[120px] animate-pulse" />
               <div className="relative z-10 w-24 h-24 rounded-full border border-primary/30 flex items-center justify-center bg-black/80 backdrop-blur-3xl group-hover:scale-110 transition-transform duration-1000 shadow-[0_0_30px_rgba(var(--primary),0.2)]">
@@ -136,33 +131,32 @@ const ProjectSlide = ({ project, index }: { project: Project; index: number }) =
 export const ProjectShowcase = ({ projects }: { projects: Project[] }) => {
   const targetRef = useRef<HTMLDivElement>(null)
   
-  // The scroll progress of the container
-  // Logic: trigger is the container ($container in your JS)
   const { scrollYProgress } = useScroll({
     target: targetRef,
     offset: ["start start", "end end"]
   })
 
-  // Horizontal translation logic (tl in your JS)
-  // Maps 0-1 vertical scroll to -(n-1)*100% horizontal movement
+  // Exact mapping: 0 -> 0%, 1 -> -100% * (n-1)
   const xTranslate = useTransform(
     scrollYProgress, 
     [0, 1], 
     ["0%", `-${(projects.length - 1) * 100}%`]
   )
   
-  // Scrub behavior (scrub: 1 in your JS)
   const springX = useSpring(xTranslate, {
-    stiffness: 250,
-    damping: 50,
+    stiffness: 150,
+    damping: 30,
     restDelta: 0.0001
   })
 
   return (
-    <section id="projects" ref={targetRef} className="relative h-[400vh] bg-[#050505] overflow-visible">
-      {/* Sticky Container (pin: true in your JS) */}
+    <section 
+      id="projects" 
+      ref={targetRef} 
+      className="relative bg-[#050505]"
+      style={{ height: `${projects.length * 100}vh` }}
+    >
       <div className="sticky top-0 h-screen w-full overflow-hidden">
-        {/* Horizontal Track (cards in your JS) */}
         <motion.div 
           style={{ x: springX }} 
           className="flex h-full w-fit flex-nowrap"
@@ -176,7 +170,6 @@ export const ProjectShowcase = ({ projects }: { projects: Project[] }) => {
           ))}
         </motion.div>
 
-        {/* Global HUD Decor */}
         <div className="absolute bottom-8 left-8 right-8 z-20 flex items-center justify-between pointer-events-none">
           <div className="flex items-center gap-6">
             <div className="h-px w-24 bg-primary/30" />
