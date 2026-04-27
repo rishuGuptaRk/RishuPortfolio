@@ -128,9 +128,6 @@ const ProjectSlide = ({ project, index }: { project: Project; index: number }) =
           {/* Decorative HUD Elements */}
           <div className="absolute -top-4 -left-4 w-12 h-12 border-t-2 border-l-2 border-primary/60" />
           <div className="absolute -bottom-4 -right-4 w-12 h-12 border-b-2 border-r-2 border-primary/60" />
-          <div className="absolute top-1/2 -right-2 -translate-y-1/2 flex flex-col gap-2">
-            {[1, 2, 3, 4].map(i => <div key={i} className="w-1 h-4 bg-primary/20" />)}
-          </div>
         </div>
       </div>
 
@@ -149,12 +146,13 @@ export const ProjectShowcase = ({ projects }: { projects: Project[] }) => {
   
   const { scrollYProgress } = useScroll({
     target: targetRef,
+    offset: ["start start", "end end"]
   })
 
-  // Horizontal translation logic: Map 0-1 scroll progress to 0 to -(N-1)*100%
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", `-${(projects.length - 1) * 100}%`])
+  // Horizontal translation logic: Map 0-1 scroll progress to 0 to -(N-1)*100vw
+  const x = useTransform(scrollYProgress, [0, 1], ["0vw", `-${(projects.length - 1) * 100}vw`])
   
-  // Professional cinematic spring - slightly more stiff for responsiveness
+  // High-stiffness spring for responsive tactile feel
   const springX = useSpring(x, {
     stiffness: 150,
     damping: 35,
@@ -163,12 +161,12 @@ export const ProjectShowcase = ({ projects }: { projects: Project[] }) => {
 
   return (
     <section id="projects" ref={targetRef} className="relative h-[400vh] bg-[#050505]">
-      {/* Sticky Container - locks while scrollHeight is processed */}
+      {/* Sticky Container - locks while parent is scrolled */}
       <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center">
         {/* Horizontal Track */}
         <motion.div 
           style={{ x: springX }} 
-          className="flex h-full w-fit pointer-events-auto"
+          className="flex h-full w-fit flex-nowrap"
         >
           {projects.map((project, index) => (
             <ProjectSlide 

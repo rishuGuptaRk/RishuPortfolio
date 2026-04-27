@@ -99,7 +99,7 @@ export default function Home() {
   ]
 
   return (
-    <div className="min-h-screen bg-background selection:bg-primary selection:text-primary-foreground font-body overflow-x-clip">
+    <div className="relative min-h-screen bg-background selection:bg-primary selection:text-primary-foreground font-body overflow-x-clip">
       <div className="scanline"></div>
       
       {/* Scroll Progress Bar */}
@@ -240,7 +240,7 @@ export default function Home() {
         </div>
       </header>
 
-      <main>
+      <main className="relative">
         {/* Hero Section */}
         <section id="hero" className="relative min-h-screen flex flex-col justify-center px-4 md:px-12 pt-32 pb-12">
           <div className="relative z-10 space-y-4 max-w-7xl w-full">
@@ -284,7 +284,7 @@ export default function Home() {
               </div>
               
               <div className="md:col-span-6 md:border-l border-primary/20 md:pl-8">
-                <p className="max-w-xl text-muted-foreground leading-relaxed text-xs md:text-base font-body line-clamp-4 md:line-clamp-none">
+                <p className="max-w-xl text-muted-foreground leading-relaxed text-xs md:text-base font-body">
                   {profile.bio}
                 </p>
               </div>
@@ -315,7 +315,7 @@ export default function Home() {
           </div>
         </motion.section>
 
-        {/* Repositories - Premium Showcase */}
+        {/* Repositories - Premium Horizontal Showcase */}
         <ProjectShowcase projects={portfolioData.projects as any} />
 
         {/* System Capabilities */}
