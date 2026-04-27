@@ -21,11 +21,20 @@ export const ContactModule = () => {
 
     setIsSending(true)
 
+    const formData = new FormData(formRef.current)
+    const templateParams = {
+      from_name: formData.get('from_name'),
+      reply_to: formData.get('reply_to'),
+      subject: formData.get('subject'),
+      message: formData.get('message'),
+    }
+
     try {
-      await emailjs.sendForm(
+      // Using .send instead of .sendForm for more explicit payload handling
+      await emailjs.send(
         'service_parc3eb', 
         'template_129gio6', 
-        formRef.current, 
+        templateParams, 
         'N45Ktmx8wtYtliECi'
       )
 
@@ -35,9 +44,10 @@ export const ContactModule = () => {
       })
       formRef.current.reset()
     } catch (error) {
+      console.error("Transmission Error:", error)
       toast({
         title: "TRANSMISSION_FAILURE",
-        description: "System error during packet relay. Please retry uplink.",
+        description: "System error during packet relay. Check your uplink.",
         variant: "destructive",
       })
     } finally {
