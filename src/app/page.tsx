@@ -34,7 +34,6 @@ import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/s
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
-  const [isNavigating, setIsNavigating] = useState(false)
   const [activeSection, setActiveSection] = useState("hero")
   const [profilePic, setProfilePic] = useState<string | null>(null)
   
@@ -56,7 +55,7 @@ export default function Home() {
         const el = document.getElementById(section)
         if (el) {
           const rect = el.getBoundingClientRect()
-          return rect.top >= -200 && rect.top <= 400
+          return rect.top >= -300 && rect.top <= 300
         }
         return false
       })
@@ -68,12 +67,8 @@ export default function Home() {
   }, [])
 
   const handleNavClick = (id: string) => {
-    setIsNavigating(true)
     const element = document.getElementById(id)
     element?.scrollIntoView({ behavior: "smooth" })
-    
-    // Trigger transition visual effect
-    setTimeout(() => setIsNavigating(false), 800)
   }
 
   if (isLoading) {
@@ -104,28 +99,6 @@ export default function Home() {
       
       {/* Scroll Progress Bar */}
       <motion.div className="fixed top-0 left-0 right-0 h-1 bg-primary z-[110] origin-left" style={{ scaleX }} />
-
-      {/* Navigation Infiltration Overlay */}
-      <AnimatePresence>
-        {isNavigating && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[105] bg-primary/5 backdrop-blur-[2px] pointer-events-none flex items-center justify-center"
-          >
-            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10" />
-            <motion.div 
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              className="flex items-center gap-4 bg-black/80 border border-primary/40 px-6 py-3 rounded-sm shadow-[0_0_30px_rgba(0,255,255,0.2)]"
-            >
-              <Zap className="w-5 h-5 text-primary animate-pulse" />
-              <span className="text-[10px] font-headline font-bold tracking-[0.3em] text-white">RE_ROUTING_PACKETS...</span>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       <header className="fixed top-0 left-0 w-full z-[100] px-4 md:px-12 py-4 md:py-6 flex justify-between items-center bg-gradient-to-b from-background/90 to-transparent backdrop-blur-sm border-b border-white/5">
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex items-center gap-2">
@@ -187,7 +160,6 @@ export default function Home() {
                   
                   <div className="flex-1 overflow-y-auto py-8 px-6 space-y-6">
                     <div className="space-y-2">
-                      <span className="text-[10px] font-code text-primary/60 uppercase tracking-[0.4em]">Main_Nodes</span>
                       <nav className="flex flex-col gap-2">
                         {navItems.map((item) => (
                           <SheetClose asChild key={item.id}>
@@ -204,24 +176,6 @@ export default function Home() {
                         ))}
                       </nav>
                     </div>
-
-                    <div className="space-y-2">
-                      <span className="text-[10px] font-code text-primary/60 uppercase tracking-[0.4em]">System_Override</span>
-                      <div className="p-4 border border-white/5">
-                        <ThemeMatrix />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="p-6 border-t border-white/5">
-                    <SheetClose asChild>
-                      <button 
-                        onClick={() => handleNavClick('contact')}
-                        className="w-full bg-primary text-black font-headline font-black py-4 text-[12px] tracking-[0.2em] uppercase flex items-center justify-center gap-3"
-                      >
-                        <MessageSquare className="w-4 h-4" /> ESTABLISH_UPLINK
-                      </button>
-                    </SheetClose>
                   </div>
                 </div>
               </SheetContent>
@@ -240,7 +194,7 @@ export default function Home() {
         </div>
       </header>
 
-      <main className="relative">
+      <main>
         {/* Hero Section */}
         <section id="hero" className="relative min-h-screen flex flex-col justify-center px-4 md:px-12 pt-32 pb-12">
           <div className="relative z-10 space-y-4 max-w-7xl w-full">
@@ -315,7 +269,7 @@ export default function Home() {
           </div>
         </motion.section>
 
-        {/* Repositories - Premium Horizontal Showcase */}
+        {/* Repositories - Fixed Horizontal Showcase */}
         <ProjectShowcase projects={portfolioData.projects as any} />
 
         {/* System Capabilities */}

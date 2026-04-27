@@ -27,26 +27,21 @@ const ProjectSlide = ({ project, index }: { project: Project; index: number }) =
   return (
     <div className="relative w-screen h-screen flex items-center justify-center flex-shrink-0 px-4 md:px-12 overflow-hidden">
       {/* Background Section Number */}
-      <div className="absolute left-8 top-1/2 -translate-y-1/2 text-[15vw] md:text-[20vw] font-black text-primary/5 pointer-events-none select-none z-0 font-headline leading-none">
+      <div className="absolute left-8 top-1/2 -translate-y-1/2 text-[20vw] font-black text-primary/5 pointer-events-none select-none z-0 font-headline leading-none">
         0{index + 1}
       </div>
 
       <div className="container max-w-7xl mx-auto grid lg:grid-cols-12 gap-8 md:gap-16 items-center relative z-10">
         {/* Left Content */}
         <div className="lg:col-span-5 space-y-6 md:space-y-8">
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex items-center gap-3"
-          >
+          <div className="flex items-center gap-3">
             <div className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-primary/30 flex items-center justify-center bg-primary/5">
               <Zap className="w-4 h-4 md:w-5 md:h-5 text-primary" />
             </div>
             <span className="text-primary font-headline font-bold text-[9px] md:text-[11px] tracking-[0.3em] uppercase">
               {project.category}
             </span>
-          </motion.div>
+          </div>
 
           <div className="space-y-3 md:space-y-4">
             <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black font-headline text-white leading-[0.9] tracking-tighter uppercase">
@@ -116,16 +111,13 @@ const ProjectSlide = ({ project, index }: { project: Project; index: number }) =
               />
             )}
             
-            {/* Tactical Grid Overlay */}
             <div className="absolute inset-0 opacity-10 pointer-events-none bg-grid-primary" />
             
-            {/* Scanning Line Animation */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-30">
               <div className="w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent absolute top-0 animate-[scan_4s_linear_infinite]" />
             </div>
           </div>
           
-          {/* Decorative HUD Elements */}
           <div className="absolute -top-4 -left-4 w-12 h-12 border-t-2 border-l-2 border-primary/60" />
           <div className="absolute -bottom-4 -right-4 w-12 h-12 border-b-2 border-r-2 border-primary/60" />
         </div>
@@ -149,24 +141,23 @@ export const ProjectShowcase = ({ projects }: { projects: Project[] }) => {
     offset: ["start start", "end end"]
   })
 
-  // Horizontal translation logic: Map 0-1 scroll progress to 0 to -(N-1)*100vw
-  const x = useTransform(scrollYProgress, [0, 1], ["0vw", `-${(projects.length - 1) * 100}vw`])
+  // Percentage-based translation is more stable across different screen ratios
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", `-${(projects.length - 1) * 100}%`])
   
-  // High-stiffness spring for responsive tactile feel
   const springX = useSpring(x, {
-    stiffness: 150,
-    damping: 35,
+    stiffness: 200,
+    damping: 40,
     restDelta: 0.001
   })
 
   return (
-    <section id="projects" ref={targetRef} className="relative h-[400vh] bg-[#050505]">
-      {/* Sticky Container - locks while parent is scrolled */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center">
+    <section id="projects" ref={targetRef} className="relative h-[400vh] bg-[#050505] overflow-visible">
+      {/* Sticky Container */}
+      <div className="sticky top-0 h-screen w-full overflow-hidden">
         {/* Horizontal Track */}
         <motion.div 
           style={{ x: springX }} 
-          className="flex h-full w-fit flex-nowrap"
+          className="flex h-full w-[300%] flex-nowrap"
         >
           {projects.map((project, index) => (
             <ProjectSlide 
