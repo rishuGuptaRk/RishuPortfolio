@@ -11,7 +11,7 @@ import { LoadingScreen } from "@/components/loading-screen"
 import { ThemeMatrix } from "@/components/theme-matrix"
 import { AboutMe } from "@/components/about-me"
 import { WorksSection } from "@/components/works-section"
-import { motion, useScroll, useSpring } from "framer-motion"
+import { motion, useScroll, useSpring, AnimatePresence } from "framer-motion"
 import { 
   Terminal, 
   ArrowRight, 
@@ -28,6 +28,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
   const [activeSection, setActiveSection] = useState("hero")
   const [profilePic, setProfilePic] = useState<string | null>(null)
+  const [isNavigating, setIsNavigating] = useState(false)
   
   const profile = recoveryData.backup_data.profile || portfolioData.profile
   const { scrollYProgress } = useScroll()
@@ -59,22 +60,18 @@ export default function Home() {
   }, [])
 
   const handleNavClick = (id: string) => {
+    setIsNavigating(true)
     const element = document.getElementById(id)
     element?.scrollIntoView({ behavior: "smooth" })
+    
+    // Trigger visual glitch duration
+    setTimeout(() => {
+      setIsNavigating(false)
+    }, 800)
   }
 
   if (isLoading) {
     return <LoadingScreen onComplete={() => setIsLoading(false)} />
-  }
-
-  const sectionVariants = {
-    hidden: { opacity: 0, y: 30, filter: "blur(10px)" },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      filter: "blur(0px)",
-      transition: { duration: 0.8, ease: [0.33, 1, 0.68, 1] }
-    }
   }
 
   const navItems = [
@@ -89,6 +86,23 @@ export default function Home() {
     <div className="relative min-h-screen bg-background selection:bg-primary selection:text-primary-foreground font-body overflow-x-clip">
       <div className="scanline"></div>
       
+      {/* Global Glitch Transition Overlay */}
+      <AnimatePresence>
+        {isNavigating && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: [0, 1, 0.5, 1, 0] }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[150] pointer-events-none bg-primary/5 backdrop-blur-[2px]"
+          >
+            <div className="absolute inset-0 bg-[url('https://raw.githubusercontent.com/Anshul-69/DedSec-Terminal/main/dedsec.gif')] opacity-10 mix-blend-screen bg-center bg-no-repeat" />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span className="text-primary font-code text-xl animate-pulse tracking-[1em] uppercase">ACCESSING_NODE...</span>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <motion.div className="fixed top-0 left-0 right-0 h-1 bg-primary z-[110] origin-left" style={{ scaleX }} />
 
       <header className="fixed top-0 left-0 w-full z-[100] px-4 md:px-12 py-4 md:py-6 flex justify-between items-center bg-gradient-to-b from-background/90 to-transparent backdrop-blur-sm border-b border-white/5">
@@ -243,61 +257,33 @@ export default function Home() {
           </div>
         </section>
 
-        <motion.section 
-          id="about" 
-          variants={sectionVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="py-16 md:py-32 px-4 md:px-12"
-        >
+        <section id="about" className="py-16 md:py-32 px-4 md:px-12">
           <div className="container max-w-7xl mx-auto">
             <AboutMe />
           </div>
-        </motion.section>
+        </section>
 
         <section id="works">
           <WorksSection />
         </section>
 
-        <motion.section 
-          id="skills" 
-          variants={sectionVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="py-16 md:py-32 bg-primary/[0.02] border-y border-white/5 px-4 md:px-12"
-        >
+        <section id="skills" className="py-16 md:py-32 bg-primary/[0.02] border-y border-white/5 px-4 md:px-12">
           <div className="container max-w-7xl mx-auto">
             <SkillMatrix skills={portfolioData.skills} />
           </div>
-        </motion.section>
+        </section>
 
-        <motion.section 
-          id="lab" 
-          variants={sectionVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="py-16 md:py-32 px-4 md:px-12"
-        >
+        <section id="lab" className="py-16 md:py-32 px-4 md:px-12">
           <div className="container max-w-7xl mx-auto">
             <AiDossierLab />
           </div>
-        </motion.section>
+        </section>
 
-        <motion.section 
-          id="contact" 
-          variants={sectionVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="py-16 md:py-32 border-t border-white/5 px-4 md:px-12"
-        >
+        <section id="contact" className="py-16 md:py-32 border-t border-white/5 px-4 md:px-12">
           <div className="container max-w-7xl mx-auto">
             <ContactModule />
           </div>
-        </motion.section>
+        </section>
       </main>
 
       <footer className="py-12 md:py-16 border-t border-white/5 text-center bg-black/40">

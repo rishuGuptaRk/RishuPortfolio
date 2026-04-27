@@ -1,4 +1,3 @@
-
 "use client"
 
 import React from "react"
@@ -17,49 +16,97 @@ export const HudContainer = ({ children, title, className, variant = "default" }
   const titleColor = variant === "accent" ? "text-accent" : "text-primary"
 
   const containerVariants = {
-    hidden: { opacity: 0, scale: 0.98 },
+    hidden: { 
+      opacity: 0, 
+      scale: 0.98,
+      filter: "blur(10px)"
+    },
     visible: { 
       opacity: 1, 
       scale: 1,
+      filter: "blur(0px)",
       transition: { 
-        duration: 0.6, 
-        ease: "easeOut",
-        staggerChildren: 0.1
+        duration: 0.8, 
+        ease: [0.33, 1, 0.68, 1],
+        staggerChildren: 0.15
       } 
     }
   }
 
+  const borderVariants = {
+    hidden: { pathLength: 0, opacity: 0 },
+    visible: { 
+      pathLength: 1, 
+      opacity: 1,
+      transition: { duration: 1, ease: "easeInOut" }
+    }
+  }
+
   const childVariants = {
-    hidden: { opacity: 0, x: -10 },
-    visible: { opacity: 1, x: 0 }
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
   }
 
   return (
     <motion.div 
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-50px" }}
+      viewport={{ once: true, margin: "-100px" }}
       variants={containerVariants}
-      className={cn("relative border border-white/10 bg-black/40 backdrop-blur-md p-4 md:p-8 group overflow-hidden", className)}
+      className={cn("relative border border-white/10 bg-black/60 backdrop-blur-xl p-4 md:p-8 group overflow-hidden", className)}
     >
-      {/* Precision Corners */}
-      <div className={cn("absolute top-0 left-0 w-3 md:w-4 h-3 md:h-4 border-t border-l opacity-40 transition-all duration-300 group-hover:w-8 group-hover:h-8 group-hover:opacity-100", borderColor)}></div>
-      <div className={cn("absolute top-0 right-0 w-3 md:w-4 h-3 md:h-4 border-t border-r opacity-40 transition-all duration-300 group-hover:w-8 group-hover:h-8 group-hover:opacity-100", borderColor)}></div>
-      <div className={cn("absolute bottom-0 left-0 w-3 md:w-4 h-3 md:h-4 border-b border-l opacity-40 transition-all duration-300 group-hover:w-8 group-hover:h-8 group-hover:opacity-100", borderColor)}></div>
-      <div className={cn("absolute bottom-0 right-0 w-3 md:w-4 h-3 md:h-4 border-b border-r opacity-40 transition-all duration-300 group-hover:w-8 group-hover:h-8 group-hover:opacity-100", borderColor)}></div>
+      {/* Precision Corners (Animated) */}
+      <motion.div 
+        initial={{ scale: 0 }}
+        whileInView={{ scale: 1 }}
+        transition={{ delay: 0.5 }}
+        className={cn("absolute top-0 left-0 w-3 md:w-6 h-3 md:h-6 border-t-2 border-l-2 opacity-60 transition-all duration-300 group-hover:w-10 group-hover:h-10 group-hover:opacity-100", borderColor)}
+      />
+      <motion.div 
+        initial={{ scale: 0 }}
+        whileInView={{ scale: 1 }}
+        transition={{ delay: 0.5 }}
+        className={cn("absolute top-0 right-0 w-3 md:w-6 h-3 md:h-6 border-t-2 border-r-2 opacity-60 transition-all duration-300 group-hover:w-10 group-hover:h-10 group-hover:opacity-100", borderColor)}
+      />
+      <motion.div 
+        initial={{ scale: 0 }}
+        whileInView={{ scale: 1 }}
+        transition={{ delay: 0.5 }}
+        className={cn("absolute bottom-0 left-0 w-3 md:w-6 h-3 md:h-6 border-b-2 border-l-2 opacity-60 transition-all duration-300 group-hover:w-10 group-hover:h-10 group-hover:opacity-100", borderColor)}
+      />
+      <motion.div 
+        initial={{ scale: 0 }}
+        whileInView={{ scale: 1 }}
+        transition={{ delay: 0.5 }}
+        className={cn("absolute bottom-0 right-0 w-3 md:w-6 h-3 md:h-6 border-b-2 border-r-2 opacity-60 transition-all duration-300 group-hover:w-10 group-hover:h-10 group-hover:opacity-100", borderColor)}
+      />
       
       {title && (
-        <motion.div variants={childVariants} className="mb-4 md:mb-8 flex items-center justify-between border-b border-white/5 pb-4">
+        <motion.div variants={childVariants} className="mb-4 md:mb-8 flex items-center justify-between border-b border-white/10 pb-4">
           <div className="flex items-center gap-2 md:gap-3">
-            <div className={cn("h-4 w-1 animate-flicker", variant === "accent" ? "bg-accent" : "bg-primary")}></div>
-            <h3 className={cn("text-[9px] md:text-[10px] font-code font-bold uppercase tracking-[0.2em] md:tracking-[0.3em]", titleColor)}>
+            <motion.div 
+              animate={{ height: [16, 24, 16] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className={cn("w-1.5", variant === "accent" ? "bg-accent" : "bg-primary")} 
+            />
+            <h3 className={cn("text-[10px] md:text-[12px] font-code font-bold uppercase tracking-[0.3em] md:tracking-[0.5em]", titleColor)}>
               {title}
             </h3>
           </div>
           <div className="hidden xs:flex gap-1 md:gap-2">
-            <div className="w-1 h-1 md:w-1.5 md:h-1.5 bg-primary/20"></div>
-            <div className="w-1 h-1 md:w-1.5 md:h-1.5 bg-primary/40"></div>
-            <div className="w-1 h-1 md:w-1.5 md:h-1.5 bg-primary"></div>
+            {[1, 2, 3].map((i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.2 * i }}
+                className={cn("w-1.5 h-1.5", i === 3 ? (variant === "accent" ? "bg-accent" : "bg-primary") : "bg-white/10")}
+              />
+            ))}
           </div>
         </motion.div>
       )}
@@ -68,8 +115,13 @@ export const HudContainer = ({ children, title, className, variant = "default" }
         {children}
       </motion.div>
 
-      {/* Grid Pattern Overlay */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-[linear-gradient(rgba(139,92,246,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(139,92,246,0.1)_1px,transparent_1px)] bg-[size:20px_20px]"></div>
+      {/* Interactive Scanline Grid */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.05] bg-grid-primary"></div>
+      <motion.div 
+        animate={{ translateY: ["0%", "1000%"] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+        className="absolute top-0 left-0 w-full h-1 bg-primary/20 blur-sm pointer-events-none"
+      />
     </motion.div>
   )
 }
