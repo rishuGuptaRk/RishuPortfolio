@@ -12,25 +12,25 @@
 
 @layer base {
   :root {
-    --background: 264 30% 5%;
+    --background: 160 84% 5%;
     --foreground: 0 0% 100%;
-    --card: 264 30% 4%;
+    --card: 160 84% 4%;
     --card-foreground: 0 0% 100%;
-    --popover: 264 30% 6%;
+    --popover: 160 84% 6%;
     --popover-foreground: 0 0% 100%;
-    --primary: 264 70% 55%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 190 90% 50%;
-    --secondary-foreground: 264 30% 5%;
-    --muted: 264 30% 10%;
-    --muted-foreground: 264 10% 60%;
-    --accent: 190 90% 50%;
-    --accent-foreground: 264 30% 5%;
+    --primary: 48 95% 53%;
+    --primary-foreground: 160 84% 5%;
+    --secondary: 0 0% 100%;
+    --secondary-foreground: 160 84% 5%;
+    --muted: 160 20% 15%;
+    --muted-foreground: 160 10% 60%;
+    --accent: 48 95% 53%;
+    --accent-foreground: 160 84% 5%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 264 30% 15%;
-    --input: 264 30% 12%;
-    --ring: 264 70% 55%;
+    --border: 160 30% 15%;
+    --input: 160 30% 12%;
+    --ring: 48 95% 53%;
     --radius: 0rem;
   }
 }
@@ -42,17 +42,18 @@
   body {
     @apply bg-background text-foreground selection:bg-primary selection:text-primary-foreground overflow-x-hidden antialiased;
     background-image: 
-      linear-gradient(rgba(139, 92, 246, 0.02) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(139, 92, 246, 0.02) 1px, transparent 1px);
-    background-size: 40px 40px;
-  }
-  
-  body, a, button, [role="button"], input, textarea, select {
-    cursor: none !important;
+      linear-gradient(rgba(250, 204, 21, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(250, 204, 21, 0.02) 1px, transparent 1px);
+    background-size: 50px 50px;
   }
 }
 
 @layer utilities {
+  .text-outline {
+    -webkit-text-stroke: 2px white;
+    color: transparent;
+  }
+  
   .glitch-text {
     position: relative;
     display: inline-block;
@@ -85,7 +86,7 @@
     width: 100%;
     height: 100px;
     z-index: 50;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(139, 92, 246, 0.03) 50%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(250, 204, 21, 0.03) 50%, rgba(0, 0, 0, 0) 100%);
     opacity: 0.15;
     position: fixed;
     bottom: 100%;
