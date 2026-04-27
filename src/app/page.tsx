@@ -61,12 +61,16 @@ export default function Home() {
 
   const handleNavClick = (id: string) => {
     setIsNavigating(true)
-    const element = document.getElementById(id)
-    element?.scrollIntoView({ behavior: "smooth" })
     
-    // Trigger visual glitch duration
+    // Simulate system "processing" before the actual jump
     setTimeout(() => {
-      setIsNavigating(false)
+      const element = document.getElementById(id)
+      element?.scrollIntoView({ behavior: "smooth" })
+      
+      // Keep the transition active long enough to cover the scroll duration
+      setTimeout(() => {
+        setIsNavigating(false)
+      }, 1200) 
     }, 800)
   }
 
@@ -91,14 +95,58 @@ export default function Home() {
         {isNavigating && (
           <motion.div 
             initial={{ opacity: 0 }}
-            animate={{ opacity: [0, 1, 0.5, 1, 0] }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[150] pointer-events-none bg-primary/5 backdrop-blur-[2px]"
+            animate={{ 
+              opacity: [0, 1, 0.8, 1, 0.9, 1],
+              backdropFilter: ["blur(0px)", "blur(10px)", "blur(5px)", "blur(15px)", "blur(8px)", "blur(20px)"]
+            }}
+            exit={{ opacity: 0, transition: { duration: 0.8 } }}
+            className="fixed inset-0 z-[200] pointer-events-none bg-black/40 backdrop-blur-sm flex items-center justify-center overflow-hidden"
           >
-            <div className="absolute inset-0 bg-[url('https://raw.githubusercontent.com/Anshul-69/DedSec-Terminal/main/dedsec.gif')] opacity-10 mix-blend-screen bg-center bg-no-repeat" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-primary font-code text-xl animate-pulse tracking-[1em] uppercase">ACCESSING_NODE...</span>
+            {/* Visual Interference Layers */}
+            <div className="absolute inset-0 bg-primary/5 mix-blend-overlay" />
+            <div className="absolute inset-0 bg-[url('https://raw.githubusercontent.com/Anshul-69/DedSec-Terminal/main/dedsec.gif')] opacity-20 mix-blend-screen bg-center bg-no-repeat bg-contain" />
+            
+            <div className="relative flex flex-col items-center gap-6">
+              <motion.div 
+                animate={{ 
+                  scale: [1, 1.1, 0.9, 1.2, 1],
+                  rotate: [0, 2, -2, 3, 0]
+                }}
+                transition={{ duration: 0.2, repeat: Infinity }}
+                className="w-24 h-24 border-2 border-primary rounded-sm flex items-center justify-center bg-black"
+              >
+                <Terminal className="w-12 h-12 text-primary" />
+              </motion.div>
+
+              <div className="flex flex-col items-center">
+                <motion.span 
+                  animate={{ 
+                    opacity: [1, 0.5, 1, 0.2, 1],
+                    x: [0, 5, -5, 10, 0]
+                  }}
+                  transition={{ duration: 0.1, repeat: Infinity }}
+                  className="text-primary font-headline text-2xl font-black tracking-[0.5em] uppercase"
+                >
+                  ACCESSING_NODE
+                </motion.span>
+                <div className="w-full h-1 bg-white/10 mt-2 relative overflow-hidden">
+                  <motion.div 
+                    initial={{ width: "0%" }}
+                    animate={{ width: "100%" }}
+                    transition={{ duration: 1.8, ease: "easeInOut" }}
+                    className="absolute top-0 left-0 h-full bg-primary"
+                  />
+                </div>
+                <span className="text-primary/40 font-code text-[10px] mt-2 tracking-widest uppercase">ENCRYPTING_TRAFFIC // BYPASSING_FIREWALL</span>
+              </div>
             </div>
+
+            {/* Scanning Scanline */}
+            <motion.div 
+              animate={{ top: ["-10%", "110%"] }}
+              transition={{ duration: 0.5, repeat: Infinity, ease: "linear" }}
+              className="absolute left-0 right-0 h-px bg-primary shadow-[0_0_15px_hsl(var(--primary))] z-[210]"
+            />
           </motion.div>
         )}
       </AnimatePresence>
