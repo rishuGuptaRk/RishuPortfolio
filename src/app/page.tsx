@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react"
 import Image from "next/image"
 import portfolioData from "./data/portfolio.json"
 import recoveryData from "./lib/recovery-data.json"
-import { ProjectCard } from "@/components/project-card"
+import { ProjectShowcase } from "@/components/project-showcase"
 import { SkillMatrix } from "@/components/skill-matrix"
 import { ContactModule } from "@/components/contact-module"
 import { AiDossierLab } from "@/components/ai-dossier-lab"
@@ -315,30 +315,8 @@ export default function Home() {
           </div>
         </motion.section>
 
-        {/* Repositories */}
-        <motion.section 
-          id="projects" 
-          variants={sectionVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="py-16 md:py-32 px-4 md:px-12 max-w-7xl mx-auto"
-        >
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-20 gap-4">
-            <div>
-              <span className="text-[10px] font-code text-primary uppercase tracking-[0.4em] mb-4 block animate-pulse">// SELECTED_WORKS</span>
-              <h3 className="text-3xl md:text-4xl font-headline font-black text-white uppercase tracking-tighter">PROJECT_REPOSITORIES</h3>
-            </div>
-            <button className="text-[10px] font-headline font-bold text-muted-foreground hover:text-primary transition-colors uppercase tracking-widest border-b border-muted-foreground/20 pb-1 w-fit">VIEW_ALL_REPOS</button>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {portfolioData.projects.map((project, i) => (
-              <motion.div key={project.id} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ delay: i * 0.1 }}>
-                <ProjectCard project={project} />
-              </motion.div>
-            ))}
-          </div>
-        </motion.section>
+        {/* Repositories - Premium Showcase */}
+        <ProjectShowcase projects={portfolioData.projects as any} />
 
         {/* System Capabilities */}
         <motion.section 
