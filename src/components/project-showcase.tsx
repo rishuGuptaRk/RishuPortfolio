@@ -33,66 +33,66 @@ const ProjectSlide = ({ project, index }: { project: Project; index: number }) =
 
       <div className="container max-w-7xl mx-auto grid lg:grid-cols-12 gap-8 md:gap-16 items-center relative z-10">
         {/* Left Content (Col 5) */}
-        <div className="lg:col-span-5 space-y-6 md:space-y-8">
+        <div className="lg:col-span-5 space-y-4 md:space-y-8">
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             className="flex items-center gap-3"
           >
-            <div className="w-10 h-10 rounded-full border border-primary/30 flex items-center justify-center bg-primary/5">
-              <Zap className="w-5 h-5 text-primary" />
+            <div className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-primary/30 flex items-center justify-center bg-primary/5">
+              <Zap className="w-4 h-4 md:w-5 md:h-5 text-primary" />
             </div>
-            <span className="text-primary font-headline font-bold text-[10px] tracking-[0.3em] uppercase">
+            <span className="text-primary font-headline font-bold text-[8px] md:text-[10px] tracking-[0.3em] uppercase">
               {project.category}
             </span>
           </motion.div>
 
-          <div className="space-y-4">
-            <h2 className="text-4xl sm:text-6xl md:text-8xl font-black font-headline text-white leading-[0.9] tracking-tighter uppercase">
+          <div className="space-y-2 md:space-y-4">
+            <h2 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black font-headline text-white leading-[0.9] tracking-tighter uppercase">
               {project.title}
             </h2>
-            <p className="text-sm md:text-lg text-muted-foreground/80 font-body leading-relaxed max-w-xl">
+            <p className="text-xs md:text-base lg:text-lg text-muted-foreground/80 font-body leading-relaxed max-w-xl line-clamp-4 md:line-clamp-none">
               {project.description}
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-1.5 md:gap-2">
             {project.tech.map(t => (
-              <div key={t} className="px-3 py-1 border border-primary/20 text-[10px] font-code text-primary/70 tracking-widest bg-primary/5">
+              <div key={t} className="px-2 py-0.5 md:px-3 md:py-1 border border-primary/20 text-[8px] md:text-[10px] font-code text-primary/70 tracking-widest bg-primary/5">
                 {t}
               </div>
             ))}
           </div>
 
-          <div className="grid grid-cols-2 gap-8 pt-6 border-t border-white/10">
+          <div className="grid grid-cols-2 gap-4 md:gap-8 pt-4 md:pt-6 border-t border-white/10">
             <div className="group">
-              <p className="text-[9px] font-code text-muted-foreground uppercase tracking-widest mb-1">Latency</p>
+              <p className="text-[8px] md:text-[9px] font-code text-muted-foreground uppercase tracking-widest mb-1">Latency</p>
               <div className="flex items-center gap-2">
-                <Activity className="w-4 h-4 text-primary opacity-50 group-hover:opacity-100 transition-opacity" />
-                <p className="text-xl md:text-2xl font-headline font-bold text-primary">{project.metrics.latency}</p>
+                <Activity className="w-3 h-3 md:w-4 md:h-4 text-primary opacity-50 group-hover:opacity-100 transition-opacity" />
+                <p className="text-lg md:text-2xl font-headline font-bold text-primary">{project.metrics.latency}</p>
               </div>
             </div>
             <div className="group">
-              <p className="text-[9px] font-code text-muted-foreground uppercase tracking-widest mb-1">Lighthouse</p>
+              <p className="text-[8px] md:text-[9px] font-code text-muted-foreground uppercase tracking-widest mb-1">Lighthouse</p>
               <div className="flex items-center gap-2">
-                <Layout className="w-4 h-4 text-primary opacity-50 group-hover:opacity-100 transition-opacity" />
-                <p className="text-xl md:text-2xl font-headline font-bold text-primary">{project.metrics.lighthouse}</p>
+                <Layout className="w-3 h-3 md:w-4 md:h-4 text-primary opacity-50 group-hover:opacity-100 transition-opacity" />
+                <p className="text-lg md:text-2xl font-headline font-bold text-primary">{project.metrics.lighthouse}</p>
               </div>
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-4">
-            <Button className="bg-primary hover:bg-primary/80 text-primary-foreground font-headline font-bold h-12 px-8 rounded-none group flex-1 sm:flex-none">
-              LAUNCH <ExternalLink className="ml-2 w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 md:gap-4 pt-2 md:pt-4">
+            <Button className="bg-primary hover:bg-primary/80 text-primary-foreground font-headline font-bold h-10 md:h-12 px-6 md:px-8 rounded-none group flex-1 sm:flex-none">
+              LAUNCH <ExternalLink className="ml-2 w-3 h-3 md:w-4 md:h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
             </Button>
-            <button className="flex items-center justify-center gap-2 text-white/60 hover:text-primary font-headline font-bold text-xs uppercase tracking-widest transition-colors h-12 px-6 border border-white/5 hover:border-primary/50">
-              <Github className="w-5 h-5" /> SOURCE
+            <button className="flex items-center justify-center gap-2 text-white/60 hover:text-primary font-headline font-bold text-[9px] md:text-xs uppercase tracking-widest transition-colors h-10 md:h-12 px-4 md:px-6 border border-white/5 hover:border-primary/50">
+              <Github className="w-4 h-4 md:w-5 md:h-5" /> SOURCE
             </button>
           </div>
         </div>
 
         {/* Right Visual Panel (Col 7) */}
-        <div className="lg:col-span-7 relative aspect-square md:aspect-video lg:aspect-square">
+        <div className="lg:col-span-7 relative aspect-square md:aspect-video lg:aspect-square hidden sm:block">
           <div className="absolute inset-0 border border-white/10 bg-black/40 backdrop-blur-sm rounded-sm overflow-hidden group">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-50" />
             
@@ -144,24 +144,24 @@ export const ProjectShowcase = ({ projects }: { projects: Project[] }) => {
     target: targetRef,
   })
 
-  // Horizontal translation logic: Translates from 0 to -(width of all projects except one)
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", `-${(projects.length - 1) * 100}vw`])
+  // Horizontal translation logic: Use percentages for smoother, more reliable translation
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", `-${(projects.length - 1) * 100}%`])
   
-  // Smooth spring for high-end feel
+  // Smooth spring for professional cinematic feel
   const springX = useSpring(x, {
-    stiffness: 100,
+    stiffness: 80,
     damping: 30,
     restDelta: 0.001
   })
 
   return (
-    <section id="projects" ref={targetRef} className="relative h-[300vh] bg-black">
-      {/* Sticky Container */}
+    <section id="projects" ref={targetRef} className="relative h-[400vh] bg-black">
+      {/* Sticky Container - This locks to the top of the viewport */}
       <div className="sticky top-0 h-screen overflow-hidden flex items-center">
         {/* Horizontal Scrolling Track */}
         <motion.div 
           style={{ x: springX }} 
-          className="flex h-full"
+          className="flex h-full w-fit"
         >
           {projects.map((project, index) => (
             <ProjectSlide 
