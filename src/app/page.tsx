@@ -21,11 +21,10 @@ export default function Home() {
   const aboutMeImage = PlaceHolderImages.find(img => img.id === "about-me")
 
   useEffect(() => {
-    // Only local images from /images/ directory as requested
+    // Local avatar images provided by user
     const localProfiles = [
-      "/images/p1.gif",
-      "/images/p2.gif",
-      "/images/p3.gif"
+      "/images/Ava1.gif",
+      "/images/Ava-2.gif"
     ]
     const randomIndex = Math.floor(Math.random() * localProfiles.length)
     setProfilePic(localProfiles[randomIndex])
@@ -53,13 +52,14 @@ export default function Home() {
   }
 
   const headlineVariants = {
-    hidden: { y: "100%", opacity: 0 },
+    hidden: { y: "120%", opacity: 0, scaleY: 1.5 },
     visible: (i: number) => ({ 
       y: 0, 
       opacity: 1, 
+      scaleY: 1,
       transition: { 
-        duration: 0.8, 
-        delay: 0.5 + (i * 0.1), 
+        duration: 1, 
+        delay: 0.5 + (i * 0.15), 
         ease: [0.33, 1, 0.68, 1] 
       } 
     })
@@ -114,9 +114,15 @@ export default function Home() {
             RESUME
           </button>
           {profilePic && (
-            <div className="relative w-10 h-10 border border-primary/40 rounded-sm overflow-hidden bg-black/40">
-              <Image src={profilePic} alt="Operative" fill className="object-cover grayscale brightness-125" unoptimized />
-              <div className="absolute inset-0 bg-primary/20 pointer-events-none mix-blend-overlay"></div>
+            <div className="relative w-10 h-10 border border-primary/40 rounded-sm overflow-hidden bg-black/40 shadow-[0_0_15px_rgba(var(--primary),0.3)]">
+              <Image 
+                src={profilePic} 
+                alt="Operative" 
+                fill 
+                className="object-cover grayscale brightness-110 contrast-125" 
+                unoptimized 
+              />
+              <div className="absolute inset-0 bg-primary/10 pointer-events-none mix-blend-overlay"></div>
             </div>
           )}
         </motion.div>
@@ -132,7 +138,7 @@ export default function Home() {
           <div className="container px-8 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
             <div className="lg:col-span-12 space-y-4">
               <motion.div variants={itemVariants} className="flex items-center gap-4">
-                 <span className="font-code text-xs text-primary tracking-[0.4em] uppercase animate-pulse">// ACCESSING_SF_CORE_NODE</span>
+                 <span className="font-code text-xs text-primary tracking-[0.4em] uppercase animate-pulse">// UPLINK_STABLE_ACCESS_GRANTED</span>
               </motion.div>
               
               <div className="space-y-0 leading-[0.85] overflow-hidden">
@@ -163,7 +169,7 @@ export default function Home() {
                     <span className="text-primary">ENGINEER</span>
                   </h2>
                   <div className="flex gap-4 items-center">
-                    <div className="bg-white/10 px-3 py-1 font-code text-[10px] text-muted-foreground uppercase">Uplink Stable</div>
+                    <div className="bg-white/10 px-3 py-1 font-code text-[10px] text-muted-foreground uppercase">SYSTEM_STABLE</div>
                     <span className="font-code text-[10px] text-muted-foreground uppercase tracking-widest">SF_LOCAL_NODE_415</span>
                   </div>
                 </div>
