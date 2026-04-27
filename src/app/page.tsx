@@ -63,15 +63,15 @@ export default function Home() {
   const handleNavClick = (id: string) => {
     setIsNavigating(true)
     
-    // 2000ms "Deep Infiltration" sequence
+    // 1200ms "Deep Infiltration" sequence
     setTimeout(() => {
       const element = document.getElementById(id)
       element?.scrollIntoView({ behavior: "smooth" })
       
       setTimeout(() => {
         setIsNavigating(false)
-      }, 1200) 
-    }, 2000)
+      }, 800) 
+    }, 1200)
   }
 
   if (isLoading) {
@@ -131,7 +131,7 @@ export default function Home() {
                   <motion.div 
                     initial={{ width: "0%" }}
                     animate={{ width: "100%" }}
-                    transition={{ duration: 2.0, ease: "easeInOut" }}
+                    transition={{ duration: 1.2, ease: "easeInOut" }}
                     className="absolute top-0 left-0 h-full bg-primary"
                   />
                 </div>
@@ -181,7 +181,7 @@ export default function Home() {
             onClick={() => handleNavClick('contact')}
             className="border-2 border-white/60 px-4 py-1.5 text-[10px] font-headline font-bold uppercase tracking-widest hover:border-primary hover:text-primary transition-all rounded-md"
           >
-            CONTACT
+            CONTACT_OPERATIVE
           </button>
         </nav>
 
