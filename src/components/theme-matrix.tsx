@@ -5,9 +5,9 @@ import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
 
 const themes = [
-  { id: "default", color: "bg-yellow-500", label: "AMBER_CORE" },
+  { id: "default", color: "bg-cyan-500", label: "CYAN_OVERRIDE" },
   { id: "emerald", color: "bg-emerald-500", label: "EMERALD_GREEN" },
-  { id: "cyan", color: "bg-cyan-500", label: "CYAN_OVERRIDE" },
+  { id: "amber", color: "bg-yellow-500", label: "AMBER_CORE" },
   { id: "crimson", color: "bg-rose-500", label: "CRIMSON_BREACH" },
 ]
 
