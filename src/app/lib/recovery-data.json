@@ -1,0 +1,15 @@
+
+{
+  "recovery_timestamp": "2024-03-20T00:00:00.000Z",
+  "status": "STABLE",
+  "backup_data": {
+    "profile": {
+      "name": "Rishu Gupta",
+      "handle": "Cyber_Gupta",
+      "role": "Full-Stack Developer & Software Engineer",
+      "bio": "B.Tech CSE Undergraduate (2022–2026) at Siliguri Institute of Technology. Specializing in real-time synchronized systems, scalable backend architectures, and AI-powered solutions. Dedicated to building efficient, user-centric digital products.",
+      "location": "India",
+      "email": "rishu@dedsec.io"
+    }
+  }
+}

@@ -9,14 +9,14 @@
     },
     {
       "id": "dedsec-skull",
-      "description": "High definition dithered skull signature",
-      "imageUrl": "https://picsum.photos/seed/dedsec-skull-hd/800/800",
+      "description": "Interactive matrix-style DedSec skull",
+      "imageUrl": "https://raw.githubusercontent.com/Anshul-69/DedSec-Terminal/main/dedsec.gif",
       "imageHint": "hacker skull"
     },
     {
       "id": "loading-gif",
       "description": "DedSec system infiltration glitch",
-      "imageUrl": "/images/hacking watch dogs GIF.gif",
+      "imageUrl": "https://raw.githubusercontent.com/Anshul-69/DedSec-Terminal/main/dedsec.gif",
       "imageHint": "hacker glitch"
     },
     {
@@ -42,24 +42,6 @@
       "description": "DEDSEC operative tactical silhouette",
       "imageUrl": "https://picsum.photos/seed/operative-retr0/600/800",
       "imageHint": "cyberpunk portrait"
-    },
-    {
-      "id": "profile-pic-1",
-      "description": "DedSec glitch profile signature 1",
-      "imageUrl": "https://thumbs.gfycat.com/ApprehensiveOddballAgama-max-1mb.gif",
-      "imageHint": "glitch profile"
-    },
-    {
-      "id": "profile-pic-2",
-      "description": "DedSec glitch profile signature 2",
-      "imageUrl": "https://c.tenor.com/FMTaWoHYgdkAAAAC/dedsec.gif",
-      "imageHint": "glitch profile"
-    },
-    {
-      "id": "profile-pic-3",
-      "description": "DedSec glitch profile signature 3",
-      "imageUrl": "https://pa1.narvii.com/6775/a1b98f6adbc54269f8d1ed691f0ffd591615b893_00.gif",
-      "imageHint": "glitch profile"
     }
   ]
 }

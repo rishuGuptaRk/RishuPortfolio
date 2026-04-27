@@ -11,13 +11,13 @@ import { ContactModule } from "@/components/contact-module"
 import { AiSynopsisTool } from "@/components/ai-synopsis-tool"
 import { PlaceHolderImages } from "@/lib/placeholder-images"
 import { LoadingScreen } from "@/components/loading-screen"
-import { motion, AnimatePresence } from "framer-motion"
+import { InteractiveSkull } from "@/components/interactive-skull"
+import { motion } from "framer-motion"
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
   const [randomProfilePic, setRandomProfilePic] = useState<string | null>(null)
   
-  const heroImage = PlaceHolderImages.find(img => img.id === "hero-bg")
   const aboutMeImage = PlaceHolderImages.find(img => img.id === "about-me")
 
   useEffect(() => {
@@ -114,7 +114,12 @@ export default function Home() {
       >
         {/* Hero Section */}
         <section id="hero" className="relative min-h-screen flex flex-col justify-center pt-20">
-          <div className="container px-8 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          {/* Interactive Skull Background */}
+          <div className="absolute inset-0 -z-10">
+            <InteractiveSkull />
+          </div>
+
+          <div className="container px-8 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
             <div className="lg:col-span-12 space-y-4">
               <motion.div variants={itemVariants} className="flex items-center gap-4">
                  <span className="font-code text-xs text-primary tracking-[0.4em] uppercase animate-pulse">// SYSTEM INITIALIZED</span>
@@ -156,12 +161,6 @@ export default function Home() {
               </motion.div>
             </div>
           </div>
-
-          {heroImage?.imageUrl && (
-            <div className="absolute inset-0 -z-10 opacity-10 grayscale brightness-50">
-               <Image src={heroImage.imageUrl} alt="Background" fill className="object-cover" unoptimized />
-            </div>
-          )}
         </section>
 
         {/* Repositories Section */}
