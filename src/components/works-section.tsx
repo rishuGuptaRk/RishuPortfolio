@@ -6,7 +6,7 @@ import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { ExternalLink, Github, Zap, Activity, Layout, Terminal, Code2 } from "lucide-react"
+import { ExternalLink, Github, Zap, Activity, Layout, Terminal } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import portfolioData from "@/app/data/portfolio.json"
 import { PlaceHolderImages } from "@/lib/placeholder-images"
@@ -37,6 +37,7 @@ export const WorksSection = () => {
 
     if (!section || !trigger) return
 
+    // Standard horizontal pinning for desktop, graceful degradation logic inside scrollTrigger
     const totalWidth = section.scrollWidth
     const viewportWidth = window.innerWidth
 
@@ -75,7 +76,7 @@ export const WorksSection = () => {
                 0{index + 1}
               </div>
 
-              <div className="container max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 md:gap-20 items-center relative z-10">
+              <div className="container max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 md:gap-20 items-start pt-20 lg:pt-0 lg:items-center relative z-10">
                 {/* Info Panel */}
                 <div className="lg:col-span-5 space-y-6 md:space-y-10">
                   <div className="flex items-center gap-3">
