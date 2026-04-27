@@ -29,11 +29,10 @@ export const ContactModule = () => {
       from_email: String(formData.get('reply_to')),
       time: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
       message: String(formData.get('message')),
-      subject: String(formData.get('subject')), // Optional context
+      subject: String(formData.get('subject')),
     }
 
     try {
-      // Transmission using verified credentials provided by operative
       const response = await emailjs.send(
         'service_parc3eb', 
         'template_129gio6', 
@@ -51,10 +50,14 @@ export const ContactModule = () => {
         throw new Error(`Response Status: ${response.status}`)
       }
     } catch (error: any) {
-      console.error("Transmission Error:", error?.text || error?.message || error)
+      const errorMsg = error?.text || error?.message || "Check EmailJS Service Connection"
+      console.error("Transmission Error:", errorMsg)
+      
       toast({
         title: "TRANSMISSION_FAILURE",
-        description: error?.text || "System error during packet relay. Check your uplink.",
+        description: errorMsg.includes("Invalid grant") 
+          ? "Gmail link expired. Reconnect Gmail in EmailJS Dashboard." 
+          : "System error during packet relay. Check your uplink.",
         variant: "destructive",
       })
     } finally {
