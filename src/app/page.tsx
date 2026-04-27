@@ -117,21 +117,22 @@ export default function Home() {
         <section id="hero" className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 pt-32">
           <div className="relative z-10 space-y-4 max-w-7xl w-full">
             <motion.div variants={itemVariants} className="flex items-center gap-4 text-primary font-code text-[11px] tracking-[0.5em] uppercase opacity-80">
-              <span className="w-12 h-px bg-primary/40" /> // SYSTEM_INITIALIZED
+              <span className="w-12 h-px bg-primary/40" /> SYSTEM_INITIALIZED
             </motion.div>
             
             <div className="overflow-hidden space-y-2">
               <motion.h1 
                 variants={titleRiseVariants}
-                className="text-6xl md:text-[150px] font-black font-headline text-white tracking-tighter uppercase leading-[0.8]"
+                className="text-7xl md:text-[150px] font-black font-headline text-white tracking-tighter uppercase leading-[0.8]"
               >
                 RISHU
               </motion.h1>
               <motion.h1 
                 variants={titleRiseVariants}
-                className="text-6xl md:text-[150px] font-black font-headline text-white tracking-tighter uppercase leading-[0.8] flex items-end gap-8"
+                className="text-7xl md:text-[150px] font-black font-headline tracking-tighter uppercase leading-[0.8] flex items-end"
               >
-                GUPTA<span className="text-primary text-5xl md:text-[150px]">.</span>
+                <span className="text-outline text-primary" style={{ WebkitTextStroke: '3px hsl(var(--primary))' }}>GUPTA</span>
+                <span className="text-primary ml-2 mb-2 md:mb-4">.</span>
               </motion.h1>
             </div>
 
