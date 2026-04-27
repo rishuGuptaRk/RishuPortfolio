@@ -22,9 +22,9 @@ export const ContactModule = () => {
     setIsSending(true)
 
     try {
-      // NOTE: User needs to replace these placeholders with actual EmailJS keys
+      // Updated with User's Service ID
       await emailjs.sendForm(
-        'YOUR_SERVICE_ID', 
+        'service_parc3eb', 
         'YOUR_TEMPLATE_ID', 
         formRef.current, 
         'YOUR_PUBLIC_KEY'
