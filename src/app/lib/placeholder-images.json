@@ -21,21 +21,21 @@
     },
     {
       "id": "project-1",
-      "description": "Network security intrusion module",
-      "imageUrl": "https://picsum.photos/seed/sec-module-1/800/600",
-      "imageHint": "network security"
+      "description": "Sync Social Video Interface",
+      "imageUrl": "/images/SocialVideo.png",
+      "imageHint": "social video"
     },
     {
       "id": "project-2",
-      "description": "Smart city infrastructure bridge",
-      "imageUrl": "https://picsum.photos/seed/smart-city-bridge/800/600",
-      "imageHint": "smart city"
+      "description": "Library Management Dashboard",
+      "imageUrl": "/images/Library.png",
+      "imageHint": "library management"
     },
     {
       "id": "project-3",
-      "description": "Decentralized mesh node interface",
-      "imageUrl": "https://picsum.photos/seed/mesh-node-hub/800/600",
-      "imageHint": "mesh network"
+      "description": "DSA Prep Hub AI Interface",
+      "imageUrl": "/images/DSA.png",
+      "imageHint": "dsa hub"
     },
     {
       "id": "about-me",
