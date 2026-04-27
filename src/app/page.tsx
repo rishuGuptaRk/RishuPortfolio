@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useState, useEffect } from "react"
@@ -91,7 +92,7 @@ export default function Home() {
           {[
             { id: "projects", label: "REPOSITORIES" },
             { id: "skills", label: "TECH_STACK" },
-            { id: "lab", label: "NEURAL_AI" },
+            { id: "lab", label: "DOSSIER_LAB" },
             { id: "contact", label: "UPLINK" }
           ].map((item, idx) => (
             <motion.button
@@ -144,8 +145,8 @@ export default function Home() {
         initial="hidden"
         animate="visible"
       >
-        {/* Hero Section - Centered Alignment as requested */}
-        <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center pt-20 px-8">
+        {/* Hero Section - Left Alignment as per reference */}
+        <section id="hero" className="relative min-h-screen flex flex-col items-start justify-center pt-20 px-8 lg:px-24">
           {/* Background Dither Skull */}
           <div className="absolute inset-0 flex items-center justify-center opacity-20 pointer-events-none overflow-hidden">
             {dedsecSkull && (
@@ -160,11 +161,10 @@ export default function Home() {
             )}
           </div>
 
-          <div className="relative z-10 max-w-6xl w-full flex flex-col items-center text-center space-y-4">
+          <div className="relative z-10 max-w-6xl w-full flex flex-col items-start text-left space-y-6">
             <motion.div variants={itemVariants} className="flex items-center gap-4 text-primary font-code text-xs tracking-[0.4em] uppercase mb-4">
                <span className="h-[1px] w-8 bg-primary"></span>
                SYSTEM_INIT // CYBER_GUPTA
-               <span className="h-[1px] w-8 bg-primary"></span>
             </motion.div>
             
             <div className="overflow-hidden">
@@ -180,7 +180,7 @@ export default function Home() {
 
             <motion.h2 
               variants={itemVariants}
-              className="text-2xl md:text-4xl font-headline font-bold text-accent uppercase tracking-tighter flex items-center gap-4 flex-wrap justify-center"
+              className="text-2xl md:text-4xl font-headline font-bold text-accent uppercase tracking-tighter flex items-center gap-6 flex-wrap"
             >
               FULL-STACK DEVELOPER & SOFTWARE ENGINEER
               <span className="text-muted-foreground/30 text-[10px] tracking-widest font-code">CLASS // CSE_2026_SIT</span>
@@ -188,7 +188,7 @@ export default function Home() {
 
             <motion.p 
               variants={itemVariants}
-              className="max-w-3xl text-lg text-muted-foreground/80 font-body leading-relaxed mt-8 border-l border-primary/30 pl-6 text-left"
+              className="max-w-3xl text-lg text-muted-foreground/80 font-body leading-relaxed mt-8 border-l border-primary/30 pl-6"
             >
               {portfolioData.profile.bio}
             </motion.p>
