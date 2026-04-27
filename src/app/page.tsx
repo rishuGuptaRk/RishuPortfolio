@@ -11,7 +11,6 @@ import { ContactModule } from "@/components/contact-module"
 import { AiSynopsisTool } from "@/components/ai-synopsis-tool"
 import { PlaceHolderImages } from "@/lib/placeholder-images"
 import { LoadingScreen } from "@/components/loading-screen"
-import { InteractiveSkull } from "@/components/interactive-skull"
 import { motion } from "framer-motion"
 
 export default function Home() {
@@ -114,11 +113,6 @@ export default function Home() {
       >
         {/* Hero Section */}
         <section id="hero" className="relative min-h-screen flex flex-col justify-center pt-20">
-          {/* Interactive Skull Background */}
-          <div className="absolute inset-0 -z-10">
-            <InteractiveSkull />
-          </div>
-
           <div className="container px-8 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
             <div className="lg:col-span-12 space-y-4">
               <motion.div variants={itemVariants} className="flex items-center gap-4">
