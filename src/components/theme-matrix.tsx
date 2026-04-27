@@ -1,4 +1,3 @@
-
 "use client"
 
 import React, { useEffect, useState } from "react"
@@ -6,36 +5,42 @@ import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
 
 const themes = [
-  { id: "amber", color: "bg-yellow-500", label: "AMBER_CORE" },
+  { id: "default", color: "bg-yellow-500", label: "AMBER_CORE" },
   { id: "emerald", color: "bg-emerald-500", label: "EMERALD_GREEN" },
   { id: "cyan", color: "bg-cyan-500", label: "CYAN_OVERRIDE" },
   { id: "crimson", color: "bg-rose-500", label: "CRIMSON_BREACH" },
 ]
 
 export const ThemeMatrix = () => {
-  const [activeTheme, setActiveTheme] = useState("amber")
+  const [activeTheme, setActiveTheme] = useState("default")
 
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", activeTheme === "amber" ? "" : activeTheme)
+    const root = document.documentElement
+    if (activeTheme === "default") {
+      root.removeAttribute("data-theme")
+    } else {
+      root.setAttribute("data-theme", activeTheme)
+    }
   }, [activeTheme])
 
   return (
-    <div className="flex items-center gap-3 bg-black/40 p-1.5 border border-white/5">
+    <div className="flex items-center gap-3 bg-black/40 p-2 border border-white/10 backdrop-blur-md">
+      <span className="text-[8px] font-code text-primary/60 uppercase tracking-widest mr-1">PALETTE:</span>
       {themes.map((t) => (
         <button
           key={t.id}
           onClick={() => setActiveTheme(t.id)}
           className={cn(
-            "w-4 h-4 transition-all duration-300 relative group",
+            "w-3 h-3 transition-all duration-300 relative group rounded-full",
             t.color,
-            activeTheme === t.id ? "scale-110 ring-2 ring-white ring-offset-2 ring-offset-background" : "opacity-30 grayscale hover:opacity-100 hover:grayscale-0"
+            activeTheme === t.id ? "ring-1 ring-white ring-offset-2 ring-offset-background scale-110" : "opacity-40 grayscale hover:opacity-100 hover:grayscale-0"
           )}
           title={t.label}
         >
           {activeTheme === t.id && (
             <motion.div 
               layoutId="theme-ring"
-              className="absolute -inset-1 border border-white opacity-40"
+              className="absolute -inset-1 border border-primary/40 rounded-full"
             />
           )}
         </button>

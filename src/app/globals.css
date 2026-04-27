@@ -33,6 +33,30 @@
     --ring: 48 95% 53%;
     --radius: 0rem;
   }
+
+  [data-theme='cyan'] {
+    --background: 200 80% 5%;
+    --primary: 180 100% 50%;
+    --accent: 180 100% 50%;
+    --border: 200 30% 15%;
+    --ring: 180 100% 50%;
+  }
+
+  [data-theme='emerald'] {
+    --background: 145 80% 5%;
+    --primary: 142 70% 50%;
+    --accent: 142 70% 50%;
+    --border: 145 30% 15%;
+    --ring: 142 70% 50%;
+  }
+
+  [data-theme='crimson'] {
+    --background: 0 80% 5%;
+    --primary: 346 80% 50%;
+    --accent: 346 80% 50%;
+    --border: 0 30% 15%;
+    --ring: 346 80% 50%;
+  }
 }
 
 @layer base {
@@ -50,7 +74,7 @@
 
 @layer utilities {
   .text-outline {
-    -webkit-text-stroke: 2px white;
+    -webkit-text-stroke: 1px currentColor;
     color: transparent;
   }
   
@@ -85,8 +109,8 @@
   .scanline {
     width: 100%;
     height: 100px;
-    z-index: 50;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(250, 204, 21, 0.03) 50%, rgba(0, 0, 0, 0) 100%);
+    z-index: 100;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(var(--primary), 0.03) 50%, rgba(0, 0, 0, 0) 100%);
     opacity: 0.15;
     position: fixed;
     bottom: 100%;
@@ -128,4 +152,11 @@
 
 .animate-flicker {
   animation: flicker 2s infinite;
+}
+
+.bg-grid-primary {
+  background-image: 
+    linear-gradient(rgba(var(--primary), 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--primary), 0.05) 1px, transparent 1px);
+  background-size: 30px 30px;
 }

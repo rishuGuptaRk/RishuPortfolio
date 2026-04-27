@@ -9,6 +9,7 @@ import { SkillMatrix } from "@/components/skill-matrix"
 import { ContactModule } from "@/components/contact-module"
 import { AiDossierLab } from "@/components/ai-dossier-lab"
 import { LoadingScreen } from "@/components/loading-screen"
+import { ThemeMatrix } from "@/components/theme-matrix"
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronDown, Terminal, Github, Linkedin, Twitter, ArrowRight } from "lucide-react"
 
@@ -57,14 +58,19 @@ export default function Home() {
     <div className="min-h-screen bg-background selection:bg-primary selection:text-primary-foreground font-body">
       <div className="scanline"></div>
 
-      {/* Navigation - Inspired by Header */}
-      <header className="fixed top-0 left-0 w-full z-[100] px-12 py-8 flex justify-between items-center bg-gradient-to-b from-background/90 to-transparent backdrop-blur-sm">
+      {/* Navigation */}
+      <header className="fixed top-0 left-0 w-full z-[100] px-6 md:px-12 py-6 flex justify-between items-center bg-gradient-to-b from-background/90 to-transparent backdrop-blur-sm border-b border-white/5">
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex items-center gap-2">
-          <span className="text-3xl font-black font-headline tracking-tighter text-white">RG.</span>
+          <span className="text-2xl font-black font-headline tracking-tighter text-white">RG.</span>
+          <div className="hidden sm:block h-6 w-px bg-white/10 mx-2" />
+          <div className="hidden sm:flex items-center gap-1">
+            <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+            <span className="text-[8px] font-code text-primary uppercase">SIGNAL_STABLE</span>
+          </div>
         </motion.div>
 
-        <nav className="hidden lg:flex items-center gap-12">
-          {["home", "about", "arsenal", "logic", "works", "contact"].map((id) => (
+        <nav className="hidden lg:flex items-center gap-10">
+          {["home", "arsenal", "logic", "works", "contact"].map((id) => (
             <button
               key={id}
               onClick={() => {
@@ -73,16 +79,17 @@ export default function Home() {
               }}
               className="group flex flex-col items-center gap-1"
             >
-              <span className="text-[10px] font-headline font-bold uppercase tracking-[0.2em] text-white/70 group-hover:text-primary transition-colors">
+              <span className="text-[10px] font-headline font-bold uppercase tracking-[0.2em] text-white/50 group-hover:text-primary transition-colors">
                 {id}
               </span>
-              <div className="w-1 h-1 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="w-4 h-0.5 bg-primary opacity-0 group-hover:opacity-100 transition-all transform scale-x-0 group-hover:scale-x-100" />
             </button>
           ))}
         </nav>
 
-        <div className="flex items-center gap-6">
-          <button className="hidden sm:block bg-white text-background px-6 py-2.5 text-[10px] font-headline font-bold uppercase tracking-widest hover:bg-primary transition-all">
+        <div className="flex items-center gap-4">
+          <ThemeMatrix />
+          <button className="hidden sm:block bg-white text-background px-6 py-2.5 text-[9px] font-headline font-bold uppercase tracking-widest hover:bg-primary transition-all">
             RESUME
           </button>
           {profilePic && (
@@ -94,8 +101,8 @@ export default function Home() {
       </header>
 
       <motion.main variants={containerVariants} initial="hidden" animate="visible">
-        {/* Hero Section - Inspired Layout */}
-        <section id="hero" className="relative min-h-screen flex flex-col justify-center px-12 pt-32">
+        {/* Hero Section */}
+        <section id="hero" className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 pt-32">
           <div className="relative z-10 space-y-4 max-w-7xl w-full">
             <motion.div variants={itemVariants} className="flex items-center gap-4 text-primary font-code text-[11px] tracking-[0.5em] uppercase opacity-80">
               <span className="w-12 h-px bg-primary/40" /> // SYSTEM_INITIALIZED
@@ -104,23 +111,23 @@ export default function Home() {
             <div className="overflow-hidden space-y-2">
               <motion.h1 
                 variants={titleRiseVariants}
-                className="text-8xl md:text-[180px] font-black font-headline text-white tracking-tighter uppercase leading-[0.8]"
+                className="text-6xl md:text-[150px] font-black font-headline text-white tracking-tighter uppercase leading-[0.8]"
               >
                 RISHU
               </motion.h1>
               <motion.h1 
                 variants={titleRiseVariants}
-                className="text-8xl md:text-[180px] font-black font-headline text-outline tracking-tighter uppercase leading-[0.8] flex items-end gap-8"
+                className="text-6xl md:text-[150px] font-black font-headline text-outline tracking-tighter uppercase leading-[0.8] flex items-end gap-8"
               >
-                GUPTA<span className="text-primary text-6xl md:text-8xl">.</span>
+                GUPTA<span className="text-primary text-5xl md:text-[150px]">.</span>
               </motion.h1>
             </div>
 
-            {/* Bottom Hero Info - Split Layout */}
+            {/* Bottom Hero Info */}
             <div className="pt-24 grid md:grid-cols-12 gap-12 items-end border-t border-white/5">
               <div className="md:col-span-3 space-y-1">
-                <h2 className="text-4xl md:text-5xl font-black font-headline text-white leading-none">FULLSTACK</h2>
-                <h2 className="text-4xl md:text-5xl font-black font-headline text-primary leading-none uppercase">DEVELOPER</h2>
+                <h2 className="text-3xl md:text-4xl font-black font-headline text-white leading-none">FULLSTACK</h2>
+                <h2 className="text-3xl md:text-4xl font-black font-headline text-primary leading-none uppercase">DEVELOPER</h2>
               </div>
               
               <div className="md:col-span-6 border-l border-primary/20 pl-8">
@@ -130,7 +137,10 @@ export default function Home() {
               </div>
 
               <div className="md:col-span-3 flex justify-end">
-                <button className="border border-primary text-primary px-10 py-5 text-[10px] font-headline font-bold uppercase tracking-widest hover:bg-primary hover:text-background transition-all flex items-center gap-3">
+                <button 
+                  onClick={() => document.getElementById('lab')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="border border-primary text-primary px-10 py-5 text-[10px] font-headline font-bold uppercase tracking-widest hover:bg-primary hover:text-background transition-all flex items-center gap-3"
+                >
                   ACCESS_DOSSIER <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
@@ -139,7 +149,7 @@ export default function Home() {
         </section>
 
         {/* Repositories */}
-        <section id="projects" className="py-32 px-12 max-w-7xl mx-auto">
+        <section id="projects" className="py-32 px-6 md:px-12 max-w-7xl mx-auto">
           <motion.div variants={itemVariants} className="flex items-end justify-between mb-20">
             <div>
               <span className="text-[10px] font-code text-primary uppercase tracking-[0.4em] mb-4 block">// SELECTED_WORKS</span>
@@ -155,21 +165,21 @@ export default function Home() {
         </section>
 
         {/* System Capabilities */}
-        <section id="skills" className="py-32 bg-primary/[0.02] border-y border-white/5 px-12">
+        <section id="skills" className="py-32 bg-primary/[0.02] border-y border-white/5 px-6 md:px-12">
           <div className="container max-w-7xl mx-auto">
             <SkillMatrix skills={portfolioData.skills} />
           </div>
         </section>
 
         {/* AI Lab */}
-        <section id="lab" className="py-32 px-12">
+        <section id="lab" className="py-32 px-6 md:px-12">
           <div className="container max-w-7xl mx-auto">
             <AiDossierLab />
           </div>
         </section>
 
         {/* Contact */}
-        <section id="contact" className="py-32 border-t border-white/5 px-12">
+        <section id="contact" className="py-32 border-t border-white/5 px-6 md:px-12">
           <div className="container max-w-7xl mx-auto">
             <ContactModule />
           </div>
